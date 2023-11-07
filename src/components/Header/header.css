@@ -1,0 +1,43 @@
+
+.header{
+    background-color: white;
+    width: 100%;
+}
+
+.header__logo {
+    background-color: rgb(61, 83, 69);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+h1 {
+    font-family: "Chelsea Market", sans-serif;
+    font-size: "40px";
+    margin-left: 100px;
+    margin-right: 100px;
+    color: white;
+}
+
+.header__logout {
+    height: 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: rgb(198, 229, 168);
+}
+
+.logoutBtn {
+    width: 40px;
+    height: 40px;
+    color: rgb(198, 229, 168);
+    margin-right: 80px;
+    cursor: pointer;
+    background-color: rgb(177, 193, 177);
+    border-radius: 45px;
+}
+
+.logoutBtn:hover {
+    color: gold;
+}

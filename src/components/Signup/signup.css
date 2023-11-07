@@ -1,0 +1,81 @@
+.bgSignup {
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    background-image: radial-gradient( circle at center, rgb(98, 34, 105), rgba(170, 183, 215, 0.1)), url("../../img/rsz_pexels-bithinraj-mb-2763927.jpg");
+    z-index: -1;
+}   
+
+.signup_form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.signup_title {
+    font-size: 20px;
+    color: white;
+}
+
+.signup_input {
+    width: 220px;
+    height: 35px;
+    font-size: 18px;
+    padding: 5px 5px 5px 10px;
+    font-family: "Chelsea Market";
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: rgb(102, 13, 75);
+}
+
+.signup_input:focus {
+    outline: none;
+    box-shadow: rgb(205, 129, 206) 1px 1px 30px;
+}
+
+.signup_h2 {
+    font-family: "Chelsea Market";
+    color: rgb(71, 4, 82);
+}
+
+#signup_submit {
+    margin-top: 20px;
+    background-color: transparent;
+    color: rgb(195, 168, 99);
+    border: 1px solid gold;
+    cursor: pointer;
+    font-size: 16px;
+    
+}
+
+#signup_submit:hover {
+    border: 2px solid gold;
+    color: gold;
+    font-weight: bold;
+}
+
+.signup_btn {
+    font-family: "Chelsea Market", sans-serif;
+    background-color: transparent;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+    margin-left: 65px;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 10px;
+
+}
+
+.signup_btn:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: gold;
+}

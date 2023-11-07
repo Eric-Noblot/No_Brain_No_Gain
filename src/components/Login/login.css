@@ -1,0 +1,81 @@
+.bgLogin {
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    background-image: radial-gradient( circle at center, rgb(49, 57, 140), rgba(170, 183, 215, 0.1)), url("../../img/rsz_pexels-bithinraj-mb-2763927.jpg");
+    z-index: -1;
+}   
+
+.login_form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.login_title {
+    font-size: 20px;
+    color: white;
+}
+
+.login_input {
+    width: 220px;
+    height: 35px;
+    font-size: 18px;
+    padding: 5px 5px 5px 10px;
+    font-family: "Chelsea Market";
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: rgb(64, 123, 174);
+}
+
+.login_input:focus {
+    outline: none;
+    box-shadow: rgb(134, 179, 198) 1px 1px 30px;
+}
+
+.login_h2 {
+    font-family: "Chelsea Market";
+    color: rgb(71, 4, 82);
+}
+
+#login_submit {
+    margin-top: 20px;
+    background-color: transparent;
+    color: rgb(195, 168, 99);
+    border: 2px solid gold;
+    cursor: pointer;
+    font-size: 16px;
+    
+}
+
+#login_submit:hover {
+    border: 2px solid gold;
+    color: gold;
+    font-weight: bold;
+}
+
+.login_btn {
+    font-family: "Chelsea Market", sans-serif;
+    background-color: transparent;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+    margin-left: 65px;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 10px;
+
+}
+
+.login_btn:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: gold;
+}

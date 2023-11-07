@@ -1,0 +1,44 @@
+
+.bgConnexion {
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    background-image: radial-gradient( circle at center, rgb(146, 41, 41), rgba(170, 183, 215, 0.1)), url("../../img/rsz_pexels-bithinraj-mb-2763927.jpg");
+    z-index: -1;
+}
+
+.bgPicture {
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+}
+
+.boxConnexion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.btnConnexion {
+    text-decoration: none;
+    color: white;
+    font-family: "Chelsea Market";
+    border: 3px solid white;
+    padding: 20px 0;
+    width: 150px;
+    text-align: center;
+}
+.btnConnexion:hover {
+    background-color: white;
+    color: #922929;
+    font-weight: bold;
+}
+
