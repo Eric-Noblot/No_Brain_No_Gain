@@ -9,7 +9,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    flex-direction: column;
+    gap: 70px;
     background-image: radial-gradient( circle at center, rgb(146, 41, 41), rgba(170, 183, 215, 0.1)), url("../../img/rsz_pexels-bithinraj-mb-2763927.jpg");
     z-index: -1;
 }
@@ -18,6 +19,11 @@
     height: 100vh;
     width: 100%;
     object-fit: cover;
+}
+
+.contConnexion {
+    display: flex;
+    gap: 100px;
 }
 
 .boxConnexion {
@@ -42,3 +48,16 @@
     font-weight: bold;
 }
 
+.titleConnexion {
+    color: white;
+    font-size: 70px;
+    font-family: "Chelsea Market", sans-serif;
+}
+
+.titleLeft {
+    margin-right: 35%;
+}
+
+.titleRight {
+    margin-left: 35%;
+}

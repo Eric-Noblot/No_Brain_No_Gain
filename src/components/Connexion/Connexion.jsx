@@ -7,12 +7,16 @@ const Connexion = () => {
         <>
             <Navbar />
             <div className = "bgConnexion">
-                <div className="boxConnexion leftBoxConnexion">
-                    <Link to="/login" className ="btnConnexion">LOGIN</Link>
+                <p className="titleConnexion titleLeft">NO BRAIN</p>
+                <div className="contConnexion">
+                    <div className="boxConnexion leftBoxConnexion">
+                        <Link to="/login" className ="btnConnexion">LOGIN</Link>
+                    </div>
+                    <div className="boxConnexion rightBoxConnexion">
+                        <Link to="/signup" className ="btnConnexion">SIGNUP</Link>
+                    </div>
                 </div>
-                <div className="boxConnexion rightBoxConnexion">
-                    <Link to="/signup" className ="btnConnexion">SIGNUP</Link>
-                </div>
+                <p className="titleConnexion titleRight">NO GAIN</p>
             </div>
          </>
     );

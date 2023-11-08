@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
     gap: 50px;
-    background-image: radial-gradient( circle at center, rgb(98, 34, 105), rgba(170, 183, 215, 0.1)), url("../../img/rsz_pexels-bithinraj-mb-2763927.jpg");
+    background-image: radial-gradient( circle at center, rgb(146, 97, 41), rgba(170, 183, 215, 0.1)), url("../../img/rsz_pexels-bithinraj-mb-2763927.jpg");
     z-index: -1;
 }   
 

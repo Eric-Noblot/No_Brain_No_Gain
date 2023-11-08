@@ -1,11 +1,12 @@
 
 .header{
-    background-color: white;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .header__logo {
-    background-color: rgb(61, 83, 69);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,23 +22,8 @@ h1 {
 }
 
 .header__logout {
-    height: 60px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background-color: rgb(198, 229, 168);
+    /* height: 60px; */
+    /* display: flex; */
+    /* align-items: center; */
 }
 
-.logoutBtn {
-    width: 40px;
-    height: 40px;
-    color: rgb(198, 229, 168);
-    margin-right: 80px;
-    cursor: pointer;
-    background-color: rgb(177, 193, 177);
-    border-radius: 45px;
-}
-
-.logoutBtn:hover {
-    color: gold;
-}
