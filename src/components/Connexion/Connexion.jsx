@@ -10,10 +10,10 @@ const Connexion = () => {
                 <p className="titleConnexion titleLeft">NO BRAIN</p>
                 <div className="contConnexion">
                     <div className="boxConnexion leftBoxConnexion">
-                        <Link to="/login" className ="btnConnexion">LOGIN</Link>
+                        <Link to="/login" className ="btnConnexion">CONNEXION</Link>
                     </div>
                     <div className="boxConnexion rightBoxConnexion">
-                        <Link to="/signup" className ="btnConnexion">SIGNUP</Link>
+                        <Link to="/signup" className ="btnConnexion">INSCRIPTION</Link>
                     </div>
                 </div>
                 <p className="titleConnexion titleRight">NO GAIN</p>

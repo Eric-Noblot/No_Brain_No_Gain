@@ -4,5 +4,44 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Chelsea market", sans-serif
 }
 
+.form_input {
+  width: 250px;
+  height: 35px;
+  font-size: 18px;
+  padding: 5px 5px 5px 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  color: rgb(201, 244, 248);
+  background-color: rgba(255, 255, 255, 0.25);
+  border: 2px solid rgb(255, 255, 255);
+}
+
+.form_input:focus {
+  outline: none;
+  border: 2px solid rgb(195, 245, 243);
+}
+
+.form_title {
+  font-size: 16px;
+  color: white;
+}
+
+.form_btn {
+  background-color: transparent;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  margin-left: 65px;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 10px;
+
+}
+
+.form_btn:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: rgb(195, 245, 243);
+}
