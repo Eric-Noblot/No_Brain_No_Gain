@@ -20,9 +20,9 @@ function App() {
 
         <Route path="/home" element={<Home /> } />
         <Route path="/game" element={<Game />} />
-        <Route path="/game/quiz" element={<Quiz />} />
-        <Route path="/game/jeux" element={<Jeux />} />
-        <Route path="/game/test" element={<Test />} />
+        <Route path="/game/quiz/:category" element={<Quiz />} />
+        <Route path="/game/jeux/:category" element={<Jeux />} />
+        <Route path="/game/test/:category" element={<Test />} />
 
       </Routes>
     </Router>

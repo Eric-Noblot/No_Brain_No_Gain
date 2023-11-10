@@ -12,7 +12,6 @@ const Category = ({userData}) => {
     const [isgameSelected, setisGameSelected] = useState(false)
     const [gameName, setgameName] = useState("")
 
-
     const handleGameSelection = (e) => {
         setisGameSelected(true)
         setgameName(e.target.textContent)
@@ -28,12 +27,17 @@ const Category = ({userData}) => {
         navigate(`/game/${gameName.toLocaleLowerCase()}`, {state: gameName})
     }
 
+    const handleClickLink = (e) => {
+        console.log(e.target.textContent)
+        return e.target.textContent
+    }
+
     const gameSelected = (game) => {
         if (game) {
             const categoryPath = questions[0][game.toLowerCase()].category
             const categoryDisplay = Object.keys(categoryPath).map((cat, index) => {
                 return  (
-                        <Link className = "box" key={index} to={`/game/${gameName.toLocaleLowerCase()}`}>
+                        <Link onClick ={handleClickLink} className = "box" key={index} to={`/game/${gameName.toLocaleLowerCase()}/${handleClickLink}`}>
                             {cat.toUpperCase()}
                         </Link>
                 )
@@ -54,7 +58,8 @@ const Category = ({userData}) => {
 
     return (
         <main className="category">
-            <p className= "game_title">Bienvenue {capitalizePseudo(pseudo)} ! Ici on va tester tes connaissances et voir combien de trophées tu peux remporter !</p>
+            <p className= "game_title">Bienvenue {capitalizePseudo(pseudo)} ! <br /><br />
+             Ici on va tester tes connaissances et voir combien de trophées tu peux remporter !</p>
             <p className= "game_title">Commence d'abord par choisir le type de jeu :</p>
             <div className = "category_box">
                 {gamesDisplay}

@@ -11,13 +11,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid rgb(99, 113, 118);
+    border-top: 1px solid rgb(99, 113, 118);
+    border-bottom: 1px solid rgb(99, 113, 118);
     /* background-image: linear-gradient( 145deg, rgb(84, 83, 83), rgba(170, 183, 215, 0.1)), url("../../img/rsz_pexels-bithinraj-mb-2763927.jpg"); */
     object-fit: cover;
     width: 800px;
     height: 180px;
     position: relative;
-    border-radius: 20px;
 }
 
 .bgHeader {

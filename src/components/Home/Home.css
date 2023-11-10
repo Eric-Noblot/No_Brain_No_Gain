@@ -11,7 +11,7 @@
     align-items: center;
     flex-direction: column;
     gap: 70px;
-    background-image: linear-gradient( 145deg, rgb(84, 83, 83), rgba(170, 183, 215, 0.1)), url("../../img/pexels-matheus-natan-3394939.jpg");
+    background-image: radial-gradient( circle at center, rgb(96, 102, 39), rgba(170, 183, 215, 0.168)), url("../../img/rsz_pexels-bithinraj-mb-2763927.jpg");
     z-index: -1;
 }
 

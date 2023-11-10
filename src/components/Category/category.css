@@ -9,28 +9,27 @@
 
 .category_box {
     width: 60%;
+    height: 100%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
-    border: 1px solid rgba(149, 149, 56, 0.59);
+    border-bottom: 1px solid rgba(127, 177, 201, 0.59);
     margin: 50px 0;
     gap: 20px;
-    border-radius: 20px;
-
 }
 
 .box {
     width: 180px;
     height: 100px;
-    background: rgba(64, 124, 90, 0.537);
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
     color: white;
-    border-radius: 45px 90px 90px 45px;
+    object-fit: cover;
+
     font-size: 24px;
     margin: 10px 10px;
 }
