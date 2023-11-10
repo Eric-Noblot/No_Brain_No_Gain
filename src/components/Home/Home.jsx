@@ -4,6 +4,7 @@ import Category from "../Category/Category"
 import Header from "../Header/Header"
 import Navbar from '../NavBar/Navbar';
 import Loader from "../Loader/Loader"
+import Footer from "../Footer/Footer"
 
 import { onAuthStateChanged } from 'firebase/auth'; //pour le logout et éviter que quelqu'un accède directement à la page en modifiant l'API sans être connecté
 import { auth } from '../Firebase/firebase';
@@ -29,12 +30,11 @@ const Home = () => {
             .then((userObject) => {
                 if (userObject.exists()) { //doc possède une méthode exists qui renvoie si de la data existe ou pas
                     const docData = userObject.data() //objet
-                        console.log("1", userData)
                         setUserData(docData)  
                 }
             })
             .catch((error) => {
-                console.log(error)
+                console.log(error) 
             })
         }
         return listener //ici on pourrait travailler sans la const listener, mais comme on est dans un observateur on la crée au cas ou on voudrait arreter ensuite cette fonction dans un return()=>, ou s'en servir pour autre chose
@@ -44,21 +44,16 @@ const Home = () => {
         <Loader />
     ) :
     (
-        <>
-        <Navbar />
-        <Header />
-                
-                <main className="main">
-                    <div>
-                        Choisis la catégorie !
-                    </div>
-                    <Category />
-                </main>
-                <footer className="footer">
-                    footer
-                </footer>
-            <div className="bgHome"></div>
-        </>
+        <div className="home">
+            <Navbar />
+            <Header />
+            
+            <Category userData={userData} />
+            
+            {/* <Footer /> */}
+
+                <div className="bgHome"></div>
+        </div>
     );
 };
 

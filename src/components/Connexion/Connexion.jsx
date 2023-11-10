@@ -12,7 +12,7 @@ const Connexion = () => {
         setTimeout(() => {  
             setDisplayBtn(true)
             console.log("tesst")
-        },"1800")
+        },"1750")
 
     },[])
 

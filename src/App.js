@@ -5,6 +5,9 @@ import Connexion from "./components/Connexion/Connexion"
 import Login from "./components/Login/Login"
 import Signup from "./components/Signup/Signup"
 import Quiz from "./components/Quiz/Quiz"
+import Game from "./components/Game/Game"
+import Jeux from "./components/jeux"
+import Test from "./components/test"
 
 function App() {
   return (
@@ -16,8 +19,10 @@ function App() {
         <Route path="/signup" element={<Signup />} />
 
         <Route path="/home" element={<Home /> } />
-        <Route path="/quiz" element={<Quiz />} />
-        <Route path="/quiz/:category" element={<Quiz />} />
+        <Route path="/game" element={<Game />} />
+        <Route path="/game/quiz" element={<Quiz />} />
+        <Route path="/game/jeux" element={<Jeux />} />
+        <Route path="/game/test" element={<Test />} />
 
       </Routes>
     </Router>

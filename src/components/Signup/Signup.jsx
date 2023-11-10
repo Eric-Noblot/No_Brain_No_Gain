@@ -58,12 +58,12 @@ const Signup = () => {
 
 const pseudoValidity = (pseudo) => {
 
-    const regex = /^[a-zA-Z0-9\s,.'-]{3,}$/; // accepte 3 caractères minimum
+    const regex = /^[a-zA-Z0-9-çàéèêîô\s,.'-]{3,}$/; // accepte 3 caractères minimum
     if (pseudo == "") {
         setError("Le pseudo est vide !")
         return;
     } else if (regex.test(pseudo) === false) {
-        setError("Le pseudo doit comporter au moins 3 caractères !")
+        setError("Pseudo non valide")
         return;
     } else {
         setError("")

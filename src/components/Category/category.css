@@ -1,22 +1,48 @@
 .category {
-    width: 90%;
-    background-color: transparent;
+    color: white;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
     align-items: center;
-    margin: 20px auto;
+}
+
+.category_box {
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     flex-wrap: wrap;
+    border: 1px solid rgba(149, 149, 56, 0.59);
+    margin: 50px 0;
     gap: 20px;
-    border: 2px solid gold;
+    border-radius: 20px;
+
 }
 
 .box {
     width: 180px;
-    height: 50px;
-    background-color: transparent;
+    height: 100px;
+    background: rgba(64, 124, 90, 0.537);
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid greenyellow;
+    text-decoration: none;
+    color: white;
+    border-radius: 45px 90px 90px 45px;
+    font-size: 24px;
+    margin: 10px 10px;
+}
+.box:hover {
+    background: rgba(197, 103, 206, 0.304);
+}
+
+.game_title {
+    text-align: center;
+    line-height: 22px;
+    font-size: 20px;
+    background-color: rgba(174, 55, 55, 0.373);
+    padding: 10px;
+    border-radius: 10px;
 }

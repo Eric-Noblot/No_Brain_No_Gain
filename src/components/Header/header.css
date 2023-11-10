@@ -4,25 +4,62 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 50px;
 }
 
 .header__logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 0;
+    border: 1px solid rgb(99, 113, 118);
+    /* background-image: linear-gradient( 145deg, rgb(84, 83, 83), rgba(170, 183, 215, 0.1)), url("../../img/rsz_pexels-bithinraj-mb-2763927.jpg"); */
+    object-fit: cover;
+    width: 800px;
+    height: 180px;
+    position: relative;
+    border-radius: 20px;
 }
 
-h1 {
-    font-size: "40px";
-    margin-left: 100px;
-    margin-right: 100px;
+.bgHeader {
+    /* background-image: linear-gradient( 145deg, rgb(84, 83, 83), rgba(170, 183, 215, 0.142)), url("../../img/pattern.webp"); */
+    background-color: transparent;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-position: top;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.bgHeader > h1 {
+    font-size: 54px;
     color: white;
 }
 
 .header__logout {
-    /* height: 60px; */
-    /* display: flex; */
-    /* align-items: center; */
+    height: 60px; 
 }
 
+.nogain {
+    color: rgb(91, 189, 164);
+}
+
+@media(max-width: 600px) {
+
+    .bgHeader > h1 {
+        font-size: 45px;
+        color: white;
+    }
+}
+    @media(max-width: 500px) {
+
+        .bgHeader > h1 {
+            font-size: 35px;
+            color: white;
+        }
+    
+}

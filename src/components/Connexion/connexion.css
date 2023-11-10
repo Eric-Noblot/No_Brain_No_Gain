@@ -82,12 +82,12 @@ to {
 
 .titleLeft {
     margin-right: 35%;
-    animation: leftAnimation 1200ms ease-out;
+    animation: leftAnimation 1800ms ease-out;
 }
 
 .titleRight {
     margin-left: 35%;
-    animation: rightAnimation 4500ms ease-out;
+    animation: rightAnimation 3500ms ease-out;
 }
 
 

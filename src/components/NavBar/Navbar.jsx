@@ -24,7 +24,7 @@ const Navbar = () => {
                 {
                     navDisplay ? (
                         <>
-                        <Link to="/home" className="home_link" title="Accueil"><GiBrainTentacle className="navLogo"/></Link>
+                        <Link to="/home" className="nav_link" title="Accueil"><GiBrainTentacle className="navLogo"/></Link>
     
                         <ul className="navUl">
                             <li className="navLi">Lien n°1</li>
@@ -33,7 +33,7 @@ const Navbar = () => {
                         </ul>
                         </>
                     )  : (
-                        <Link to="/" className="home_link" title="Accueil"><GiBrainTentacle className="navLogo"/></Link>
+                        <Link to="/" className="nav_link" title="Accueil"><GiBrainTentacle className="navLogo"/></Link>
                     )
                 }
             </nav>
