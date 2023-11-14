@@ -68,12 +68,12 @@ const Login = () => {
                         setEmail(e.target.value)
                         setError("")
                     }
-                    } className = "form_input" type="text" id="email"></input>
+                    } className = "form_input" type="text" id="email" autoComplete="off"></input>
                     <label htmlFor="password" className="form_title">Mot de passe :</label>
                     <input onChange={(e) => {
                         setPassword(e.target.value)
                         setError("")
-                    }} className = "form_input" type="password" id="password"></input>
+                    }} className = "form_input" type="password" id="password" autoComplete="off"></input>
                     <input id="login_submit" className = "form_input" type="submit" value="CONNECTION"></input>
                 </form>
                 <Link to ="/signup" className ="form_btn">s'inscrire...</Link>

@@ -21,7 +21,7 @@
 
 .box {
     width: 180px;
-    height: 100px;
+    height: 50px;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -29,12 +29,12 @@
     text-decoration: none;
     color: white;
     object-fit: cover;
-
+    background-color: black;
     font-size: 24px;
     margin: 10px 10px;
 }
 .box:hover {
-    background: rgba(197, 103, 206, 0.304);
+    background: rgba(197, 103, 206, 0.701);
 }
 
 .game_title {
@@ -44,4 +44,11 @@
     background-color: rgba(174, 55, 55, 0.373);
     padding: 10px;
     border-radius: 10px;
+}
+
+.categoryBtn {
+    padding: 15px;
+    background-color: gold;
+    width: 150px;
+    cursor: pointer;
 }

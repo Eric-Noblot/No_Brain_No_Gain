@@ -9,12 +9,18 @@ const Category = ({userData}) => {
     const {pseudo} = userData
     const games = questions[0]
 
-    const [isgameSelected, setisGameSelected] = useState(false)
+    const [isSelected, setIsSelected] = useState({
+        game: false,
+        category: false
+    })
     const [gameName, setgameName] = useState("")
+    const [urlName, setUrlName] = useState("")
 
     const handleGameSelection = (e) => {
-        setisGameSelected(true)
+
+        setIsSelected({...isSelected, game: true, category: false}) //ici je remets category à false pour éviter que l'utilisateur choisisse un game puis une catégorie et avant de valider reclique sur un autre game puis valide, ca crée une page qui ne contient pas la category du game choisi
         setgameName(e.target.textContent)
+
     }
 
     const gamesDisplay = Object.keys(games).map((cat, index) => {
@@ -23,23 +29,19 @@ const Category = ({userData}) => {
                 </div>
     })
 
-    const handleCategorySelection = () => {
-        navigate(`/game/${gameName.toLocaleLowerCase()}`, {state: gameName})
+    const giveUrlName = (e) => {
+        setUrlName(e.target.textContent) 
+        setIsSelected({...isSelected, category: true})
     }
-
-    const handleClickLink = (e) => {
-        console.log(e.target.textContent)
-        return e.target.textContent
-    }
-
+    console.log(urlName)
     const gameSelected = (game) => {
         if (game) {
             const categoryPath = questions[0][game.toLowerCase()].category
             const categoryDisplay = Object.keys(categoryPath).map((cat, index) => {
                 return  (
-                        <Link onClick ={handleClickLink} className = "box" key={index} to={`/game/${gameName.toLocaleLowerCase()}/${handleClickLink}`}>
+                        <div onClick ={giveUrlName} className = "box" key={index}>
                             {cat.toUpperCase()}
-                        </Link>
+                        </div>
                 )
             })
             return categoryDisplay
@@ -65,7 +67,7 @@ const Category = ({userData}) => {
                 {gamesDisplay}
             </div>
             {
-            isgameSelected ? (
+                isSelected.game ? (
                 <>
                     <p className= "game_title">Choisis ensuite ta catégorie pour les {gameName.toLowerCase()} :</p>
                     <div className = "category_box">
@@ -76,6 +78,15 @@ const Category = ({userData}) => {
 
                 : null
             }
+            {
+                isSelected.category ? (
+                    <Link onClick ={giveUrlName} className = "box" to={`/game/${gameName.toLocaleLowerCase()}/${urlName.toLowerCase()}`}>
+                    VALIDER
+                    </Link>
+                )
+                : null
+            }
+
         </main>
     );
 };

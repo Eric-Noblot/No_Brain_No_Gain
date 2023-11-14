@@ -4,46 +4,72 @@ import Level from "../Level/Level";
 import BarLevel from "../BarLevel/BarLevel";
 import { questions } from "../../questions"
 import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
+import QuizOver from "../QuizOver/QuizOver"
 
 const Quiz = () => {
-    const [data, setData] = useState([])
-    const [goodQuestion, setGoodQuestion] = useState("")
-    const [answers, setAnswers] = useState([])
-    const [idQuestion, setIdQuestion] = useState(0)
 
-    const loadQuestions = () => {
-        const fetchedQuestion = questions[0].quiz.category.marvel.debutant[idQuestion].question
-        const fetchedAnswers = questions[0].quiz.category.marvel.debutant[idQuestion].options
-        setGoodQuestion(fetchedQuestion)   
-        setAnswers(fetchedAnswers) 
-    }
+    const categoryUrl = useParams().category
+    const [activeBtn, setActiveBtn] = useState(true)
 
-    const setQuestions = (questions) => {
-        if(questions) { 
-            Object.keys(questions).map((question) => {
-                console.log("2", question)
-            })
+    const [level, setLevel] = useState({
+        levelNames: ["debutant", "confirme", "expert"],
+        userAnswer: null,
+        idQuestion: 0,
+        quizLevel: 0,
+        maxQuestions: 10,
+        quizEnd: false,
+        score: 0,
+        storageQuestions: [],
+        actualQuestion: "",
+        actualAnswers: []
+    })
+
+    const { levelNames, userAnswer, idQuestion, quizLevel, maxQuestions, quizEnd, score, storageQuestions, actualQuestion, actualAnswers } = level
+
+    const loadQuestions = (storageQuestions) => {
+
+        if (storageQuestions.length > 0) {
+            const fetchedQuestion = storageQuestions[idQuestion].question
+            const fetchedAnswers = storageQuestions[idQuestion].options
+
+            if (fetchedQuestion.length >= maxQuestions) {
+                setLevel({...level, actualQuestion : fetchedQuestion, actualAnswers: fetchedAnswers})   
+            } else {
+                console.log("Pas assez de questions !")
+            }
         }
-
     }
+
     useEffect(() => {
 
-
-            loadQuestions() 
-            if (data) {
-                setQuestions(data)
-                console.log(data)
-
+        if (questions) {
+            const arrayQuestions = questions[0].quiz.category[categoryUrl][levelNames[quizLevel]]
+            setLevel({...level, storageQuestions: arrayQuestions})
+            if (storageQuestions) {
+                loadQuestions(storageQuestions) 
+            }
             }
 
-    },[idQuestion])
+    },[storageQuestions, idQuestion, quizLevel, quizEnd])
 
-    const handleClick = (e) => {
-        console.log(e.target.value)
+    const submitAnswer = (option) => {
+        
+        setActiveBtn(false)
+        setLevel({...level, userAnswer: option })
     }
 
     const nextQuestions = () => {
-        setIdQuestion(1)
+
+        if (idQuestion === maxQuestions - 1) {
+            setLevel({...level, quizEnd: true})
+        }
+        else {
+            setLevel((prevState) => (
+                {...level, idQuestion: prevState.idQuestion + 1 }
+                )
+            )
+        }
     }
 
     return (
@@ -52,22 +78,25 @@ const Quiz = () => {
             <Level />
             <BarLevel />
             
-            <div className = "questionCont">
-                <div className = "questionBox">
-                    <p className="question">{goodQuestion}</p>
-                    <ul>
-                        
             {
-                answers.map((answer, index) => {
-                   return <li onClick={handleClick} className="answer" key={index}>{index + 1} - {answer}</li>
-                })
-            }
-
-                    </ul>
+                quizEnd ? <QuizOver />
+                : 
+                <div className = "questionCont">
+                    <div className = "questionBox">
+                        <p className="question">{actualQuestion}</p>
+    
+                        <ul>
+                            {
+                            actualAnswers.map((answer, index) => {
+                            return <li onClick={() => submitAnswer(answer)} className= {`answer ${userAnswer === answer ? "selected" : null}`} key={index}>{index + 1} - {answer}</li>
+                            })
+                            }
+                        </ul>   
+    
+                    </div>
+                    <button disabled={activeBtn} onClick={nextQuestions} className ="validBtn">VALIDER</button>
                 </div>
-                <button onclick={nextQuestions} className ="validBtn">VALIDER</button>
-            </div>
-            
+            }
         </div>
     );
 };

@@ -107,13 +107,13 @@ const passwordValidity = (password, confirmPassword) => {
             {errorMsg}
                 <form onSubmit = {handleSubmit} className ="signup_form">
                     <label htmlFor="pseudo" className="form_title">Pseudo :</label>
-                    <input onChange={handleChange} id="pseudo" className = "form_input" type="text"></input>
+                    <input onChange={handleChange} id="pseudo" className = "form_input" type="text" autoComplete="off"></input>
                     <label htmlFor="email" className="form_title">Email :</label>
-                    <input onChange={handleChange} id="email" className = "form_input" type="text"></input> {/*//ici je mets type="text" au lieu de type="email" car je veux gérer moi meme la validation avec un regex. Sinon react naffiche pas mon message quand l'adresse mail n'est pas valide car il est prioritaire sur ma vaildation*/}
+                    <input onChange={handleChange} id="email" className = "form_input" type="text" autoComplete="off"></input> {/*//ici je mets type="text" au lieu de type="email" car je veux gérer moi meme la validation avec un regex. Sinon react naffiche pas mon message quand l'adresse mail n'est pas valide car il est prioritaire sur ma vaildation*/}
                     <label htmlFor="password" className="form_title">Mot de passe:</label>
-                    <input onChange={handleChange} id="password" className = "form_input" type="password"></input>
+                    <input onChange={handleChange} id="password" className = "form_input" type="password" autoComplete="off"></input>
                     <label htmlFor="confirmPassword" className="form_title">Confirmez le mot de passe:</label>
-                    <input onChange={handleChange} id="confirmPassword" className = "form_input" type="password"></input>
+                    <input onChange={handleChange} id="confirmPassword" className = "form_input" type="password" autoComplete="off"></input>
                     <input id="signup_submit" className = "form_input" type="submit" value="INSCRIPTION"></input>
                 </form>
                 
