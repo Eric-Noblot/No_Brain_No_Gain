@@ -45,7 +45,8 @@
 }
 
 .nogain {
-    color: rgb(91, 189, 164);
+    color: rgb(189, 94, 91);
+    text-shadow: 0 0 10px black;
 }
 
 @media(max-width: 600px) {

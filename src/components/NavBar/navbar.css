@@ -38,3 +38,7 @@
     padding: 10px;
     border-radius: 50%;
 }
+.navLogo:hover {
+    color:  rgba(180, 188, 239, 0.945);
+    border: 2px solid rgba(165, 51, 114, 0.945);
+}

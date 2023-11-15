@@ -11,6 +11,8 @@ const Quiz = () => {
 
     const categoryUrl = useParams().category
     const [activeBtn, setActiveBtn] = useState(true)
+    const [data, setData] = useState({})
+    const [score, setScore] = useState(0)
 
     const [level, setLevel] = useState({
         levelNames: ["debutant", "confirme", "expert"],
@@ -19,13 +21,13 @@ const Quiz = () => {
         quizLevel: 0,
         maxQuestions: 10,
         quizEnd: false,
-        score: 0,
         storageQuestions: [],
         actualQuestion: "",
         actualAnswers: []
     })
 
-    const { levelNames, userAnswer, idQuestion, quizLevel, maxQuestions, quizEnd, score, storageQuestions, actualQuestion, actualAnswers } = level
+    const { levelNames, userAnswer, idQuestion, quizLevel, maxQuestions, quizEnd, storageQuestions, actualQuestion, actualAnswers } = level
+    
 
     const loadQuestions = (storageQuestions) => {
 
@@ -45,7 +47,11 @@ const Quiz = () => {
 
         if (questions) {
             const arrayQuestions = questions[0].quiz.category[categoryUrl][levelNames[quizLevel]]
-            setLevel({...level, storageQuestions: arrayQuestions})
+            const arrayQuestionsWithoutRightAnswer = arrayQuestions.map(({answer, ...keepRest})=> { //on passe les questions sans la réponse dans le State
+                return keepRest
+            })
+
+            setLevel({...level, storageQuestions: arrayQuestionsWithoutRightAnswer})
             if (storageQuestions) {
                 loadQuestions(storageQuestions) 
             }
@@ -53,22 +59,31 @@ const Quiz = () => {
 
     },[storageQuestions, idQuestion, quizLevel, quizEnd])
 
-    const submitAnswer = (option) => {
+    const chooseAnswer = (answer) => {
         
         setActiveBtn(false)
-        setLevel({...level, userAnswer: option })
+        setLevel({...level, userAnswer: answer })
+
     }
 
     const nextQuestions = () => {
 
         if (idQuestion === maxQuestions - 1) {
             setLevel({...level, quizEnd: true})
+            console.log("IF passe dans le nextQuestions")
+
         }
         else {
             setLevel((prevState) => (
-                {...level, idQuestion: prevState.idQuestion + 1 }
-                )
+                {...level, idQuestion: prevState.idQuestion + 1 })
             )
+            setActiveBtn(true)
+            console.log("ELSE passe dans le nextQuestions")
+        }
+        
+        const rightAnswer = questions[0].quiz.category[categoryUrl][levelNames[quizLevel]][idQuestion].answer
+        if (userAnswer === rightAnswer) {
+            setScore((prevState) => prevState + 1)
         }
     }
 
@@ -79,7 +94,7 @@ const Quiz = () => {
             <BarLevel />
             
             {
-                quizEnd ? <QuizOver />
+                quizEnd ? <QuizOver score = {score}/>
                 : 
                 <div className = "questionCont">
                     <div className = "questionBox">
@@ -88,8 +103,11 @@ const Quiz = () => {
                         <ul>
                             {
                             actualAnswers.map((answer, index) => {
-                            return <li onClick={() => submitAnswer(answer)} className= {`answer ${userAnswer === answer ? "selected" : null}`} key={index}>{index + 1} - {answer}</li>
-                            })
+                            return  <li onClick={() => chooseAnswer(answer)}
+                                        key={index} 
+                                        className= {`answer ${userAnswer === answer ? "selected" : null}`} >
+                                            {index + 1} - {answer}
+                                    </li>})
                             }
                         </ul>   
     

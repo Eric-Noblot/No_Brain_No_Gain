@@ -1,9 +1,9 @@
 import "./quizOver.css"
 
-const QuizOver = () => {
+const QuizOver = ({score}) => {
     return (
-        <div>
-            QUIZOVER
+        <div className = "quizOver">
+            <p>{`Ton score est de ${score}`}</p>
         </div>
     );
 };
