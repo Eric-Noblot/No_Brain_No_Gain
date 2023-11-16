@@ -1,7 +1,7 @@
 import "./category.css"
 import {questions} from "../../questions.js"
 import { useNavigate, Link } from "react-router-dom"
-import { useState, useRef } from "react"
+import { useState } from "react"
 
 const Category = ({userData}) => {
     const navigate = useNavigate()
@@ -13,15 +13,13 @@ const Category = ({userData}) => {
         category: false
     })
     const [gameName, setgameName] = useState("")
-    const [categoryName, setCategoryName] = useState("")
     const [urlName, setUrlName] = useState("")
 
     const handleGameSelection = (e) => {
 
         setIsSelected({...isSelected, game: true, category: false}) //ici je remets category à false pour éviter que l'utilisateur choisisse un game puis une catégorie et avant de valider reclique sur un autre game puis valide, ca crée une page qui ne contient pas la category du game choisi
-        console.log("1", gameName)
         setgameName(e.target.textContent)
-        console.log("2", gameName)
+        setUrlName("")
     }
 
     const gamesDisplay = Object.keys(games).map((category, index) => {
@@ -31,15 +29,9 @@ const Category = ({userData}) => {
     })
 
     const giveUrlName = (e) => {
-        console.log("3", urlName)
 
         setUrlName(e.target.textContent) 
-        console.log("4", urlName)
         setIsSelected({...isSelected, category: true})
-    }
-
-    const categorySelected = () => {
-        console.log(urlName)
     }
 
     const gameSelected = (game) => {
@@ -68,7 +60,7 @@ const Category = ({userData}) => {
 
     return (
         <main className="category">
-            <p className= "game_title">Bienvenue {capitalizePseudo(pseudo)} ! <br /><br /></p>
+            <p className= "welcome_title">Bienvenue {capitalizePseudo(pseudo)} ! <br /><br /></p>
             <p className= "game_title">Commence par choisir le type de jeu :</p>
             <div className = "category_box">
                 {gamesDisplay}

@@ -1,6 +1,6 @@
 
 .bgHome {
-    height: 100vh;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -12,11 +12,17 @@
     flex-direction: column;
     gap: 70px;
     background-image: radial-gradient( circle at center, rgba(102, 40, 39, 0.951), rgba(26, 17, 150, 0.589)), url("../../img/rsz_pexels-bithinraj-mb-2763927.jpg");
-    z-index: -1;
+    z-index: -100;
+    /* background-repeat: repeat-x;
+    background-attachment:fixed;
+    background-position:right bottom; */
 }
 
+
 .home {
-    margin: 0 10px;
+    width: 100%;
+    background:linear-gradient(to top, rgb(35, 34, 34) 1%,  rgb(125, 1, 1) );
+    height: 100%;
   }
 
 

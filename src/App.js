@@ -8,23 +8,25 @@ import Quiz from "./components/Quiz/Quiz"
 import Game from "./components/Game/Game"
 import Jeux from "./components/jeux"
 import Test from "./components/test"
+import "bootstrap/dist/css/bootstrap.min.css"; //à ajouter pour faire apparaitre les élements de react-bootstrap
+
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Connexion />} />
+        <Routes>
+            <Route path="/" element={<Connexion />} />
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
 
-        <Route path="/home" element={<Home /> } />
-        <Route path="/game" element={<Game />} />
-        <Route path="/game/quiz/:category" element={<Quiz />} />
-        <Route path="/game/jeux/:category" element={<Jeux />} />
-        <Route path="/game/test/:category" element={<Test />} />
+            <Route path="/home" element={<Home /> } />
+            <Route path="/game" element={<Game />} />
+            <Route path="/game/quiz/:category" element={<Quiz />} />
+            <Route path="/game/jeux/:category" element={<Jeux />} />
+            <Route path="/game/test/:category" element={<Test />} />
+        </Routes>
 
-      </Routes>
     </Router>
   );  
 }

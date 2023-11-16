@@ -1,8 +1,9 @@
 import "./quiz.css"
 import Navbar from "../NavBar/Navbar";
 import Level from "../Level/Level";
-import BarLevel from "../BarLevel/BarLevel";
+import ProgressBar from "../ProgressBar/ProgressBar";
 import { questions } from "../../questions"
+import React from "react"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import QuizOver from "../QuizOver/QuizOver"
@@ -70,7 +71,6 @@ const Quiz = () => {
 
         if (idQuestion === maxQuestions - 1) {
             setLevel({...level, quizEnd: true})
-            console.log("IF passe dans le nextQuestions")
 
         }
         else {
@@ -78,7 +78,6 @@ const Quiz = () => {
                 {...level, idQuestion: prevState.idQuestion + 1 })
             )
             setActiveBtn(true)
-            console.log("ELSE passe dans le nextQuestions")
         }
         
         const rightAnswer = questions[0].quiz.category[categoryUrl][levelNames[quizLevel]][idQuestion].answer
@@ -90,27 +89,29 @@ const Quiz = () => {
     return (
         <div>
             <Navbar />
-            <Level />
-            <BarLevel />
+            <Level levelNames={levelNames}/>
+            <ProgressBar maxQuestions={maxQuestions} idQuestion={idQuestion} quizEnd={quizEnd} nameCategory={categoryUrl} />
             
             {
                 quizEnd ? <QuizOver score = {score}/>
                 : 
                 <div className = "questionCont">
-                    <div className = "questionBox">
-                        <p className="question">{actualQuestion}</p>
-    
-                        <ul>
-                            {
-                            actualAnswers.map((answer, index) => {
-                            return  <li onClick={() => chooseAnswer(answer)}
-                                        key={index} 
-                                        className= {`answer ${userAnswer === answer ? "selected" : null}`} >
-                                            {index + 1} - {answer}
-                                    </li>})
-                            }
-                        </ul>   
-    
+                    <div className = "questionFrame">
+                        <div className = "questionBox">
+                            <p className="question">{actualQuestion}</p>
+        
+                            <ul>
+                                {
+                                actualAnswers.map((answer, index) => {
+                                return  <li onClick={() => chooseAnswer(answer)}
+                                            key={index} 
+                                            className= {`answer ${userAnswer === answer ? "selected" : null}`} >
+                                                {index + 1} - {answer}
+                                        </li>})
+                                }
+                            </ul>   
+        
+                        </div>
                     </div>
                     <button disabled={activeBtn} onClick={nextQuestions} className ="validBtn">VALIDER</button>
                 </div>
@@ -119,4 +120,5 @@ const Quiz = () => {
     );
 };
 
-export default Quiz;
+export default React.memo(Quiz);
+// export default Quiz
