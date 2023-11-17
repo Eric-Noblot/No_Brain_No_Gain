@@ -1,10 +1,15 @@
 import "./category.css"
 import {questions} from "../../questions.js"
-import { useNavigate, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useState } from "react"
+import quizPicture from "../../img/category/quiz.avif"
+import jeuxPicture from "../../img/category/jeux.png" 
+import testPicture from "../../img/category/test.png"
+import dbzPicture from "../../img/category/dbz.jpg"
+import marvelPicture from "../../img/category/marvel.webp"
+import cyberpunkPicture from "../../img/category/cyberpunk.webp"
 
 const Category = ({userData}) => {
-    const navigate = useNavigate()
     const {pseudo} = userData
     const games = questions[0]
 
@@ -22,25 +27,44 @@ const Category = ({userData}) => {
         setUrlName("")
     }
 
-    const gamesDisplay = Object.keys(games).map((category, index) => {
-        return  <div className = {`box ${category ===  gameName.toLowerCase() ? "boxActive" : null }`} onClick={handleGameSelection} key={index}>
-                    {category.toUpperCase()}
+    const getPicture = (category) => {
+
+        switch (category) {
+            case "quiz" : 
+            return quizPicture
+            case "jeux" : 
+            return jeuxPicture
+            case "test" : 
+            return testPicture
+            case "dbz" : 
+            return dbzPicture
+            case "marvel" : 
+            return marvelPicture
+            case "cyberpunk" : 
+            return cyberpunkPicture
+        }
+    }
+
+    const gameSelection = Object.keys(games).map((category, index) => {
+    return  <div className = {`box ${category ===  gameName.toLowerCase() ? "boxActive" : null }`} onClick={handleGameSelection} key={index}>
+                        <div className="box_picture">
+                            <img className = "category_picture" src={getPicture(category)} alt ="category_picture" />
+                        </div>
+                        {category.toUpperCase()}
+
                 </div>
     })
 
-    const giveUrlName = (e) => {
-
-        setUrlName(e.target.textContent) 
-        setIsSelected({...isSelected, category: true})
-    }
-
-    const gameSelected = (game) => {
+    const categorySelection = (game) => {
         if (game) {
             const categoryObject = questions[0][game.toLowerCase()].category
             const categoryDisplay = Object.keys(categoryObject).map((category, index) => {
                 return  (
                         <div onClick ={giveUrlName} className = {`box ${category === urlName.toLowerCase() ? "boxActive" : null}`} key={index}>
-                            <span className="">{category.toUpperCase()}</span>
+                            <div className="box_picture">
+                                <img className = "category_picture" src={getPicture(category)} alt ="category_picture" />
+                            </div>
+                            {category.toUpperCase()}
                         </div>
                 )
             })
@@ -48,8 +72,12 @@ const Category = ({userData}) => {
         }
     }
 
-    // 
-    
+    const giveUrlName = (e) => {
+
+        setUrlName(e.target.textContent) 
+        setIsSelected({...isSelected, category: true})
+    }
+
     const capitalizePseudo = (name) => {
         if (name) {
             const userNameCapital = name[0].toUpperCase() + name.slice(1).toLowerCase()
@@ -63,18 +91,17 @@ const Category = ({userData}) => {
             <p className= "welcome_title">Bienvenue {capitalizePseudo(pseudo)} ! <br /><br /></p>
             <p className= "game_title">Commence par choisir le type de jeu :</p>
             <div className = "category_box">
-                {gamesDisplay}
+                {gameSelection}
             </div>
             {
                 isSelected.game ? (
                 <>
                     <p className= "game_title">Choisis maintenant la catégorie pour les {gameName.toLowerCase()} :</p>
                     <div className = "category_box">
-                        {gameSelected(gameName)}
+                        {categorySelection(gameName)}
                     </div> 
                 </>
             )
-
                 : null
             }
             {

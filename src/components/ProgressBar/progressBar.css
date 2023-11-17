@@ -7,6 +7,10 @@
     padding: 0 20px;
     border: 1px solid white;
     border-radius: 45px;
+    /* background-image: url("../../img/category/dbz.jpg"); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .progress_cont {
@@ -21,7 +25,7 @@
 }
 
 .progress_box {
-    background-color: rgba(77, 204, 221, 0.329);
+    background-color: rgba(62, 63, 63, 0.849);
     height: 70px;
     width: 35%;
     border-radius: 18px;
@@ -42,7 +46,7 @@
 }
 
 .progressBar_box {
-    background-color: rgba(253, 253, 253, 0.138);
+    background-color: rgba(62, 63, 63, 0.849);
     height: 40px;
     width: 100%;
     border-radius: 15px;

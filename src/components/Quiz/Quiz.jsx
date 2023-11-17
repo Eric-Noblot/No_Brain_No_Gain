@@ -5,10 +5,12 @@ import ProgressBar from "../ProgressBar/ProgressBar";
 import { questions } from "../../questions"
 import React from "react"
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useLocation } from "react-router-dom"
 import QuizOver from "../QuizOver/QuizOver"
 
-const Quiz = () => {
+const Quiz = () => { 
+    // const location = useLocation()
+    // const propsData = location.state //ici je récupère en props le nom de la catégorie ("marvel, dbz" etc...), Ce props a été donnée via Category.jsx dans le Link, grâce à state={} on peut passer des props directement dans le Link navigate même si Quiz n'est pas enfant du parent Category. on a aussi besoin du hook useLocation pour récupérer le state
 
     const categoryUrl = useParams().category
     const [activeBtn, setActiveBtn] = useState(true)
