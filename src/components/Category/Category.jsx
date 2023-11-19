@@ -19,13 +19,7 @@ const Category = ({userData}) => {
     })
     const [gameName, setgameName] = useState("")
     const [urlName, setUrlName] = useState("")
-
-    const handleGameSelection = (e) => {
-
-        setIsSelected({...isSelected, game: true, category: false}) //ici je remets category à false pour éviter que l'utilisateur choisisse un game puis une catégorie et avant de valider reclique sur un autre game puis valide, ca crée une page qui ne contient pas la category du game choisi
-        setgameName(e.target.textContent)
-        setUrlName("")
-    }
+    const [activeBox, setActiveBox ] = useState(false)
 
     const getPicture = (category) => {
 
@@ -45,14 +39,17 @@ const Category = ({userData}) => {
         }
     }
 
-    const gameSelection = Object.keys(games).map((category, index) => {
-    return  <div className = {`box ${category ===  gameName.toLowerCase() ? "boxActive" : null }`} onClick={handleGameSelection} key={index}>
-                        <div className="box_picture">
-                            <img className = "category_picture" src={getPicture(category)} alt ="category_picture" />
-                        </div>
-                        {category.toUpperCase()}
+    const handleGameSelection = (e) => {
+        setIsSelected({...isSelected, game: true, category: false}) //ici je remets category à false pour éviter que l'utilisateur choisisse un game puis une catégorie et avant de valider reclique sur un autre game puis valide, ca crée une page qui ne contient pas la category du game choisi
+        setgameName(e.target.textContent)
+        setUrlName("")
+    }
 
-                </div>
+    const gameSelection = Object.keys(games).map((category, index) => {
+    return  <div className = {`box_card ${category === gameName.toLowerCase() ? "boxActive" : null}`} onClick={handleGameSelection} key={index}>   
+                <img className = "category_picture" src={getPicture(category)} alt ="category_picture" />
+                {category.toUpperCase()}
+            </div>
     })
 
     const categorySelection = (game) => {
@@ -60,10 +57,8 @@ const Category = ({userData}) => {
             const categoryObject = questions[0][game.toLowerCase()].category
             const categoryDisplay = Object.keys(categoryObject).map((category, index) => {
                 return  (
-                        <div onClick ={giveUrlName} className = {`box ${category === urlName.toLowerCase() ? "boxActive" : null}`} key={index}>
-                            <div className="box_picture">
-                                <img className = "category_picture" src={getPicture(category)} alt ="category_picture" />
-                            </div>
+                        <div onClick ={giveUrlName} className = {`box_card ${category === urlName.toLowerCase() ? "boxActive" : null}`} key={index}>
+                            <img className = "category_picture" src={getPicture(category)} alt ="category_picture" />
                             {category.toUpperCase()}
                         </div>
                 )
@@ -106,7 +101,7 @@ const Category = ({userData}) => {
             }
             {
                 isSelected.category ? (
-                        <Link onClick ={giveUrlName} className = "box linkCategory" to={`/game/${gameName.toLocaleLowerCase()}/${urlName.toLowerCase()}`}>
+                        <Link onClick ={giveUrlName} className = " category_link" to={`/game/${gameName.toLocaleLowerCase()}/${urlName.toLowerCase()}`}>
                         VALIDER
                         </Link>
                 )

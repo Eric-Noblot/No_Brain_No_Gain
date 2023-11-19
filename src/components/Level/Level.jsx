@@ -44,7 +44,7 @@ const Level = ({levelNames}) => {
                     circleTop = { 10 }
                     activeColor = {"red"}
                     activeTitleColor = { "red" }
-                    defaultColor = { `rgba(220, 211, 211,0.35)` }
+                    defaultColor = { "red" }
                     defaultTitleColor = { "red" }
                     completeColor = { "green" }
                     completeTitleColor = { "green" }
@@ -62,7 +62,7 @@ const Level = ({levelNames}) => {
                     circleTop = { 10 }
                     activeColor = {"red"}
                     activeTitleColor = { "red" }
-                    defaultColor = { `rgba(220, 211, 211,0.35)` }
+                    defaultColor = { "red" }
                     defaultTitleColor = { "red" }
                     completeColor = { "green" }
                     completeTitleColor = { "green" }

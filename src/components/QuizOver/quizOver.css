@@ -1,9 +1,50 @@
 .quizOver {
-    width: 80%;
-    height: 500px;
-    background-color: red;
+    width: 65%;
+    background-color: grey;
+    margin: 10px auto;
+}
+
+.quizOver_title {
+    background-color: yellow;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.quizOver_title p {
+    font-size: 25px;
+}
+
+.quizOver_title button {
+    width: 150px;
+    height: 55px;
+    background-color: black;
+    color: white;
+    margin: 0 10px;
+}
+
+.quizOver_progress {
+    background-color: burlywood;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+
+}
+
+.quizOver_progress_box {
+    height: 45px;
+    width: 300px;
+    border: 2px solid black;
+    margin: 0 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px auto;
+    font-size: 18px;
+}
+
+.quizOver_answers {
+    
 }

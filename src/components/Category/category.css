@@ -20,7 +20,7 @@
 
 }
 
-.box {
+.box_card {
     width: 200px;
     height: 150px;
     cursor: pointer;
@@ -34,10 +34,10 @@
     /* clip-path: circle(90% at 60px 15%); */
     transition: all 0.3s ease-out;
     border-radius: 35px 35px 0 0;
-    border: 2px solid white;
+    border: 2px solid gold;
 
 }
-.box:hover {
+.box_card:hover {
     background: rgba(142, 39, 34, 0.299);
     /* clip-path: circle(100%); */
 }
@@ -70,7 +70,7 @@
     cursor: pointer;
 }
 
-.linkCategory {
+.category_link{
     /* clip-path: circle(100%); */
     color: white;
     background: rgba(3, 33, 33, 0.322);
@@ -78,19 +78,19 @@
     height: 70px;
     margin-top: 30px;
     border: 2px solid white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 28px;
 }
-.linkCategory:hover {
+
+.category_link:hover {
     /* clip-path: circle(100%); */
     color: gold;
     border: 1px solid white;
     
-}
-
-.box_picture {
-    height: 100px;
-    width: 100%;
-    margin-bottom: 5px;
-
 }
 
 .category_picture {
@@ -98,4 +98,6 @@
     width: 100%;
     border-radius: 30px 30px 0 0;
     object-fit: cover;
+    pointer-events: none;
+    margin-bottom: 4px;
 }

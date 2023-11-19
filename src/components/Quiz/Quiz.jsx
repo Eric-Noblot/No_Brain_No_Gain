@@ -14,7 +14,6 @@ const Quiz = () => {
 
     const categoryUrl = useParams().category
     const [activeBtn, setActiveBtn] = useState(true)
-    const [data, setData] = useState({})
     const [score, setScore] = useState(0)
 
     const [level, setLevel] = useState({
@@ -24,43 +23,42 @@ const Quiz = () => {
         quizLevel: 0,
         maxQuestions: 10,
         quizEnd: false,
-        storageQuestions: [],
         actualQuestion: "",
         actualAnswers: []
     })
 
-    const { levelNames, userAnswer, idQuestion, quizLevel, maxQuestions, quizEnd, storageQuestions, actualQuestion, actualAnswers } = level
+    const { levelNames, userAnswer, idQuestion, quizLevel, maxQuestions, quizEnd, actualQuestion, actualAnswers } = level
     
 
-    const loadQuestions = (storageQuestions) => {
+    const loadQuestions = (arrayQuestions) => {
 
-        if (storageQuestions.length > 0) {
-            const fetchedQuestion = storageQuestions[idQuestion].question
-            const fetchedAnswers = storageQuestions[idQuestion].options
-
-            if (fetchedQuestion.length >= maxQuestions) {
-                setLevel({...level, actualQuestion : fetchedQuestion, actualAnswers: fetchedAnswers})   
-            } else {
-                console.log("Pas assez de questions !")
+        if (arrayQuestions) {
+            if (arrayQuestions.length > 0) {
+                const fetchedQuestion = arrayQuestions[idQuestion].question
+                const fetchedAnswers = arrayQuestions[idQuestion].options
+                
+                if (fetchedQuestion.length >= maxQuestions) {
+                    setLevel({...level, actualQuestion : fetchedQuestion, actualAnswers: fetchedAnswers})   
+    
+                } else {
+                    console.log("Pas assez de questions !")
+                }
             }
         }
     }
 
     useEffect(() => {
-
         if (questions) {
             const arrayQuestions = questions[0].quiz.category[categoryUrl][levelNames[quizLevel]]
             const arrayQuestionsWithoutRightAnswer = arrayQuestions.map(({answer, ...keepRest})=> { //on passe les questions sans la réponse dans le State
                 return keepRest
             })
 
-            setLevel({...level, storageQuestions: arrayQuestionsWithoutRightAnswer})
-            if (storageQuestions) {
-                loadQuestions(storageQuestions) 
-            }
+            // setLevel({...level, storageQuestions: arrayQuestionsWithoutRightAnswer})
+            loadQuestions(arrayQuestionsWithoutRightAnswer)
             }
 
-    },[storageQuestions, idQuestion, quizLevel, quizEnd])
+    },[idQuestion, quizLevel, quizEnd, levelNames])
 
     const chooseAnswer = (answer) => {
         
@@ -88,6 +86,10 @@ const Quiz = () => {
         }
     }
 
+    const loadLevelQuestions = (levelProps) => {
+        setLevel({...level, quizLevel : levelProps, quizEnd: false, idQuestion: 0})
+    }
+
     return (
         <div>
             <Navbar />
@@ -95,7 +97,11 @@ const Quiz = () => {
             <ProgressBar maxQuestions={maxQuestions} idQuestion={idQuestion} quizEnd={quizEnd} nameCategory={categoryUrl} />
             
             {
-                quizEnd ? <QuizOver score = {score}/>
+                quizEnd ? <QuizOver score = {score}
+                                     maxQuestions = {maxQuestions}
+                                     quizLevel = {quizLevel}
+                                     loadLevelQuestions = {loadLevelQuestions}
+                                    />
                 : 
                 <div className = "questionCont">
                     <div className = "questionFrame">
