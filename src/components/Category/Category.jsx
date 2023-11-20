@@ -10,6 +10,8 @@ import marvelPicture from "../../img/category/marvel.webp"
 import cyberpunkPicture from "../../img/category/cyberpunk.webp"
 import { GiTrophyCup } from "react-icons/gi";
 
+
+
 const Category = ({userData}) => {
     const {pseudo} = userData
     const games = questions[0]
@@ -18,10 +20,9 @@ const Category = ({userData}) => {
         game: false,
         category: false
     })
-    const [gameName, setgameName] = useState("")
-    const [urlName, setUrlName] = useState("")
-    const [activeBox, setActiveBox ] = useState(false)
 
+    const [gameName, setgameName] = useState("")
+    const [categoryName, setCategoryName] = useState("")
     const [isCupActive, setIsCupActive] = useState(true)
 
     const getPicture = (category) => {
@@ -45,7 +46,7 @@ const Category = ({userData}) => {
     const handleGameSelection = (e) => {
         setIsSelected({...isSelected, game: true, category: false}) //ici je remets category à false pour éviter que l'utilisateur choisisse un game puis une catégorie et avant de valider reclique sur un autre game puis valide, ca crée une page qui ne contient pas la category du game choisi
         setgameName(e.target.textContent)
-        setUrlName("")
+        setCategoryName("")
     }
 
     const gameSelection = Object.keys(games).map((category, index) => {
@@ -60,7 +61,7 @@ const Category = ({userData}) => {
             const categoryObject = questions[0][game.toLowerCase()].category
             const categoryDisplay = Object.keys(categoryObject).map((category, index) => {
                 return  (
-                        <div onClick ={giveUrlName} className = {`box_card ${category === urlName.toLowerCase() ? "boxActive" : null}`} key={index}>
+                        <div onClick ={getCategoryName} className = {`box_card ${category === categoryName.toLowerCase() ? "boxActive" : null}`} key={index}>
                             <img className = "category_picture" src={getPicture(category)} alt ="category_picture" />
                             <div className = "category_title">
                                 {category.toUpperCase()}
@@ -76,9 +77,9 @@ const Category = ({userData}) => {
         }
     }
 
-    const giveUrlName = (e) => {
+    const getCategoryName = (e) => {
 
-        setUrlName(e.target.textContent) 
+        setCategoryName(e.target.textContent) 
         setIsSelected({...isSelected, category: true})
     }
 
@@ -89,6 +90,8 @@ const Category = ({userData}) => {
         }
 
     }
+
+
 
     return (
         <main className="category">
@@ -110,13 +113,12 @@ const Category = ({userData}) => {
             }
             {
                 isSelected.category ? (
-                        <Link onClick ={giveUrlName} className = " category_link" to={`/game/${gameName.toLocaleLowerCase()}/${urlName.toLowerCase()}`}>
+                        <Link onClick ={getCategoryName} className = "category_link" to={`/game/${gameName.toLocaleLowerCase()}/${categoryName.toLowerCase()}`}>
                         VALIDER
                         </Link>
                 )
                 : null
             }
-
         </main>
     );
 };

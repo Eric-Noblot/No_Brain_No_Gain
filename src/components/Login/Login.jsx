@@ -25,7 +25,7 @@ const Login = () => {
             .catch((error) => {
                 setError("Problème d'identification, veuillez réessayer...")
                 // setEmail("")
-                // setPassword("")  //j'enleve ces seter car lorsqu'on se trome dans le mot de passe par exemple, on remet ladresse mail à blanc, et lorsque je retape le bon mot de passe cela affiche que l'adresse n'est pas valide, car on l'a supprimé du seter alors qu'elle apparait encore dans le input sur la page
+                // setPassword("")  //j'enleve ces seter car lorsqu'on se trompe dans le mot de passe par exemple, on remet ladresse mail à blanc, et lorsque je retape le bon mot de passe cela affiche que l'adresse n'est pas valide, car on l'a supprimé du seter alors qu'elle apparait encore dans le input sur la page
             })
         }
 

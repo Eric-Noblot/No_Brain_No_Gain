@@ -15,6 +15,7 @@ const Quiz = () => {
     const categoryUrl = useParams().category
     const [activeBtn, setActiveBtn] = useState(true)
     const [score, setScore] = useState(0)
+    const [arrayRightAnswers, setArrayRightAnswers] = useState([])
 
     const [level, setLevel] = useState({
         levelNames: ["debutant", "confirme", "expert"],
@@ -24,11 +25,12 @@ const Quiz = () => {
         maxQuestions: 10,
         quizEnd: false,
         actualQuestion: "",
-        actualAnswers: []
+        actualAnswers: [],
+        storageQuestions: [],
     })
 
-    const { levelNames, userAnswer, idQuestion, quizLevel, maxQuestions, quizEnd, actualQuestion, actualAnswers } = level
-    
+    const { levelNames, userAnswer, idQuestion, quizLevel, maxQuestions, quizEnd, actualQuestion, actualAnswers, storageQuestions } = level
+    const questionsProps = questions[0].quiz.category[categoryUrl][levelNames[quizLevel]]
 
     const loadQuestions = (arrayQuestions) => {
 
@@ -53,9 +55,8 @@ const Quiz = () => {
             const arrayQuestionsWithoutRightAnswer = arrayQuestions.map(({answer, ...keepRest})=> { //on passe les questions sans la réponse dans le State
                 return keepRest
             })
-
-            // setLevel({...level, storageQuestions: arrayQuestionsWithoutRightAnswer})
             loadQuestions(arrayQuestionsWithoutRightAnswer)
+            // setLevel({...level, storageQuestions : arrayQuestions })
             }
 
     },[idQuestion, quizLevel, quizEnd, levelNames])
@@ -71,7 +72,6 @@ const Quiz = () => {
 
         if (idQuestion === maxQuestions - 1) {
             setLevel({...level, quizEnd: true})
-
         }
         else {
             setLevel((prevState) => (
@@ -83,12 +83,17 @@ const Quiz = () => {
         const rightAnswer = questions[0].quiz.category[categoryUrl][levelNames[quizLevel]][idQuestion].answer
         if (userAnswer === rightAnswer) {
             setScore((prevState) => prevState + 1)
+            setArrayRightAnswers([...arrayRightAnswers, "1"])
+
+        }else {
+            setArrayRightAnswers([...arrayRightAnswers, "0"])
         }
     }
 
     const loadLevelQuestions = (levelProps) => {
         setLevel({...level, quizLevel : levelProps, quizEnd: false, idQuestion: 0})
         setScore(0)
+        setArrayRightAnswers([])
     }
 
     return (
@@ -104,6 +109,8 @@ const Quiz = () => {
                                     loadLevelQuestions = {loadLevelQuestions}
                                     levelNames={levelNames}
                                     nameCategory = {categoryUrl}
+                                    storageQuestions = {questionsProps}
+                                    arrayRightAnswers = {arrayRightAnswers}
                                     />
                 : 
                 <div className = "questionCont">

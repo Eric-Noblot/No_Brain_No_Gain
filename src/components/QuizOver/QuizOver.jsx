@@ -2,8 +2,13 @@ import "./quizOver.css"
 import { GiTrophyCup } from "react-icons/gi";
 import { useNavigate } from "react-router-dom"
 
-const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelNames, nameCategory}) => {
+import {user, db, auth} from "../Firebase/firebase.js"
+import { doc, setDoc, updateDoc, getDoc } from "firebase/firestore"; 
 
+
+const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelNames, nameCategory, storageQuestions, arrayRightAnswers}) => {
+
+    console.log("storage", storageQuestions)
     const navigate = useNavigate()
 
     const clickBackHome = () => {
@@ -11,8 +16,8 @@ const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelName
     }
 
     const nameGameCap = nameCategory[0].toUpperCase() + nameCategory.slice(1).toLowerCase()
-
-    const decision = score >= maxQuestions / 2 + 2  ? ( //le score doit être au moins de 7 pour passer au niveau suivant
+    // score >= maxQuestions / 2 + 2
+    const decision = score >= 0  ? ( //le score doit être au moins de 7 pour passer au niveau suivant
         quizLevel >= levelNames.length - 1 ? 
             <div className = "quizOver_box">
                 <div className = "quizOver_title">
@@ -36,7 +41,39 @@ const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelName
             <button onClick = {clickBackHome}>Retour au menu</button>
         </div>
 
+    const tableQuestions = storageQuestions.map((question) => {
+        return (
+            <tr key={question.id}>
+                <td>{question.question}</td>
+                <td style={{color: arrayRightAnswers[question.id] === "1" ? "green" : "red"}}>{question.answer}</td>
+            </tr>
+        )
+    })
+    
+    //////////////////////////////////
+        // :////////////////////////////////////////
 
+        const handleFirestore = async () => {
+            const userId = auth.lastNotifiedUid
+            console.log(auth)
+
+            // await setDoc(doc(db, `users/${userId}`), {
+            //     trophee : {
+            //         game: "quiz",
+            //         category: nameCategory,
+            //         level: quizLevel
+            //     }
+            // });
+
+            // const tropheeRef = doc(db,  `users/${userId}/`)
+            // await updateDoc(tropheeRef, {
+            //     newTrophee: "ajoutee",
+            //     level: 3,
+            //     fruits: "banana"
+            // })
+
+
+        }
     return (
         <div className = "quizOver">
             {decision}
@@ -45,8 +82,19 @@ const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelName
                 <div className = "quizOver_progress_box">{`Score : ${score * 10} pts`}</div>
             </div>
             <div className = "quizOver_answers">
-
+                <table className = "table_answers">
+                    <thead>
+                        <tr>
+                            <th>QUESTIONS</th>
+                            <th>RÉPONSE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {tableQuestions}
+                    </tbody>
+                </table>
             </div>
+        <button onClick={handleFirestore}>FIRESTORE</button>
 
         </div>
     );

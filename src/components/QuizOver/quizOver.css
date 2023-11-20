@@ -67,13 +67,54 @@
     margin-left: 50px;
 }
 
+.quizOver_answers {
+    border: 1px solid white;
+    color: white;
+    padding: 20px;
+    background-color: rgb(91, 89, 89);
+}
+
+.table_answers {
+    border: 1px solid red;
+    width: 100%;
+    /* border-collapse: collapse; */
+}
+
+.table_th_answer {
+    margin: 50px 50px;
+}
+
+.quizOver_answers th {
+    padding: 20px 60px;
+    background-color: red;
+    font-size: 17px;
+    border: 1px solid grey;
+}
+
+.quizOver_answers td {
+    padding: 20px;
+    font-size: 15px;
+    background-color: white;
+    color: black;
+    border: 1px solid grey;
+    width: 100%;
+}
+
 @media (max-width: 820px) {
+
+    .quizOver_answers {
+        padding: 0px;
+    }
     .quizOver_title {
         flex-direction: column;
     }
 
     .quizOver_title p {
         font-size: 18px;
+    }
+    .quizOver_answers th {
+        padding: 20px 0px;
+        padding-left: 10px;
     }
 
 }
