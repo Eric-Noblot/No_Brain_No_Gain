@@ -8,6 +8,7 @@ import testPicture from "../../img/category/test.png"
 import dbzPicture from "../../img/category/dbz.jpg"
 import marvelPicture from "../../img/category/marvel.webp"
 import cyberpunkPicture from "../../img/category/cyberpunk.webp"
+import { GiTrophyCup } from "react-icons/gi";
 
 const Category = ({userData}) => {
     const {pseudo} = userData
@@ -20,6 +21,8 @@ const Category = ({userData}) => {
     const [gameName, setgameName] = useState("")
     const [urlName, setUrlName] = useState("")
     const [activeBox, setActiveBox ] = useState(false)
+
+    const [isCupActive, setIsCupActive] = useState(true)
 
     const getPicture = (category) => {
 
@@ -59,7 +62,13 @@ const Category = ({userData}) => {
                 return  (
                         <div onClick ={giveUrlName} className = {`box_card ${category === urlName.toLowerCase() ? "boxActive" : null}`} key={index}>
                             <img className = "category_picture" src={getPicture(category)} alt ="category_picture" />
-                            {category.toUpperCase()}
+                            <div className = "category_title">
+                                {category.toUpperCase()}
+                                {
+                                    isCupActive ? <GiTrophyCup className ="category_trophee"color = { "gold" } size = { 30 }/> : null
+                                }
+                                
+                            </div>
                         </div>
                 )
             })

@@ -88,19 +88,22 @@ const Quiz = () => {
 
     const loadLevelQuestions = (levelProps) => {
         setLevel({...level, quizLevel : levelProps, quizEnd: false, idQuestion: 0})
+        setScore(0)
     }
 
     return (
         <div>
             <Navbar />
-            <Level levelNames={levelNames}/>
+            <Level levelNames={levelNames} quizLevel = {quizLevel}/>
             <ProgressBar maxQuestions={maxQuestions} idQuestion={idQuestion} quizEnd={quizEnd} nameCategory={categoryUrl} />
             
             {
                 quizEnd ? <QuizOver score = {score}
-                                     maxQuestions = {maxQuestions}
-                                     quizLevel = {quizLevel}
-                                     loadLevelQuestions = {loadLevelQuestions}
+                                    maxQuestions = {maxQuestions}
+                                    quizLevel = {quizLevel}
+                                    loadLevelQuestions = {loadLevelQuestions}
+                                    levelNames={levelNames}
+                                    nameCategory = {categoryUrl}
                                     />
                 : 
                 <div className = "questionCont">
@@ -114,7 +117,7 @@ const Quiz = () => {
                                 return  <li onClick={() => chooseAnswer(answer)}
                                             key={index} 
                                             className= {`answer ${userAnswer === answer ? "selected" : null}`} >
-                                                {index + 1} - {answer}
+                                            {index + 1} - {answer}
                                         </li>})
                                 }
                             </ul>   

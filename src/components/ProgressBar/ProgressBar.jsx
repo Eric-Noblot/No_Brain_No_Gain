@@ -31,20 +31,21 @@ const ProgressBar = ({maxQuestions, idQuestion, quizEnd, nameCategory}) => {
     }
 
     return (
-        <div className="progressBar" style={{ backgroundImage:`url("${getPicture(nameCategory)}")`}}>
+            <div className="progressBar" style={{ backgroundImage:`url("${getPicture(nameCategory)}")`}}>
 
-            <div className="progress_cont">
-                <div className="progress_box">{`${nameCategory.toUpperCase()}`}</div>
-                <div className="progress_box">{`Question: ${idQuestion +1 }/${maxQuestions}`}</div>
-            </div>
-
-            <div className="progressBar_cont">
-                <div className="progressBar_box">
-                    <div className = "progressBarLine" style={{width: `${percentage}%`}}></div>
-                    {/* < ProgressBar now={`${percentage}`} animated variant="danger" className="progressBarLine"/> */}
+                <div className="progress_cont">
+                    <div className="progress_box progress_quiz">{`QUIZ - ${nameCategory.toUpperCase()}`}</div>
+                    <div className="progress_box progress_question">{`Question: ${idQuestion +1 } / ${maxQuestions}`}</div>
                 </div>
+
+                <div className="progressBar_cont">
+                    <div className="progressBar_box">
+                        <div className = "progressBarLine" style={{width: `${percentage}%`}}></div>
+                        {/* < ProgressBar now={`${percentage}`} animated variant="danger" className="progressBarLine"/> */}
+                    </div>
+                </div>
+                <div className = "dark_Background"></div>
             </div>
-        </div>
     );
 };
 
