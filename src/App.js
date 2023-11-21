@@ -32,5 +32,3 @@ function App() {
 }
 
 export default App;
-
-//Problème du lvl qui peut redescendre quand on recommence un quiz

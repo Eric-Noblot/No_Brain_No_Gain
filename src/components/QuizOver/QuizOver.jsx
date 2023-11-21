@@ -2,16 +2,18 @@ import "./quizOver.css"
 import { GiTrophyCup } from "react-icons/gi";
 import { useNavigate } from "react-router-dom"
 
-import { db, auth } from "../Firebase/firebase.js"
-import { doc, updateDoc, setDoc, addDoc, collection } from "firebase/firestore"; 
-
-
-const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelNames, nameCategory, storageQuestions, arrayRightAnswers}) => {
+const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelNames, nameCategory, storageQuestions, arrayRightAnswers, updateFirestore}) => {
 
     const navigate = useNavigate()
     
-    const clickBackHome = () => {
-        navigate("/home")
+    const clickBackHome = (e) => { //je n'incrémente pas le trophee dans firestore si l'utilisateur revient au menu sans avoir validé le test
+        const isFailed = e.target.className
+        if (isFailed === "backToMenu_failed") {
+            navigate("/home")
+        } else {
+            updateFirestore()
+            navigate("/home")
+        }
     }
 
     const nameGameCap = nameCategory[0].toUpperCase() + nameCategory.slice(1).toLowerCase()
@@ -36,8 +38,8 @@ const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelName
         : 
         <div className = "quizOver_title">
             <p>{`C'est foiré :`}</p>
-            <button onClick = {() => loadLevelQuestions(quizLevel)}>On retente ?</button>
-            <button onClick = {clickBackHome}>Retour au menu</button>
+            <button onClick = {() => loadLevelQuestions(quizLevel, "failed")}>On retente ?</button>
+            <button className = "backToMenu_failed" onClick = {clickBackHome}>Retour au menu</button>
         </div>
 
     const tableQuestions = storageQuestions.map((question) => {
@@ -52,22 +54,21 @@ const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelName
     //////////////////////////////////
         // :////////////////////////////////////////
 
-        const handleFirestore = async () => {
+        // const handleFirestore = async () => {
 
-            const userId = auth.lastNotifiedUid
+        //     const userId = auth.lastNotifiedUid
             
             // const userId = auth.lastNotifiedUid
             // await setDoc(doc(db, `users/${userId}`), { //pour créer des données
             //     [nameCategory]: quizLevel + 1
             // });
 
-            const tropheeRef = doc(db, `users/${userId}/`)  //on updtate les données sur la clé existante déjà créée par firestore lors du sign up
-            await updateDoc(tropheeRef, 
-                {[nameCategory]: quizLevel + 1}
-            )
+            // const tropheeRef = doc(db, `users/${userId}/`)  //on updtate les données sur la clé existante déjà créée par firestore lors du sign up
+            // await updateDoc(tropheeRef, 
+            //     {[nameCategory]: quizLevel + 1}
+            // )
+        // }
 
-
-        }
     return (
         <div className = "quizOver">
             {decision}
@@ -88,7 +89,7 @@ const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelName
                     </tbody>
                 </table>
             </div>
-        <button onClick={handleFirestore}>FIRESTORE</button>
+        {/* <button onClick={handleFirestore}>FIRESTORE</button> */}
 
         </div>
     );

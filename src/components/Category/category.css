@@ -8,24 +8,24 @@
 }
 
 .category_box {
-    width: 60%;
+    width: 90%;
     height: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     /* border-bottom: 1px solid rgba(127, 177, 201, 0.59); */
     margin-bottom: 30px;
     margin-top: 10px;
-    gap: 20px;
+    gap: 5px;
 }
 
 .category_title {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 0 10px;
+    padding: 0 5px;
 }
 
 .box_card {
@@ -37,7 +37,7 @@
     text-decoration: none;
     flex-direction: column;
     color: white;
-    font-size: 24px;
+    font-size: 23px;
     margin: 10px 10px;
     /* clip-path: circle(90% at 60px 15%); */
     transition: all 0.3s ease-out;
@@ -69,8 +69,9 @@
 }
 
 .game_p {
-    padding: 0 50px;
+    padding: 0 30px;
     margin-top: 25px;
+    font-size: 15px;
 }
 
 .welcome_title {
@@ -86,7 +87,7 @@
 
 .category_link{
     /* clip-path: circle(100%); */
-    color: white;
+    color: rgb(255, 255, 255);
     background: rgba(3, 33, 33, 0.322);
     width: 200px;
     height: 70px;
@@ -120,4 +121,29 @@
 .category_trophee {
     margin-left: 15px;
     pointer-events: none;
+}
+
+.category_rules {
+    font-size: 15px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 500px) {
+    .game_title {
+        text-align: center;
+        line-height: 22px;
+        font-size: 18px;
+        padding: 10px 30px;
+        border-radius: 10px;
+        margin-top: 25px;
+    }
+
+    .game_p {
+        padding: 0 50px;
+        margin-top: 25px;
+    }
+
 }

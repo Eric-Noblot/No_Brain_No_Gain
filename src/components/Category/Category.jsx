@@ -1,7 +1,7 @@
 import "./category.css"
 import {questions} from "../../questions.js"
 import { Link } from "react-router-dom"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import quizPicture from "../../img/category/quiz.avif"
 import jeuxPicture from "../../img/category/jeux.png" 
 import testPicture from "../../img/category/test.png"
@@ -41,7 +41,7 @@ const Category = ({userData}) => {
             case "cyberpunk" : 
             return cyberpunkPicture
             default :
-            return "Error category" //?
+            return "Error"
         }
     }
 
@@ -50,7 +50,6 @@ const Category = ({userData}) => {
         setgameName(e.target.textContent)
         setCategoryName("")
     }
-
     const gameSelection = Object.keys(games).map((category, index) => {
     return  <div className = {`box_card ${category === gameName.toLowerCase() ? "boxActive" : null}`} onClick={handleGameSelection} key={index}>   
                 <img className = "category_picture" src={getPicture(category)} alt ="category_picture" />
@@ -61,7 +60,7 @@ const Category = ({userData}) => {
     const categorySelection = (game) => {
         if (game) {
             const arrayDataFirestore = Object.getOwnPropertyNames(dataFromFirestore) //ici je récupère le lvl sur firestore et je récupère toutes les données (dont les catégories qui m'interessent) dans un tableau afin de pouvoir faire la methode includes et checker si la catégorie (et donc un lvl deja passé) existe dans la db pour gérer si on affiche ou non la cup
-            
+
             const categoryObject = questions[0][game.toLowerCase()].category
             const categoryDisplay = Object.keys(categoryObject).map((category, index) => {
                 return  (
@@ -71,9 +70,9 @@ const Category = ({userData}) => {
                                 {category.toUpperCase()}
                                 {
                                     arrayDataFirestore.includes(category) ? //on affiche la coupe seulement si un lvl existe déja dans la db
-                                            <GiTrophyCup className ="category_trophee" color = {cupColor(dataFromFirestore[category])} size = { 30 }/>
+                                        <GiTrophyCup className ="category_trophee" color = {getCupColor(dataFromFirestore[category])}  size = { 30 }/>
                                     : null
-                                }
+                                } 
                             </div>
                         </div>
                 )
@@ -110,10 +109,10 @@ const Category = ({userData}) => {
         }
     }
 
-    const cupColor = (levelTrophee) => {
+    const getCupColor = (levelTrophee) => {
 
         switch(levelTrophee) {
-            case 1: return "brown"
+            case 1:return "rgb(201, 114, 60)"
             case 2: return "silver"
             case 3: return "gold"
             default : return 
@@ -121,7 +120,6 @@ const Category = ({userData}) => {
     }
 
     useEffect(() => {
-
         getDataFromFirestore()
 
     },[])
@@ -136,10 +134,13 @@ const Category = ({userData}) => {
             {
                 isSelected.game ? (
                 <>
-                    <p className ="game_p">Le quiz comporte 3 niveaux de difficulté. Chaque niveau comporte 10 questions. <br />
-                    Si tu obtiens au moins 7 bonnes réponses, tu peux passer au niveau supérieur! <br/>
-                    Chaque palier atteint te récompense d'une coupe qui représente ton classement dans cette catégorie.<br/>
-                    </p>
+                    <div className ="category_rules">
+                        <p>Le quiz comporte 3 niveaux de difficulté. Chaque niveau comporte 10 questions. <br />
+                        Si tu obtiens au moins 7 bonnes réponses, tu peux passer au niveau supérieur! <br/>
+                        Pour chaque palier atteint, tu obtiendras une coupe représentant ton classement dans cette catégorie.<br/>
+                        Passe les 3 niveaux de difficulté à la suite pour remporter la Coupe en OR !
+                        </p>
+                    </div>
                     <p className= "game_title">Choisis une catégorie !</p>
                     <div className = "category_box">
                         {categorySelection(gameName)}
