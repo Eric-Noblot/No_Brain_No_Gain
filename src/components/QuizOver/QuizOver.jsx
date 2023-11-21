@@ -2,15 +2,14 @@ import "./quizOver.css"
 import { GiTrophyCup } from "react-icons/gi";
 import { useNavigate } from "react-router-dom"
 
-import {user, db, auth} from "../Firebase/firebase.js"
-import { doc, setDoc, updateDoc, getDoc } from "firebase/firestore"; 
+import { db, auth } from "../Firebase/firebase.js"
+import { doc, updateDoc, setDoc, addDoc, collection } from "firebase/firestore"; 
 
 
 const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelNames, nameCategory, storageQuestions, arrayRightAnswers}) => {
 
-    console.log("storage", storageQuestions)
     const navigate = useNavigate()
-
+    
     const clickBackHome = () => {
         navigate("/home")
     }
@@ -54,23 +53,18 @@ const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelName
         // :////////////////////////////////////////
 
         const handleFirestore = async () => {
-            const userId = auth.lastNotifiedUid
-            console.log(auth)
 
-            // await setDoc(doc(db, `users/${userId}`), {
-            //     trophee : {
-            //         game: "quiz",
-            //         category: nameCategory,
-            //         level: quizLevel
-            //     }
+            const userId = auth.lastNotifiedUid
+            
+            // const userId = auth.lastNotifiedUid
+            // await setDoc(doc(db, `users/${userId}`), { //pour créer des données
+            //     [nameCategory]: quizLevel + 1
             // });
 
-            // const tropheeRef = doc(db,  `users/${userId}/`)
-            // await updateDoc(tropheeRef, {
-            //     newTrophee: "ajoutee",
-            //     level: 3,
-            //     fruits: "banana"
-            // })
+            const tropheeRef = doc(db, `users/${userId}/`)  //on updtate les données sur la clé existante déjà créée par firestore lors du sign up
+            await updateDoc(tropheeRef, 
+                {[nameCategory]: quizLevel + 1}
+            )
 
 
         }

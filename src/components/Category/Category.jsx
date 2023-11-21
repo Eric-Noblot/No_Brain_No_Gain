@@ -1,7 +1,7 @@
 import "./category.css"
 import {questions} from "../../questions.js"
 import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import quizPicture from "../../img/category/quiz.avif"
 import jeuxPicture from "../../img/category/jeux.png" 
 import testPicture from "../../img/category/test.png"
@@ -9,8 +9,8 @@ import dbzPicture from "../../img/category/dbz.jpg"
 import marvelPicture from "../../img/category/marvel.webp"
 import cyberpunkPicture from "../../img/category/cyberpunk.webp"
 import { GiTrophyCup } from "react-icons/gi";
-
-
+import { getDoc, doc } from "firebase/firestore"
+import { db, auth } from "../Firebase/firebase.js"
 
 const Category = ({userData}) => {
     const {pseudo} = userData
@@ -23,7 +23,7 @@ const Category = ({userData}) => {
 
     const [gameName, setgameName] = useState("")
     const [categoryName, setCategoryName] = useState("")
-    const [isCupActive, setIsCupActive] = useState(true)
+    const [dataFromFirestore, setDataFromFirestore] = useState(0)
 
     const getPicture = (category) => {
 
@@ -40,11 +40,13 @@ const Category = ({userData}) => {
             return marvelPicture
             case "cyberpunk" : 
             return cyberpunkPicture
+            default :
+            return "Error category" //?
         }
     }
 
     const handleGameSelection = (e) => {
-        setIsSelected({...isSelected, game: true, category: false}) //ici je remets category à false pour éviter que l'utilisateur choisisse un game puis une catégorie et avant de valider reclique sur un autre game puis valide, ca crée une page qui ne contient pas la category du game choisi
+        setIsSelected({...isSelected, game: true, category: false}) //ici je remets category à false pour éviter que l'utilisateur choisisse une game puis une catégorie et avant de valider reclique sur un autre game puis valide, ca crée une page qui ne contient pas la category du game choisi
         setgameName(e.target.textContent)
         setCategoryName("")
     }
@@ -58,6 +60,8 @@ const Category = ({userData}) => {
 
     const categorySelection = (game) => {
         if (game) {
+            const arrayDataFirestore = Object.getOwnPropertyNames(dataFromFirestore) //ici je récupère le lvl sur firestore et je récupère toutes les données (dont les catégories qui m'interessent) dans un tableau afin de pouvoir faire la methode includes et checker si la catégorie (et donc un lvl deja passé) existe dans la db pour gérer si on affiche ou non la cup
+            
             const categoryObject = questions[0][game.toLowerCase()].category
             const categoryDisplay = Object.keys(categoryObject).map((category, index) => {
                 return  (
@@ -66,9 +70,10 @@ const Category = ({userData}) => {
                             <div className = "category_title">
                                 {category.toUpperCase()}
                                 {
-                                    isCupActive ? <GiTrophyCup className ="category_trophee"color = { "gold" } size = { 30 }/> : null
+                                    arrayDataFirestore.includes(category) ? //on affiche la coupe seulement si un lvl existe déja dans la db
+                                            <GiTrophyCup className ="category_trophee" color = {cupColor(dataFromFirestore[category])} size = { 30 }/>
+                                    : null
                                 }
-                                
                             </div>
                         </div>
                 )
@@ -91,7 +96,35 @@ const Category = ({userData}) => {
 
     }
 
+    const getDataFromFirestore = async () => {
+        const userId = auth.lastNotifiedUid
 
+        const docRef = doc(db, `users/${userId}`);
+        const docSnap = await getDoc(docRef);
+        
+        if (docSnap.exists()) {
+            const userData = docSnap.data()
+            setDataFromFirestore(userData)
+        } else {
+            console.log("pas de données !");
+        }
+    }
+
+    const cupColor = (levelTrophee) => {
+
+        switch(levelTrophee) {
+            case 1: return "brown"
+            case 2: return "silver"
+            case 3: return "gold"
+            default : return 
+        }
+    }
+
+    useEffect(() => {
+
+        getDataFromFirestore()
+
+    },[])
 
     return (
         <main className="category">
@@ -103,7 +136,11 @@ const Category = ({userData}) => {
             {
                 isSelected.game ? (
                 <>
-                    <p className= "game_title">Choisis maintenant la catégorie pour les {gameName.toLowerCase()} :</p>
+                    <p className ="game_p">Le quiz comporte 3 niveaux de difficulté. Chaque niveau comporte 10 questions. <br />
+                    Si tu obtiens au moins 7 bonnes réponses, tu peux passer au niveau supérieur! <br/>
+                    Chaque palier atteint te récompense d'une coupe qui représente ton classement dans cette catégorie.<br/>
+                    </p>
+                    <p className= "game_title">Choisis une catégorie !</p>
                     <div className = "category_box">
                         {categorySelection(gameName)}
                     </div> 

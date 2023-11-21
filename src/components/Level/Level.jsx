@@ -41,10 +41,10 @@ const Level = ({levelNames, quizLevel}) => {
                     size = { 60 }
                     circleFontSize = { 25 }
                     circleTop = { 10 }
-                    activeColor = {"red"}
-                    activeTitleColor = { "red" }
-                    defaultColor = { "red" }
-                    defaultTitleColor = { "red" }
+                    activeColor = {"grey"}
+                    activeTitleColor = { "grey" }
+                    defaultColor = { "grey" }
+                    defaultTitleColor = { "grey" }
                     completeColor = { "gold" }
                     completeTitleColor = { "gold" }
                     titleFontSize = { isSmallScreen ? 15 : 25 }

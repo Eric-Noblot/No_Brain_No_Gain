@@ -13,7 +13,6 @@ const Logout = () => {
         if (checked) {
             signOut(auth)
             .then(() => {
-                console.log("Vous êtes déconnecté")
                 navigate("/")
             })
             .catch((error) => {

@@ -5,7 +5,6 @@ import Header from "../Header/Header"
 import Navbar from '../NavBar/Navbar';
 import Loader from "../Loader/Loader"
 import Footer from "../Footer/Footer"
-import {questions} from "../../questions"
 import React from "react"
 
 import { onAuthStateChanged } from 'firebase/auth'; //pour le logout et éviter que quelqu'un accède directement à la page en modifiant l'API sans être connecté

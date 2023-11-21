@@ -7,15 +7,16 @@ import React from "react"
 import { useState, useEffect } from "react"
 import { useParams, useLocation } from "react-router-dom"
 import QuizOver from "../QuizOver/QuizOver"
+// import { getDoc, doc } from "firebase/firestore"
+// import { db, auth } from "../Firebase/firebase.js"
 
 const Quiz = () => { 
-    // const location = useLocation()
-    // const propsData = location.state //ici je récupère en props le nom de la catégorie ("marvel, dbz" etc...), Ce props a été donnée via Category.jsx dans le Link, grâce à state={} on peut passer des props directement dans le Link navigate même si Quiz n'est pas enfant du parent Category. on a aussi besoin du hook useLocation pour récupérer le state
 
-    const categoryUrl = useParams().category
+    const categoryNameUrl = useParams().category
     const [activeBtn, setActiveBtn] = useState(true)
     const [score, setScore] = useState(0)
     const [arrayRightAnswers, setArrayRightAnswers] = useState([])
+    // const [dataFirestore, setDataFirestore] = useState()
 
     const [level, setLevel] = useState({
         levelNames: ["debutant", "confirme", "expert"],
@@ -30,7 +31,7 @@ const Quiz = () => {
     })
 
     const { levelNames, userAnswer, idQuestion, quizLevel, maxQuestions, quizEnd, actualQuestion, actualAnswers, storageQuestions } = level
-    const questionsProps = questions[0].quiz.category[categoryUrl][levelNames[quizLevel]]
+    const questionsProps = questions[0].quiz.category[categoryNameUrl][levelNames[quizLevel]]
 
     const loadQuestions = (arrayQuestions) => {
 
@@ -49,15 +50,44 @@ const Quiz = () => {
         }
     }
 
+    // const getDataFromFirestore = async () => {
+    //     const userId = auth.lastNotifiedUid
+    //     const docRef = doc(db, `users/${userId}`);
+    //     const docSnap = await getDoc(docRef);
+    //     if (docSnap.exists()) {
+    //         console.log("HEYYYY")
+    //         const userData = docSnap.data()
+    //         setDataFirestore(userData)
+
+    //     } else {
+    //         console.log("pas de données !");
+    //     }
+    // }
+
     useEffect(() => {
-        if (questions) {
-            const arrayQuestions = questions[0].quiz.category[categoryUrl][levelNames[quizLevel]]
-            const arrayQuestionsWithoutRightAnswer = arrayQuestions.map(({answer, ...keepRest})=> { //on passe les questions sans la réponse dans le State
-                return keepRest
-            })
-            loadQuestions(arrayQuestionsWithoutRightAnswer)
-            // setLevel({...level, storageQuestions : arrayQuestions })
-            }
+        // getDataFromFirestore()       /// ici j'ai voulu faire en sorte de récupérer sur firebase le level de la catégorie pour permettre à l'utilisateur de retomber directement sur la bonne série de questions en fonction de son niveau
+        
+        // if (questions) {
+        //     const arrayDataFirestore = Object.getOwnPropertyNames(dataFirestore)
+        //     const alreadyPlayed = arrayDataFirestore.includes(categoryNameUrl)
+        //     console.log(arrayDataFirestore,categoryNameUrl,alreadyPlayed)
+        //     if (alreadyPlayed) {
+        //         console.log("IF")
+        //         const levelFirestore = dataFirestore[categoryNameUrl] - 1
+        //         const arrayQuestions = questions[0].quiz.category[categoryNameUrl][levelNames[levelFirestore]]
+        //         const arrayQuestionsWithoutRightAnswer = arrayQuestions.map(({answer, ...keepRest})=> { //on passe les questions sans la réponse dans le State
+        //             return keepRest
+        //         })
+        //         loadQuestions(arrayQuestionsWithoutRightAnswer)
+        //     } else {
+                console.log("ELSE")
+                const arrayQuestions = questions[0].quiz.category[categoryNameUrl][levelNames[quizLevel]]
+                const arrayQuestionsWithoutRightAnswer = arrayQuestions.map(({answer, ...keepRest})=> { //on passe les questions sans la réponse dans le State
+                    return keepRest
+                    })
+                loadQuestions(arrayQuestionsWithoutRightAnswer)
+            // }
+        // }
 
     },[idQuestion, quizLevel, quizEnd, levelNames])
 
@@ -65,7 +95,6 @@ const Quiz = () => {
         
         setActiveBtn(false)
         setLevel({...level, userAnswer: answer })
-
     }
 
     const nextQuestions = () => {
@@ -80,7 +109,7 @@ const Quiz = () => {
             setActiveBtn(true)
         }
         
-        const rightAnswer = questions[0].quiz.category[categoryUrl][levelNames[quizLevel]][idQuestion].answer
+        const rightAnswer = questions[0].quiz.category[categoryNameUrl][levelNames[quizLevel]][idQuestion].answer
         if (userAnswer === rightAnswer) {
             setScore((prevState) => prevState + 1)
             setArrayRightAnswers([...arrayRightAnswers, "1"])
@@ -100,7 +129,7 @@ const Quiz = () => {
         <div>
             <Navbar />
             <Level levelNames={levelNames} quizLevel = {quizLevel}/>
-            <ProgressBar maxQuestions={maxQuestions} idQuestion={idQuestion} quizEnd={quizEnd} nameCategory={categoryUrl} />
+            <ProgressBar maxQuestions={maxQuestions} idQuestion={idQuestion} quizEnd={quizEnd} nameCategory={categoryNameUrl} />
             
             {
                 quizEnd ? <QuizOver score = {score}
@@ -108,7 +137,7 @@ const Quiz = () => {
                                     quizLevel = {quizLevel}
                                     loadLevelQuestions = {loadLevelQuestions}
                                     levelNames={levelNames}
-                                    nameCategory = {categoryUrl}
+                                    nameCategory = {categoryNameUrl}
                                     storageQuestions = {questionsProps}
                                     arrayRightAnswers = {arrayRightAnswers}
                                     />
