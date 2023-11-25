@@ -23,7 +23,7 @@ const Category = ({userData}) => {
 
     const [gameName, setgameName] = useState("")
     const [categoryName, setCategoryName] = useState("")
-    const [dataFromFirestore, setDataFromFirestore] = useState(0)
+    const [dataFromFirestore, setDataFromFirestore] = useState("")
 
     const getPicture = (category) => {
 
@@ -123,7 +123,7 @@ const Category = ({userData}) => {
         getDataFromFirestore()
 
     },[])
-
+console.log(dataFromFirestore)
     return (
         <main className="category">
             <p className= "welcome_title">Bienvenue {capitalizePseudo(pseudo)} ! <br /><br /></p>
@@ -151,7 +151,7 @@ const Category = ({userData}) => {
             }
             {
                 isSelected.category ? (
-                        <Link onClick ={getCategoryName} className = "category_link" to={`/game/${gameName.toLocaleLowerCase()}/${categoryName.toLowerCase()}`}>
+                        <Link state = {{dataFirestore: dataFromFirestore}} onClick ={getCategoryName} className = "category_link" to={`/game/${gameName.toLocaleLowerCase()}/${categoryName.toLowerCase()}`}>
                         VALIDER
                         </Link>
                 )

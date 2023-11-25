@@ -584,6 +584,128 @@ export const questions = [
                             heroId: 1009281
                         }
                     ],
+                    "expert": [
+                        {
+                            id: 0,
+                            question: "Qui est Sangoku expert ?",
+                            options: [
+                                "Cyclope",
+                                "Colossus",
+                                "Wolverine",
+                                "Caliban"
+                            ],
+                            answer: "Wolverine",
+                            heroId: 1009718
+                        },
+                        {
+                            id: 1,
+                            question: "Quel super héros est intéressé par Sue Storm?",
+                            options: [
+                                "X-Men",
+                                "Illuminati",
+                                "Spider-Man",
+                                "Namor"
+                            ],
+                            answer: "Namor",
+                            heroId: 1009466
+                        },
+                        {
+                            id: 2,
+                            question: "Quel humain devient surpuissant grâce à une armure de haute technologie ?",
+                            options: [
+                                "Cyclope",
+                                "Iron Man",
+                                "Wolverine",
+                                "Thor"
+                            ],
+                            answer: "Iron Man",
+                            heroId: 1009368
+                        },
+                        {
+                            id: 3,
+                            question: "Laquelle de ces propositions désigne un ennemi emblématique de Spider-Man ?",
+                            options: [
+                                "Lizard",
+                                "Thanos",
+                                "Void",
+                                "Green Goblin"
+                            ],
+                            answer: "Green Goblin",
+                            heroId: 1014985
+                        },
+                        {
+                            id: 4,
+                            question: "GHOST RIDER est connu comme étant",
+                            options: [
+                                "Le diable motard",
+                                "L'esprit de la haine",
+                                "L'esprit de vengeance",
+                                "Le crâne rouge"
+                            ],
+                            answer: "L'esprit de vengeance",
+                            heroId: 1009318
+                        },
+                        {
+                            id: 5,
+                            question: "Avant de devenir Radioactive Man, Chen Lu était ..",
+                            options: [
+                                "Un espion",
+                                "Un physicien nucléaire",
+                                "Un soldat",
+                                "Un pilote"
+                            ],
+                            answer: "Un physicien nucléaire",
+                            heroId: 1009526
+                        },
+                        {
+                            id: 6,
+                            question: "Quel super-héros ayant perdu la vue possède des organes sensoriels développés ?",
+                            options: [
+                                "Daredevil",
+                                "Flash",
+                                "Superman",
+                                "Captain America"
+                            ],
+                            answer: "Daredevil",
+                            heroId: 1009262
+                        },
+                        {
+                            id: 7,
+                            question: "Avant de se tourner vers une vie de crime, Mysterio était...",
+                            options: [
+                                "Cascadeur",
+                                "Artiste d'effets spéciaux",
+                                "Magicien",
+                                "Sapeur pompier"
+                            ],
+                            answer: "Artiste d'effets spéciaux",
+                            heroId: 1010952
+                        },
+                        {
+                            id: 8,
+                            question: "Fin Fang Foom est un alien de ..",
+                            options: [
+                                "Krypton",
+                                "Maklu IV",
+                                "Mars",
+                                "Vulcan"
+                            ],
+                            answer: "Maklu IV",
+                            heroId: 1009303
+                        },
+                        {
+                            id: 9,
+                            question: "DOCTOR DOOM a fréquenté le même collège que...",
+                            options: [
+                                "Tony Stark",
+                                "Peter Parker",
+                                "Reed Richards",
+                                "Bruce Banner"
+                            ],
+                            answer: "Reed Richards",
+                            heroId: 1009281
+                        }
+                    ]
                 },
                 cyberpunk : {
                     debutant: [
