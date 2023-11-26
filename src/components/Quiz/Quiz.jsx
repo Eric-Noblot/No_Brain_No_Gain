@@ -11,17 +11,18 @@ import QuizOver from "../QuizOver/QuizOver"
 import { db, auth } from "../Firebase/firebase.js"
 import { doc, updateDoc, getDoc } from "firebase/firestore"; 
 
+
 const Quiz = () => { 
 
-    const categoryNameUrl = useParams({}).category
     const location = useLocation()
-    // const { dataFirestore } = location.state
+
+    const categoryNameUrl = useParams({}).category
+
     const [activeBtn, setActiveBtn] = useState(true)
     const [score, setScore] = useState(0)
     const [arrayRightAnswers, setArrayRightAnswers] = useState([])
-    const [levelFirestore, setLevelFirestore] = useState(0)
-    const [stateFirestore, setStateFirestore] = useState({})
-    const [loading, setLoading] = useState(true)
+    const [dataFirestore, setDataFirestore] = useState()
+    const [isLoading, setIsLoading] = useState(true)
 
     const [level, setLevel] = useState({
         levelNames: ["debutant", "confirme", "expert"],
@@ -36,19 +37,21 @@ const Quiz = () => {
     })
 
     const { levelNames, userAnswer, idQuestion, quizLevel, maxQuestions, quizEnd, actualQuestion, actualAnswers, storageQuestions } = level
-
-    const questionsProps = questions[0].quiz.category[categoryNameUrl][levelNames[levelFirestore]]
+    const questionsProps = questions[0].quiz.category[categoryNameUrl][levelNames[quizLevel]]
 
     const loadQuestions = (arrayQuestions) => {
-        if (arrayQuestions) {
-            const fetchedQuestion = arrayQuestions[idQuestion].question
-            const fetchedAnswers = arrayQuestions[idQuestion].options
-            
-            if (fetchedQuestion.length >= maxQuestions) {
-                setLevel({...level, actualQuestion : fetchedQuestion, actualAnswers: fetchedAnswers, storageQuestions: arrayQuestions})   
 
-            } else {
-                console.log("Pas assez de questions !")
+        if (arrayQuestions) {
+            if (arrayQuestions.length > 0) {
+                const fetchedQuestion = arrayQuestions[idQuestion].question
+                const fetchedAnswers = arrayQuestions[idQuestion].options
+                
+                if (fetchedQuestion.length >= maxQuestions) {
+                    setLevel({...level, actualQuestion : fetchedQuestion, actualAnswers: fetchedAnswers})   
+    
+                } else {
+                    console.log("Pas assez de questions !")
+                }
             }
         }
     }
@@ -58,68 +61,68 @@ const Quiz = () => {
         const userId = auth.lastNotifiedUid
         const tropheeRef = doc(db, `users/${userId}/`)  //on update les données sur la clé existante déjà créée par firestore lors du sign up
         await updateDoc(tropheeRef, 
-            {[categoryNameUrl]: levelFirestore + 1},
+            {[categoryNameUrl]: quizLevel + 1}
         )
+        console.log("userId", userId, "tropheeRef", tropheeRef)
     }
 
-    useEffect(() => {   
+    // const getDataFromFirestore = async () => {
+    //     const userId = auth.lastNotifiedUid
+    //     const docRef = doc(db, `users/${userId}`);
+    //     const docSnap = await getDoc(docRef);
+    //     if (docSnap.exists()) {
+    //         const userData = docSnap.data()
+    //         setDataFirestore(userData)
+    //         console.log("getData", userData)
+    //     } else {
+    //         console.log("pas de données !");
+    //     } 
+    // }
 
-        console.log("USE EFFECT !")
-        const getDataFromFirestore = async () => {
-            const userId = auth.lastNotifiedUid
-            const docRef = doc(db, `users/${userId}`);
-            const docSnap = await getDoc(docRef);
+    const testFunction = (data) => {
+        console.log("testFunction", data)
 
-            if (docSnap.exists()) {
-                const userData = docSnap.data()
-                setStateFirestore(userData) 
-                if (levelFirestore === 0) {
-                   setLevelFirestore(0) 
-                //    setLevelFirestore(userData[categoryNameUrl]) 
+        if (data) {
+            console.log("testFunction IF", data)
 
-                   console.log("undefine YALALALAd")
-                }
-                else {
-                    setLevelFirestore(userData[categoryNameUrl] )
-                    console.log("getData", userData, categoryNameUrl, levelFirestore, stateFirestore)
-                }
-            } else {
-                console.log("pas de données !"); 
-            } 
-            setLoading(false)
+            const arrayDataFirestore = Object.getOwnPropertyNames(data)
+            const alreadyPlayed = arrayDataFirestore.includes(categoryNameUrl)
+            console.log(arrayDataFirestore,categoryNameUrl,alreadyPlayed)
         }
+    }
 
-        getDataFromFirestore()
-
-    },[idQuestion, levelFirestore, levelNames, loading])  
-
-console.log("stateFirestore", stateFirestore)
-    
     useEffect(() => {
-            console.log("lvlFirestore", levelFirestore)
+
+        const dataFromLocation = location.state
+        setDataFirestore(dataFromLocation)
+        testFunction(dataFirestore)
             if (questions) {
-                const arrayDataFirestore = Object.getOwnPropertyNames(stateFirestore)
-                const alreadyPlayed = arrayDataFirestore.includes(categoryNameUrl)
-                console.log("arrayDataFirestore", arrayDataFirestore, "stateFirestore", stateFirestore, "alreadyPlayed", alreadyPlayed )
-                if (alreadyPlayed) { 
-                    console.log("already played", alreadyPlayed)
-                    const arrayQuestions = questions[0].quiz.category[categoryNameUrl][levelNames[levelFirestore]]
+                // const arrayDataFirestore = Object.getOwnPropertyNames(dataFirestore)
+                // const alreadyPlayed = arrayDataFirestore.includes(categoryNameUrl)
+                // console.log(arrayDataFirestore,categoryNameUrl,alreadyPlayed) 
+                // if (alreadyPlayed) { 
+                //     console.log("IF")
+                //     const levelFirestore = dataFirestore[categoryNameUrl] 
+                //     const arrayQuestions = questions[0].quiz.category[categoryNameUrl][levelNames[levelFirestore]]
+                //     console.log(levelFirestore, arrayQuestions)
+                //     const arrayQuestionsWithoutRightAnswer = arrayQuestions.map(({answer, ...keepRest})=> { //on passe les questions sans la réponse dans le State
+                //         return keepRest
+                //     })
+                //     loadQuestions(arrayQuestionsWithoutRightAnswer) 
+                // } else {
+                    const arrayQuestions = questions[0].quiz.category[categoryNameUrl][levelNames[quizLevel]]
                     const arrayQuestionsWithoutRightAnswer = arrayQuestions.map(({answer, ...keepRest})=> { //on passe les questions sans la réponse dans le State
-                        return keepRest
-                    })
-                    loadQuestions(arrayQuestionsWithoutRightAnswer) 
-                } else {
-                    console.log("ELSE")
-                    const arrayQuestions = questions[0].quiz.category[categoryNameUrl][levelNames[0]]
-                    const arrayQuestionsWithoutRightAnswer = arrayQuestions.map(({answer, ...keepRest})=> {
                         return keepRest
                         })
                     loadQuestions(arrayQuestionsWithoutRightAnswer)  
-                } 
+            //     } 
             }
+        
+        setIsLoading(false)
+        // getDataFromFirestore()       /// ici j'ai voulu faire en sorte de récupérer sur firebase le level de la catégorie pour permettre à l'utilisateur de retomber directement sur la bonne série de questions en fonction de son niveau
 
-    },[idQuestion, levelFirestore, quizEnd, levelNames, loading, stateFirestore]) 
-
+    },[idQuestion, quizLevel, quizEnd, levelNames, isLoading]) 
+    // levelNames, userAnswer, idQuestion, quizLevel, maxQuestions, quizEnd, actualQuestion, actualAnswers
     const chooseAnswer = (answer) => {
         
         setActiveBtn(false)
@@ -138,7 +141,7 @@ console.log("stateFirestore", stateFirestore)
             setActiveBtn(true)
         }
         
-        const rightAnswer = questions[0].quiz.category[categoryNameUrl][levelNames[0]][idQuestion].answer
+        const rightAnswer = questions[0].quiz.category[categoryNameUrl][levelNames[quizLevel]][idQuestion].answer
         if (userAnswer === rightAnswer) {
             setScore((prevState) => prevState + 1)
             setArrayRightAnswers([...arrayRightAnswers, "1"])
@@ -148,30 +151,26 @@ console.log("stateFirestore", stateFirestore)
         }
     }
 
-    const loadLevelQuestions = (levelFromQuizOver, failed) => {
-        console.log("levelFromQuizOver", levelFromQuizOver)
-        setLevel({...level, quizEnd: false, idQuestion: 0})
-        setLevelFirestore(levelFromQuizOver)
+    const loadLevelQuestions = (levelProps, failed) => {
+        
+        setLevel({...level, quizLevel : levelProps, quizEnd: false, idQuestion: 0})
         setScore(0)
         setArrayRightAnswers([])
         if (failed !== "failed") {
             updateFirestore()
         }
     }
-
+console.log(dataFirestore)
     return (
         <div>
             <Navbar />
-            <Level levelNames={levelNames} quizLevel = {levelFirestore}/>
+            <Level levelNames={levelNames} quizLevel = {quizLevel}/>
             <ProgressBar maxQuestions={maxQuestions} idQuestion={idQuestion} quizEnd={quizEnd} nameCategory={categoryNameUrl} />
+            
             {
-                loading ? (
-                    <div>blablalbcsdvdsvsvsdvsdvsvsdvsdvlablbla</div>
-
-                ) : (
-                    quizEnd ? <QuizOver score = {score}
+                quizEnd ? <QuizOver score = {score}
                                     maxQuestions = {maxQuestions}
-                                    quizLevel = {levelFirestore}
+                                    quizLevel = {quizLevel}
                                     loadLevelQuestions = {loadLevelQuestions}
                                     levelNames={levelNames}
                                     nameCategory = {categoryNameUrl}
@@ -200,8 +199,6 @@ console.log("stateFirestore", stateFirestore)
                     </div>
                     <button disabled={activeBtn} onClick={nextQuestions} className ="validBtn">VALIDER</button>
                 </div>
-                )
-
             }
         </div>
     );

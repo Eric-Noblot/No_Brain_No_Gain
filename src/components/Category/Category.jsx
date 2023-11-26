@@ -60,7 +60,7 @@ const Category = ({userData}) => {
     const categorySelection = (game) => {
         if (game) {
             const arrayDataFirestore = Object.getOwnPropertyNames(dataFromFirestore) //ici je récupère le lvl sur firestore et je récupère toutes les données (dont les catégories qui m'interessent) dans un tableau afin de pouvoir faire la methode includes et checker si la catégorie (et donc un lvl deja passé) existe dans la db pour gérer si on affiche ou non la cup
-
+            console.log("arrayDataFirestore", arrayDataFirestore)
             const categoryObject = questions[0][game.toLowerCase()].category
             const categoryDisplay = Object.keys(categoryObject).map((category, index) => {
                 return  (
