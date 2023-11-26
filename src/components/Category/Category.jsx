@@ -115,7 +115,7 @@ const Category = ({userData}) => {
             case 1:return "rgb(201, 114, 60)"
             case 2: return "silver"
             case 3: return "gold"
-            default : return 
+            default : return "transparent"
         }
     }
 

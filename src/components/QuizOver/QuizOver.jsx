@@ -3,7 +3,7 @@ import { GiTrophyCup } from "react-icons/gi";
 import { useNavigate } from "react-router-dom"
 
 const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelNames, nameCategory, storageQuestions, arrayRightAnswers, updateFirestore}) => {
-
+    console.log("quizLevel", quizLevel)
     const navigate = useNavigate()
     
     const clickBackHome = (e) => { //je n'incrémente pas le trophee dans firestore si l'utilisateur revient au menu sans avoir validé le test
