@@ -1,14 +1,17 @@
 import "./quizOver.css"
 import { GiTrophyCup } from "react-icons/gi";
 import { useNavigate } from "react-router-dom"
+import { useState } from "react"
 
 const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelNames, nameCategory, storageQuestions, arrayRightAnswers, updateFirestore}) => {
-    console.log("storageQuestions", storageQuestions)
+
     const navigate = useNavigate()
-    
+    const [isFailed, setIsFailed] = useState(true)
+
+
     const clickBackHome = (e) => { //je n'incrémente pas le trophee dans firestore si l'utilisateur revient au menu sans avoir validé le test
-        const isFailed = e.target.className
-        if (isFailed === "backToMenu_failed") {
+        const isClassNameFailed = e.target.className
+        if (isClassNameFailed === "backToMenu_failed") {
             navigate("/home")
         } else {
             updateFirestore()
@@ -24,9 +27,8 @@ const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelName
                 <div className = "quizOver_title">
                     <p>{`Bien joué ! Tu remportes la coupe pour la catégorie ${nameGameCap} !`}</p>
                     <GiTrophyCup color = { "gold" } className = "trophee"/>
-
                 </div>
-                    <button onClick = {clickBackHome}>Retour au menu</button>
+                <button onClick = {clickBackHome}>Retour au menu</button>
             </div>
             : 
             <div className = "quizOver_title">
@@ -42,15 +44,24 @@ const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelName
             <button className = "backToMenu_failed" onClick = {clickBackHome}>Retour au menu</button>
         </div>
 
-    const tableQuestions = storageQuestions.map((question) => {
 
-        return (
-            <tr key={question.id}>
-                <td>{question.question}</td>
-                <td style={{color: arrayRightAnswers[question.id] === "1" ? "green" : "red"}}>{question.answer}</td>
+    const tableQuestions =  score >= 5  ? (
+        storageQuestions.map((question) => {
+            return (
+                <tr key={question.id}>
+                    <td>{question.question}</td>
+                    <td style={{color: arrayRightAnswers[question.id] === "1" ? "green" : "red"}}>{question.answer}</td>
+                </tr>
+            )
+        })
+    )   : (
+            <tr>
+                <td colSpan="3" style={{textAlign: "center"}}> {/* comme on a 3 colones normalement, on veut ce notre td remplisse tout le tableau */}
+                    Le quizz doit être validé pour avoir accès aux réponses !
+                </td>
             </tr>
         )
-    })
+
     
     return (
         <div className = "quizOver">

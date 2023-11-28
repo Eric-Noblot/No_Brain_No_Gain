@@ -9,7 +9,7 @@ import { useParams, useLocation } from "react-router-dom"
 import QuizOver from "../QuizOver/QuizOver"
 
 import { db, auth } from "../Firebase/firebase.js"
-import { doc, updateDoc, getDoc } from "firebase/firestore"; 
+import { doc, updateDoc } from "firebase/firestore"; 
 
 
 const Quiz = () => { 
@@ -21,11 +21,10 @@ const Quiz = () => {
     const [activeBtn, setActiveBtn] = useState(true)
     const [score, setScore] = useState(0)
     const [arrayRightAnswers, setArrayRightAnswers] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
     const [hasAlreadyPlayed, setHasAlreadyPlayed] = useState(false)
     const [levelFromCategory, setLevelFromCategory] = useState(0)
 
-    const levelFromDataFromCategory = dataFromCategory[categoryNameUrl]
+    let levelFromDataFromCategory = dataFromCategory[categoryNameUrl]
 
     const [level, setLevel] = useState({
         levelNames: ["debutant", "confirme", "expert"],
@@ -40,7 +39,6 @@ const Quiz = () => {
     })
 
     const { levelNames, userAnswer, idQuestion, quizLevel, maxQuestions, quizEnd, actualQuestion, actualAnswers, storageQuestions } = level
-    console.log("QUIZ LEVEL", quizLevel, "levelFromCategory", levelFromCategory)
     const loadQuestions = (arrayQuestions) => {
 
         if (arrayQuestions.length > 0) {
@@ -65,12 +63,14 @@ const Quiz = () => {
 
     useEffect(() => {
 
-        if (levelFromDataFromCategory) {
-            setLevelFromCategory(levelFromDataFromCategory)
+        if (levelFromDataFromCategory) {  //////// !!!!!!!!!!!!!!!! //////// au niveau 1 le quiz prend un +2
+            levelFromDataFromCategory < quizLevel ? setLevelFromCategory(quizLevel) : setLevelFromCategory(levelFromDataFromCategory)
             setHasAlreadyPlayed(true)
+
         } else {
-            setHasAlreadyPlayed(false)
+            setHasAlreadyPlayed(false) 
         }
+        console.log("QUIZ LEVEL", quizLevel, "levelFromDataFromCategory", levelFromDataFromCategory)
 
         if (questions) {
             let arrayQuestions = []

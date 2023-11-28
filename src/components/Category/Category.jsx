@@ -9,7 +9,7 @@ import dbzPicture from "../../img/category/dbz.jpg"
 import marvelPicture from "../../img/category/marvel.webp"
 import cyberpunkPicture from "../../img/category/cyberpunk.webp"
 import { GiTrophyCup } from "react-icons/gi";
-import { getDoc, doc } from "firebase/firestore"
+import { getDoc, doc, deleteField, updateDoc } from "firebase/firestore"
 import { db, auth } from "../Firebase/firebase.js"
 
 const Category = ({userData}) => {
@@ -88,6 +88,12 @@ const Category = ({userData}) => {
         setIsSelected({...isSelected, category: true})
     }
 
+    const restartQuiz = async (e) => {
+        await deleteDataFromFirestore()
+        setCategoryName(e.target.textContent) 
+        setIsSelected({...isSelected, category: true})
+    }
+
     const capitalizePseudo = (name) => {
         if (name) {
             const userNameCapital = name[0].toUpperCase() + name.slice(1).toLowerCase()
@@ -110,19 +116,26 @@ const Category = ({userData}) => {
         }
     }
 
-    const handleLink = () => {
-        let rightLink = ""
+    const deleteDataFromFirestore = async () => {
+        const userId = auth.lastNotifiedUid
+        const docRef = doc(db, `users/${userId}`)
+        await updateDoc(docRef, {
+            [categoryName.toLowerCase()] : deleteField()
+        })
+        // await deleteDoc(doc(db, `users/${userId}/${categoryName.toLowerCase()}`));
+    }
 
-        if (levelCategory < 3) {
-            console.log("IF")
+    const handleLink = () => {
+
+        let rightLink = ""
+        if (levelCategory < 3 || levelCategory === undefined) {
             rightLink = (
                 <Link state = {{dataFromCategory: dataFromFirestore}} onClick ={getCategoryName} className = "category_link" to={`/game/${gameName.toLocaleLowerCase()}/${categoryName.toLowerCase()}`}>
-                VALIDER
+                {levelCategory === undefined ? "COMMENCER" : "CONTINUER"}
                 </Link>)
         } else {
-            console.log("ELSE")
             rightLink = (
-                <Link state = {{dataFromCategory: dataFromFirestore}} onClick ={getCategoryName} className = "category_link" to={`/game/${gameName.toLocaleLowerCase()}/${categoryName.toLowerCase()}`}>
+                <Link state = {{dataFromCategory: dataFromFirestore}} onClick ={restartQuiz} className = "category_link" to={`/game/${gameName.toLocaleLowerCase()}/${categoryName.toLowerCase()}`}>
                 REJOUER
                 </Link>)
         }
