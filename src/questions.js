@@ -345,7 +345,7 @@ export const questions = [
                     debutant: [
                         {
                             id: 0,
-                            question: "Qui est SanGoku ??",
+                            question: "Qui est SanGoku debutant ??",
                             options: [
                                 "The X-Men",
                                 "The Fantastic Four",
@@ -356,7 +356,7 @@ export const questions = [
                         },
                         {
                             id: 1,
-                            question: "Qui est Piccolo ??",
+                            question: "Qui est Piccolo  debutant ??",
                             options: [
                                 "The X-Men",
                                 "The Fantastic Four",
@@ -367,7 +367,7 @@ export const questions = [
                         },
                         {
                             id: 2,
-                            question: "Qui est Vegeta ??",
+                            question: "Qui est Vegeta  debutant ??",
                             options: [
                                 "The X-Men",
                                 "The Fantastic Four",
@@ -477,7 +477,7 @@ export const questions = [
                         },
                         {
                             id: 1,
-                            question: "Quel super héros est intéressé par Sue Storm?",
+                            question: "Quel super héros est intéressé par Sue Storm? confirme",
                             options: [
                                 "X-Men",
                                 "Illuminati",
@@ -489,7 +489,7 @@ export const questions = [
                         },
                         {
                             id: 2,
-                            question: "Quel humain devient surpuissant grâce à une armure de haute technologie ?",
+                            question: "Quel humain devient surpuissant grâce à une armure de haute technologie ? confirme",
                             options: [
                                 "Cyclope",
                                 "Iron Man",
@@ -599,7 +599,7 @@ export const questions = [
                         },
                         {
                             id: 1,
-                            question: "Quel super héros est intéressé par Sue Storm?",
+                            question: "Quel super héros est intéressé par Sue Storm? expert",
                             options: [
                                 "X-Men",
                                 "Illuminati",
@@ -611,7 +611,7 @@ export const questions = [
                         },
                         {
                             id: 2,
-                            question: "Quel humain devient surpuissant grâce à une armure de haute technologie ?",
+                            question: "Quel humain devient surpuissant grâce à une armure de haute technologie ? expert",
                             options: [
                                 "Cyclope",
                                 "Iron Man",

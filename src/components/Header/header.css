@@ -41,10 +41,6 @@
     color: white;
 }
 
-.header__logout {
-    height: 60px; 
-}
-
 .nogain {
     color: rgb(189, 94, 91);
     text-shadow: 0 0 10px black;

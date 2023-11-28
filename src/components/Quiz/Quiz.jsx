@@ -70,7 +70,7 @@ const Quiz = () => {
         } else {
             setHasAlreadyPlayed(false) 
         }
-        console.log("QUIZ LEVEL", quizLevel, "levelFromDataFromCategory", levelFromDataFromCategory)
+        // console.log("QUIZ LEVEL", quizLevel, "levelFromDataFromCategory", levelFromDataFromCategory)
 
         if (questions) {
             let arrayQuestions = []
@@ -118,10 +118,11 @@ const Quiz = () => {
         }
     }
 
-    const loadLevelQuestions = (levelProps, failed) => {
+    const loadLevelQuestions = (levelFromQuizOver, failed) => {
         
-        setLevel({...level, quizLevel : levelProps, quizEnd: false, idQuestion: 0})
+        setLevel({...level, quizLevel : levelFromQuizOver, quizEnd: false, idQuestion: 0})
         setScore(0)
+        setLevelFromCategory(levelFromQuizOver)
         setArrayRightAnswers([])
         if (failed !== "failed") {
             updateFirestore()

@@ -9,42 +9,9 @@ import Game from "./components/Game/Game"
 import Jeux from "./components/jeux"
 import Test from "./components/test"
 import "bootstrap/dist/css/bootstrap.min.css"; //à ajouter pour faire apparaitre les élements de react-bootstrap
-import { useEffect, useState} from "react"
-import { getDoc, doc } from "firebase/firestore"
-import { db, auth } from "./components/Firebase/firebase.js"
 
 function App() {
 
-  // const [dataFromFirestore, setDataFromFirestore] = useState(0)
-
-  // const useCallback = async () => {
-
-
-  // }
-
-  // const getDataFromFirestore = async () => {
-
-  //   const userId = auth.lastNotifiedUid
-
-  //   const docRef = doc(db, `users/${userId}`);
-  //   const docSnap = await getDoc(docRef);
-    
-  //   if (docSnap.exists()) {
-  //       const userData = docSnap.data()
-  //       setDataFromFirestore(userData)
-  //       console.log(userData)
-  //   } else {
-  //       console.log("pas de données !");       
-  //   }
-  // }
-
-  // useEffect(() => {
-
-
-  // getDataFromFirestore()
-
-  // },[])
-  
   return (
     <Router>
         <Routes>

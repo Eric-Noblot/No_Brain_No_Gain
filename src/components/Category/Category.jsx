@@ -91,7 +91,7 @@ const Category = ({userData}) => {
     const restartQuiz = async (e) => {
         await deleteDataFromFirestore()
         setCategoryName(e.target.textContent) 
-        setIsSelected({...isSelected, category: true})
+        setIsSelected({...isSelected, category: false})
     }
 
     const capitalizePseudo = (name) => {
@@ -128,16 +128,21 @@ const Category = ({userData}) => {
     const handleLink = () => {
 
         let rightLink = ""
-        if (levelCategory < 3 || levelCategory === undefined) {
+        if (levelCategory < 3 || levelCategory === undefined) { //undefined est déclenché lorsque le level est inexistant dans la base db, ca veut donc dire que l'utilisateur clique pour la 1ere fois sur une catégorie
             rightLink = (
                 <Link state = {{dataFromCategory: dataFromFirestore}} onClick ={getCategoryName} className = "category_link" to={`/game/${gameName.toLocaleLowerCase()}/${categoryName.toLowerCase()}`}>
                 {levelCategory === undefined ? "COMMENCER" : "CONTINUER"}
                 </Link>)
         } else {
             rightLink = (
-                <Link state = {{dataFromCategory: dataFromFirestore}} onClick ={restartQuiz} className = "category_link" to={`/game/${gameName.toLocaleLowerCase()}/${categoryName.toLowerCase()}`}>
-                REJOUER
-                </Link>)
+                // <Link state = {{dataFromCategory: dataFromFirestore}} onClick ={restartQuiz} className = "category_link" to={`/game/${gameName.toLocaleLowerCase()}/${categoryName.toLowerCase()}`}>
+                <>
+                <div>Pour rejouer cette catégorie, tu dois supprimer ta progression actuelle...</div>
+                <Link onClick ={restartQuiz} className = "category_link" to={`/home`}>
+                SUPPRIMER
+                </Link>
+                
+                </>)
         }
         return rightLink
     }
