@@ -3,7 +3,7 @@ import { GiTrophyCup } from "react-icons/gi";
 import { useNavigate } from "react-router-dom"
 
 const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelNames, nameCategory, storageQuestions, arrayRightAnswers, updateFirestore}) => {
-    console.log("quizLevel", quizLevel)
+    console.log("storageQuestions", storageQuestions)
     const navigate = useNavigate()
     
     const clickBackHome = (e) => { //je n'incrémente pas le trophee dans firestore si l'utilisateur revient au menu sans avoir validé le test
@@ -43,6 +43,7 @@ const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelName
         </div>
 
     const tableQuestions = storageQuestions.map((question) => {
+
         return (
             <tr key={question.id}>
                 <td>{question.question}</td>
@@ -51,24 +52,6 @@ const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelName
         )
     })
     
-    //////////////////////////////////
-        // :////////////////////////////////////////
-
-        // const handleFirestore = async () => {
-
-        //     const userId = auth.lastNotifiedUid
-            
-            // const userId = auth.lastNotifiedUid
-            // await setDoc(doc(db, `users/${userId}`), { //pour créer des données
-            //     [nameCategory]: quizLevel + 1
-            // });
-
-            // const tropheeRef = doc(db, `users/${userId}/`)  //on updtate les données sur la clé existante déjà créée par firestore lors du sign up
-            // await updateDoc(tropheeRef, 
-            //     {[nameCategory]: quizLevel + 1}
-            // )
-        // }
-
     return (
         <div className = "quizOver">
             {decision}
@@ -89,8 +72,6 @@ const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelName
                     </tbody>
                 </table>
             </div>
-        {/* <button onClick={handleFirestore}>FIRESTORE</button> */}
-
         </div>
     );
 };

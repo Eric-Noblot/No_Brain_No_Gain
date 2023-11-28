@@ -24,6 +24,7 @@ const Category = ({userData}) => {
     const [gameName, setgameName] = useState("")
     const [categoryName, setCategoryName] = useState("")
     const [dataFromFirestore, setDataFromFirestore] = useState("")
+    const [levelCategory, setLevelCategory] = useState(0)
 
     const getPicture = (category) => {
 
@@ -60,8 +61,8 @@ const Category = ({userData}) => {
     const categorySelection = (game) => {
         if (game) {
             const arrayDataFirestore = Object.getOwnPropertyNames(dataFromFirestore) //ici je récupère le lvl sur firestore et je récupère toutes les données (dont les catégories qui m'interessent) dans un tableau afin de pouvoir faire la methode includes et checker si la catégorie (et donc un lvl deja passé) existe dans la db pour gérer si on affiche ou non la cup
-            console.log("arrayDataFirestore", arrayDataFirestore)
             const categoryObject = questions[0][game.toLowerCase()].category
+
             const categoryDisplay = Object.keys(categoryObject).map((category, index) => {
                 return  (
                         <div onClick ={getCategoryName} className = {`box_card ${category === categoryName.toLowerCase() ? "boxActive" : null}`} key={index}>
@@ -92,7 +93,6 @@ const Category = ({userData}) => {
             const userNameCapital = name[0].toUpperCase() + name.slice(1).toLowerCase()
             return userNameCapital
         }
-
     }
 
     const getDataFromFirestore = async () => {
@@ -104,9 +104,29 @@ const Category = ({userData}) => {
         if (docSnap.exists()) {
             const userData = docSnap.data()
             setDataFromFirestore(userData)
+            setLevelCategory(userData[categoryName.toLowerCase()])
         } else {
             console.log("pas de données !");
         }
+    }
+
+    const handleLink = () => {
+        let rightLink = ""
+
+        if (levelCategory < 3) {
+            console.log("IF")
+            rightLink = (
+                <Link state = {{dataFromCategory: dataFromFirestore}} onClick ={getCategoryName} className = "category_link" to={`/game/${gameName.toLocaleLowerCase()}/${categoryName.toLowerCase()}`}>
+                VALIDER
+                </Link>)
+        } else {
+            console.log("ELSE")
+            rightLink = (
+                <Link state = {{dataFromCategory: dataFromFirestore}} onClick ={getCategoryName} className = "category_link" to={`/game/${gameName.toLocaleLowerCase()}/${categoryName.toLowerCase()}`}>
+                REJOUER
+                </Link>)
+        }
+        return rightLink
     }
 
     const getCupColor = (levelTrophee) => {
@@ -121,9 +141,8 @@ const Category = ({userData}) => {
 
     useEffect(() => {
         getDataFromFirestore()
+    },[categoryName, gameName,levelCategory])
 
-    },[])
-console.log(dataFromFirestore)
     return (
         <main className="category">
             <p className= "welcome_title">Bienvenue {capitalizePseudo(pseudo)} ! <br /><br /></p>
@@ -136,9 +155,8 @@ console.log(dataFromFirestore)
                 <>
                     <div className ="category_rules">
                         <p>Le quiz comporte 3 niveaux de difficulté. Chaque niveau comporte 10 questions. <br />
-                        Si tu obtiens au moins 7 bonnes réponses, tu peux passer au niveau supérieur! <br/>
-                        Pour chaque palier atteint, tu obtiendras une coupe représentant ton classement dans cette catégorie.<br/>
-                        Passe les 3 niveaux de difficulté à la suite pour remporter la Coupe en OR !
+                        Si tu obtiens au moins 7 bonnes réponses par série, tu peux passer au niveau supérieur! <br/>
+                        Valide tous les niveaux d'une catégorie pour remporter la coupe en OR !<br/>
                         </p>
                     </div>
                     <p className= "game_title">Choisis une catégorie !</p>
@@ -151,9 +169,7 @@ console.log(dataFromFirestore)
             }
             {
                 isSelected.category ? (
-                        <Link state = {{dataFirestore: dataFromFirestore}} onClick ={getCategoryName} className = "category_link" to={`/game/${gameName.toLocaleLowerCase()}/${categoryName.toLowerCase()}`}>
-                        VALIDER
-                        </Link>
+                    handleLink()
                 )
                 : null
             }

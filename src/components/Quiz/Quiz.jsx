@@ -15,14 +15,17 @@ import { doc, updateDoc, getDoc } from "firebase/firestore";
 const Quiz = () => { 
 
     const location = useLocation()
-
+    const { dataFromCategory } = location.state
     const categoryNameUrl = useParams({}).category
 
     const [activeBtn, setActiveBtn] = useState(true)
     const [score, setScore] = useState(0)
     const [arrayRightAnswers, setArrayRightAnswers] = useState([])
-    const [dataFirestore, setDataFirestore] = useState()
     const [isLoading, setIsLoading] = useState(true)
+    const [hasAlreadyPlayed, setHasAlreadyPlayed] = useState(false)
+    const [levelFromCategory, setLevelFromCategory] = useState(0)
+
+    const levelFromDataFromCategory = dataFromCategory[categoryNameUrl]
 
     const [level, setLevel] = useState({
         levelNames: ["debutant", "confirme", "expert"],
@@ -37,21 +40,17 @@ const Quiz = () => {
     })
 
     const { levelNames, userAnswer, idQuestion, quizLevel, maxQuestions, quizEnd, actualQuestion, actualAnswers, storageQuestions } = level
-    const questionsProps = questions[0].quiz.category[categoryNameUrl][levelNames[quizLevel]]
-
+    console.log("QUIZ LEVEL", quizLevel, "levelFromCategory", levelFromCategory)
     const loadQuestions = (arrayQuestions) => {
 
-        if (arrayQuestions) {
-            if (arrayQuestions.length > 0) {
-                const fetchedQuestion = arrayQuestions[idQuestion].question
-                const fetchedAnswers = arrayQuestions[idQuestion].options
-                
-                if (fetchedQuestion.length >= maxQuestions) {
-                    setLevel({...level, actualQuestion : fetchedQuestion, actualAnswers: fetchedAnswers})   
-    
-                } else {
-                    console.log("Pas assez de questions !")
-                }
+        if (arrayQuestions.length > 0) {
+            const fetchedQuestion = arrayQuestions[idQuestion].question
+            const fetchedAnswers = arrayQuestions[idQuestion].options
+            if (fetchedQuestion.length >= maxQuestions) {
+                setLevel({...level, actualQuestion : fetchedQuestion, actualAnswers: fetchedAnswers, storageQuestions :arrayQuestions})   
+
+            } else {
+                console.log("Pas assez de questions !")
             }
         }
     }
@@ -61,68 +60,36 @@ const Quiz = () => {
         const userId = auth.lastNotifiedUid
         const tropheeRef = doc(db, `users/${userId}/`)  //on update les données sur la clé existante déjà créée par firestore lors du sign up
         await updateDoc(tropheeRef, 
-            {[categoryNameUrl]: quizLevel + 1}
-        )
-        console.log("userId", userId, "tropheeRef", tropheeRef)
-    }
-
-    // const getDataFromFirestore = async () => {
-    //     const userId = auth.lastNotifiedUid
-    //     const docRef = doc(db, `users/${userId}`);
-    //     const docSnap = await getDoc(docRef);
-    //     if (docSnap.exists()) {
-    //         const userData = docSnap.data()
-    //         setDataFirestore(userData)
-    //         console.log("getData", userData)
-    //     } else {
-    //         console.log("pas de données !");
-    //     } 
-    // }
-
-    const testFunction = (data) => {
-        console.log("testFunction", data)
-
-        if (data) {
-            console.log("testFunction IF", data)
-
-            const arrayDataFirestore = Object.getOwnPropertyNames(data)
-            const alreadyPlayed = arrayDataFirestore.includes(categoryNameUrl)
-            console.log(arrayDataFirestore,categoryNameUrl,alreadyPlayed)
-        }
+            {[categoryNameUrl]: hasAlreadyPlayed ? levelFromCategory + 1 : quizLevel + 1})
     }
 
     useEffect(() => {
 
-        const dataFromLocation = location.state
-        setDataFirestore(dataFromLocation)
-        testFunction(dataFirestore)
-            if (questions) {
-                // const arrayDataFirestore = Object.getOwnPropertyNames(dataFirestore)
-                // const alreadyPlayed = arrayDataFirestore.includes(categoryNameUrl)
-                // console.log(arrayDataFirestore,categoryNameUrl,alreadyPlayed) 
-                // if (alreadyPlayed) { 
-                //     console.log("IF")
-                //     const levelFirestore = dataFirestore[categoryNameUrl] 
-                //     const arrayQuestions = questions[0].quiz.category[categoryNameUrl][levelNames[levelFirestore]]
-                //     console.log(levelFirestore, arrayQuestions)
-                //     const arrayQuestionsWithoutRightAnswer = arrayQuestions.map(({answer, ...keepRest})=> { //on passe les questions sans la réponse dans le State
-                //         return keepRest
-                //     })
-                //     loadQuestions(arrayQuestionsWithoutRightAnswer) 
-                // } else {
-                    const arrayQuestions = questions[0].quiz.category[categoryNameUrl][levelNames[quizLevel]]
-                    const arrayQuestionsWithoutRightAnswer = arrayQuestions.map(({answer, ...keepRest})=> { //on passe les questions sans la réponse dans le State
-                        return keepRest
-                        })
-                    loadQuestions(arrayQuestionsWithoutRightAnswer)  
-            //     } 
-            }
-        
-        setIsLoading(false)
-        // getDataFromFirestore()       /// ici j'ai voulu faire en sorte de récupérer sur firebase le level de la catégorie pour permettre à l'utilisateur de retomber directement sur la bonne série de questions en fonction de son niveau
+        if (levelFromDataFromCategory) {
+            setLevelFromCategory(levelFromDataFromCategory)
+            setHasAlreadyPlayed(true)
+        } else {
+            setHasAlreadyPlayed(false)
+        }
 
-    },[idQuestion, quizLevel, quizEnd, levelNames, isLoading]) 
-    // levelNames, userAnswer, idQuestion, quizLevel, maxQuestions, quizEnd, actualQuestion, actualAnswers
+        if (questions) {
+            let arrayQuestions = []
+            if (hasAlreadyPlayed) { 
+                arrayQuestions = questions[0].quiz.category[categoryNameUrl][levelNames[levelFromCategory]]
+            } else {
+                arrayQuestions = questions[0].quiz.category[categoryNameUrl][levelNames[quizLevel]]
+            }
+            // const arrayQuestionsWithoutRightAnswer = arrayQuestions.map(({answer, ...keepRest})=> { //        ici j'ai enlevé l'idée de retirer la réponse dans les questions (pour pas qu'un user puisse chopper les reponses dans le localStorage, mais pour des raisons pratiques je remets la reponse pour l'envoyer en props à quiz Over et les afficher toutes)
+            const arrayQuestionsData = arrayQuestions.map((question)=> { 
+            return question
+                })
+            loadQuestions(arrayQuestionsData)  
+            
+        }  
+        // setIsLoading(false)
+
+    },[idQuestion, quizLevel, quizEnd, levelNames, hasAlreadyPlayed, ]) 
+
     const chooseAnswer = (answer) => {
         
         setActiveBtn(false)
@@ -141,7 +108,7 @@ const Quiz = () => {
             setActiveBtn(true)
         }
         
-        const rightAnswer = questions[0].quiz.category[categoryNameUrl][levelNames[quizLevel]][idQuestion].answer
+        const rightAnswer = hasAlreadyPlayed ? questions[0].quiz.category[categoryNameUrl][levelNames[levelFromCategory]][idQuestion].answer : questions[0].quiz.category[categoryNameUrl][levelNames[quizLevel]][idQuestion].answer
         if (userAnswer === rightAnswer) {
             setScore((prevState) => prevState + 1)
             setArrayRightAnswers([...arrayRightAnswers, "1"])
@@ -160,30 +127,30 @@ const Quiz = () => {
             updateFirestore()
         }
     }
-console.log(dataFirestore)
+
     return (
         <div>
             <Navbar />
-            <Level levelNames={levelNames} quizLevel = {quizLevel}/>
+            <Level levelNames={levelNames} quizLevel = {hasAlreadyPlayed ? levelFromCategory : quizLevel}/>
             <ProgressBar maxQuestions={maxQuestions} idQuestion={idQuestion} quizEnd={quizEnd} nameCategory={categoryNameUrl} />
             
             {
-                quizEnd ? <QuizOver score = {score}
-                                    maxQuestions = {maxQuestions}
-                                    quizLevel = {quizLevel}
-                                    loadLevelQuestions = {loadLevelQuestions}
-                                    levelNames={levelNames}
-                                    nameCategory = {categoryNameUrl}
-                                    storageQuestions = {questionsProps}
-                                    arrayRightAnswers = {arrayRightAnswers}
-                                    updateFirestore = {updateFirestore}
-                                    />
+                quizEnd ? 
+                <QuizOver score = {score}
+                    maxQuestions = {maxQuestions}
+                    quizLevel = {hasAlreadyPlayed ? levelFromCategory : quizLevel}
+                    loadLevelQuestions = {loadLevelQuestions}
+                    levelNames={levelNames}
+                    nameCategory = {categoryNameUrl}
+                    storageQuestions = {storageQuestions}
+                    arrayRightAnswers = {arrayRightAnswers}
+                    updateFirestore = {updateFirestore}
+                    />
                 : 
                 <div className = "questionCont">
                     <div className = "questionFrame">
                         <div className = "questionBox">
                             <p className="question">{actualQuestion}</p>
-        
                             <ul>
                                 {
                                 actualAnswers.map((answer, index) => {
@@ -194,7 +161,6 @@ console.log(dataFirestore)
                                         </li>})
                                 }
                             </ul>   
-        
                         </div>
                     </div>
                     <button disabled={activeBtn} onClick={nextQuestions} className ="validBtn">VALIDER</button>
