@@ -50,14 +50,20 @@
 
     .bgHeader > h1 {
         font-size: 45px;
-        color: white;
     }
 }
-    @media(max-width: 500px) {
+@media(max-width: 500px) {
 
-        .bgHeader > h1 {
-            font-size: 35px;
-            color: white;
-        }
+    .bgHeader > h1 {
+        font-size: 35px;
+    }
+    
+}
+
+@media(max-width: 500px) {
+
+    .bgHeader > h1 {
+        font-size: 32px;
+    }
     
 }

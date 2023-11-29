@@ -18,6 +18,7 @@
     margin-bottom: 30px;
     margin-top: 10px;
     gap: 5px;
+
 }
 
 .category_title {
@@ -26,9 +27,11 @@
     justify-content: center;
     align-items: center;
     padding: 0 5px;
+    font-size: 22px;
 }
 
-.box_card {
+
+.box_card_category {
     width: 200px;
     height: 150px;
     cursor: pointer;
@@ -43,7 +46,6 @@
     transition: all 0.3s ease-out;
     border-radius: 35px 35px 0 0;
     border: 2px solid white;
-
 }
 .box_card:hover {
     background: rgba(142, 39, 34, 0.299);
@@ -59,6 +61,22 @@
     box-shadow: 0 0 20px white;
 }
 
+.box_card_game {
+    width: 250px;
+    height: 150px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-direction: column;
+    color: white;
+    font-size: 23px;
+    margin: 10px 10px;
+    /* clip-path: circle(90% at 60px 15%); */
+    transition: all 0.3s ease-out;
+    border-radius: 35px 35px 0 0;
+    border: 2px solid white;
+}
 .game_title {
     text-align: center;
     line-height: 22px;
@@ -66,6 +84,14 @@
     padding: 10px 30px;
     border-radius: 10px;
     margin-top: 25px;
+}
+.game_picture {
+    height: 100px;
+    width: 100%;
+    border-radius: 30px 30px 0 0;
+    object-fit: cover;
+    pointer-events: none;
+    margin-bottom: 4px;
 }
 
 .game_p {
@@ -110,7 +136,7 @@
 }
 
 .category_picture {
-    height: 100px;
+    height: 105px;
     width: 100%;
     border-radius: 30px 30px 0 0;
     object-fit: cover;
@@ -132,6 +158,17 @@
 }
 
 @media (max-width: 500px) {
+
+    .box_card_category {
+        width: 170px;
+        height: 130px;
+    }
+    .category_picture {
+        height: 87px;
+    }
+    .category_title {
+        font-size: 18px;
+    }
     .game_title {
         text-align: center;
         line-height: 22px;
@@ -146,4 +183,44 @@
         margin-top: 25px;
     }
 
+}
+
+@media (max-width: 440px) {
+    .box_card_category {
+        width: 150px;
+        height: 115px;
+    }
+    .category_picture {
+        height: 80px;
+    }
+    .category_title {
+        font-size: 15px;
+    }
+}
+
+
+@media (max-width: 400px) {
+    .box_card_category {
+        width: 140px;
+        height: 105px;
+    }
+    .category_picture {
+        height: 70px;
+    }
+    .category_title {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 370px) {
+    .box_card_category {
+        width: 125px;
+        height: 105px;
+    }
+    .category_picture {
+        height: 70px;
+    }
+    .category_title {
+        font-size: 12px;
+    }
 }

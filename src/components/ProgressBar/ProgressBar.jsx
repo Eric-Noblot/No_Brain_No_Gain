@@ -1,9 +1,26 @@
 import "./progressBar.css"
 // import ProgressBar from 'react-bootstrap/ProgressBar';
 import React from "react"
+
+import anglaisPicture from "../../img/category/anglais.jpg"
+import animauxPicture from "../../img/category/animaux.jpg"
+import bookPicture from "../../img/category/book.avif"
+import cartoonPicture from "../../img/category/cartoon.jpg"
+import cinemaPicture from "../../img/category/cinema.jpg"
 import dbzPicture from "../../img/category/dbz.jpg"
+import espacePicture from "../../img/category/espace.webp"
+import francaisPicture from "../../img/category/francais.jpg"
+import jeuxvideoPicture from "../../img/category/jeuxvideo.avif"
 import marvelPicture from "../../img/category/marvel.webp"
-import cyberpunkPicture from "../../img/category/cyberpunk.webp"
+import mathsPicture from "../../img/category/maths.jpg"
+import musiquePicture from "../../img/category/musique.webp"
+import naturePicture from "../../img/category/nature.jpg"
+import planetePicture from "../../img/category/planete.jpg"
+import sciencePicture from "../../img/category/science.jpg"
+import simpsonsPicture from "../../img/category/simpsons.avif"
+import sportPicture from "../../img/category/sport.jpg"
+import voyagesPicture from "../../img/category/voyages.jpg"
+
 
 const ProgressBar = ({maxQuestions, idQuestion, quizEnd, nameCategory}) => {
 
@@ -21,12 +38,46 @@ const ProgressBar = ({maxQuestions, idQuestion, quizEnd, nameCategory}) => {
     const getPicture = (category) => {
 
         switch (category) {
+
+            case "anglais" : 
+            return anglaisPicture
+            case "animaux" : 
+            return animauxPicture
+            case "book" : 
+            return bookPicture
+            case "cartoon" : 
+            return cartoonPicture
+            case "cinema" : 
+            return cinemaPicture
             case "dbz" : 
             return dbzPicture
+            case "espace" : 
+            return espacePicture
+            case "français" : 
+            return francaisPicture
+            case "jeux-vidéo" : 
+            return jeuxvideoPicture
             case "marvel" : 
             return marvelPicture
-            case "cyberpunk" : 
-            return cyberpunkPicture
+            case "maths" : 
+            return mathsPicture
+            case "musique" : 
+            return musiquePicture
+            case "nature" : 
+            return naturePicture
+            case "planète" : 
+            return planetePicture
+            case "science" : 
+            return sciencePicture
+            case "simpsons" : 
+            return simpsonsPicture
+            case "sport" : 
+            return sportPicture
+            case "voyages" : 
+            return voyagesPicture
+
+            default :
+            return "Error"
         }
     }
 

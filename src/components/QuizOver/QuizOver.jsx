@@ -45,7 +45,7 @@ const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelName
         </div>
 
 
-    const tableQuestions =  score >= 5  ? (
+    const tableQuestions =  score >= 0  ? (
         storageQuestions.map((question) => {
             return (
                 <tr key={question.id}>
@@ -67,7 +67,7 @@ const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelName
         <div className = "quizOver">
             {decision}
             <div className = "quizOver_progress">
-                <div className = "quizOver_progress_box">{`Taux de réussite : ${score} / ${maxQuestions}`}</div>
+                <div className = "quizOver_progress_box">{`Réponses : ${score} / ${maxQuestions}`}</div>
                 <div className = "quizOver_progress_box">{`Score : ${score * 10} pts`}</div>
             </div>
             <div className = "quizOver_answers">

@@ -1,6 +1,6 @@
 
 .progressBar {
-    width: 65%;
+    width: 70%;
     height: 180px;
     margin: 50px auto;
     display: flex;
@@ -9,12 +9,7 @@
     border-radius: 45px;
     position: relative;
     background-color: white;
-
-}
-    /* object-fit: contain;
-    box-sizing: border-box; */
-   
-    
+}   
 
  .progress_cont {
     width: 100%;
@@ -47,15 +42,15 @@
     justify-content: center;
     align-items: center;
     z-index: 50;
-
 }
 
 .progressBar_box {
-    background-color: rgba(241, 244, 244, 0.668);
-    height: 40px;
+    background-color: rgba(241, 244, 244, 0.442);
+    height: 20px;
     width: 100%;
     border-radius: 15px;
-    padding: 12px;
+    padding: 4px;
+    
 }
 
 .progressBar_img {
@@ -69,11 +64,11 @@
 }
 
 .progressBarLine {
-    height: 100%;
     width: 80px;
-    transition: width 0.5s;
-    background: linear-gradient(to right,  rgba(14, 14, 14, 0.874), rgba(165, 164, 165, 0.764), rgba(239, 171, 44, 0.874));
-    border-radius: 15px;
+    height: 12px;
+    transition: width 0.6s;
+    background: linear-gradient(170deg,  rgba(55, 55, 55, 0.799), rgba(163, 162, 163, 0.764), rgba(130, 1, 132, 0.629));
+    border-radius: 20px;
 
 }
 
@@ -90,7 +85,7 @@
     left: 0px;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top,  rgba(81, 81, 77, 0.074), rgba(19, 18, 18, 0.326));
+    background: linear-gradient(to top,  rgba(81, 81, 77, 0.055), rgba(19, 18, 18, 0.39));
     border-radius: 15px 15px;
 }
 
@@ -120,6 +115,10 @@
     .progress_quiz {
         font-size: 24px;
     }
+}
 
-    
+@media (max-width: 570px) {
+    .progressBar {
+        width: 85%;
+    }
 }

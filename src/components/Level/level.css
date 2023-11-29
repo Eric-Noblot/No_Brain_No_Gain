@@ -6,3 +6,9 @@
     margin: 20px auto;
     height: 100px;
 }
+
+@media (max-width: 570px) {
+    .level {
+        width: 85%;
+    }
+}

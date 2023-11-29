@@ -12,7 +12,7 @@
     padding: 8px;
     border-radius: 5px;
     border: 2px solid white;
-    width: 65%;
+    width: 70%;
 }
 
 .questionBox {
@@ -81,10 +81,15 @@
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 570px) {
+    .questionFrame {
+        width: 85%;
+    }
+}
+@media (max-width: 450px) {
     
     .question {
-        font-size: 16px;
+        font-size: 15px;
     }
 
     .answer {

@@ -1,16 +1,34 @@
 import "./category.css"
 import {questions} from "../../questions.js"
 import { Link } from "react-router-dom"
-import { useState, useEffect, useRef } from "react"
-import quizPicture from "../../img/category/quiz.avif"
-import jeuxPicture from "../../img/category/jeux.png" 
-import testPicture from "../../img/category/test.png"
-import dbzPicture from "../../img/category/dbz.jpg"
-import marvelPicture from "../../img/category/marvel.webp"
-import cyberpunkPicture from "../../img/category/cyberpunk.webp"
+import { useState, useEffect} from "react"
 import { GiTrophyCup } from "react-icons/gi";
 import { getDoc, doc, deleteField, updateDoc } from "firebase/firestore"
 import { db, auth } from "../Firebase/firebase.js"
+import { useMediaQuery } from "react-responsive"
+
+import quizPicture from "../../img/game/quiz.avif"
+import jeuxPicture from "../../img/game/jeux.png" 
+import testPicture from "../../img/game/test.png"
+
+import anglaisPicture from "../../img/category/anglais.jpg"
+import animauxPicture from "../../img/category/animaux.jpg"
+import bookPicture from "../../img/category/book.avif"
+import cartoonPicture from "../../img/category/cartoon.jpg"
+import cinemaPicture from "../../img/category/cinema.jpg"
+import dbzPicture from "../../img/category/dbz.jpg"
+import espacePicture from "../../img/category/espace.webp"
+import francaisPicture from "../../img/category/francais.jpg"
+import jeuxvideoPicture from "../../img/category/jeuxvideo.avif"
+import marvelPicture from "../../img/category/marvel.webp"
+import mathsPicture from "../../img/category/maths.jpg"
+import musiquePicture from "../../img/category/musique.webp"
+import naturePicture from "../../img/category/nature.jpg"
+import planetePicture from "../../img/category/planete.jpg"
+import sciencePicture from "../../img/category/science.jpg"
+import simpsonsPicture from "../../img/category/simpsons.avif"
+import sportPicture from "../../img/category/sport.jpg"
+import voyagesPicture from "../../img/category/voyages.jpg"
 
 const Category = ({userData}) => {
     const {pseudo} = userData
@@ -25,6 +43,7 @@ const Category = ({userData}) => {
     const [categoryName, setCategoryName] = useState("")
     const [dataFromFirestore, setDataFromFirestore] = useState("")
     const [levelCategory, setLevelCategory] = useState(0)
+    const [isSmallScreen, setIsSmallScreen] = useState(false)
 
     const getPicture = (category) => {
 
@@ -35,12 +54,44 @@ const Category = ({userData}) => {
             return jeuxPicture
             case "test" : 
             return testPicture
+
+            case "anglais" : 
+            return anglaisPicture
+            case "animaux" : 
+            return animauxPicture
+            case "book" : 
+            return bookPicture
+            case "cartoon" : 
+            return cartoonPicture
+            case "cinema" : 
+            return cinemaPicture
             case "dbz" : 
             return dbzPicture
+            case "espace" : 
+            return espacePicture
+            case "français" : 
+            return francaisPicture
+            case "jeux-vidéo" : 
+            return jeuxvideoPicture
             case "marvel" : 
             return marvelPicture
-            case "cyberpunk" : 
-            return cyberpunkPicture
+            case "maths" : 
+            return mathsPicture
+            case "musique" : 
+            return musiquePicture
+            case "nature" : 
+            return naturePicture
+            case "planète" : 
+            return planetePicture
+            case "science" : 
+            return sciencePicture
+            case "simpsons" : 
+            return simpsonsPicture
+            case "sport" : 
+            return sportPicture
+            case "voyages" : 
+            return voyagesPicture
+
             default :
             return "Error"
         }
@@ -52,8 +103,8 @@ const Category = ({userData}) => {
         setCategoryName("")
     }
     const gameSelection = Object.keys(games).map((category, index) => {
-    return  <div className = {`box_card ${category === gameName.toLowerCase() ? "boxActive" : null}`} onClick={handleGameSelection} key={index}>   
-                <img className = "category_picture" src={getPicture(category)} alt ="category_picture" />
+    return  <div className = {`box_card_game ${category === gameName.toLowerCase() ? "boxActive" : null}`} onClick={handleGameSelection} key={index}>   
+                <img className = "game_picture" src={getPicture(category)} alt ="game_picture" />
                 {category.toUpperCase()}
             </div>
     })
@@ -63,15 +114,15 @@ const Category = ({userData}) => {
             const arrayDataFirestore = Object.getOwnPropertyNames(dataFromFirestore) //ici je récupère le lvl sur firestore et je récupère toutes les données (dont les catégories qui m'interessent) dans un tableau afin de pouvoir faire la methode includes et checker si la catégorie (et donc un lvl deja passé) existe dans la db pour gérer si on affiche ou non la cup
             const categoryObject = questions[0][game.toLowerCase()].category
 
-            const categoryDisplay = Object.keys(categoryObject).map((category, index) => {
+            const categoryDisplay = Object.keys(categoryObject).sort().map((category, index) => {
                 return  (
-                        <div onClick ={getCategoryName} className = {`box_card ${category === categoryName.toLowerCase() ? "boxActive" : null}`} key={index}>
+                        <div onClick ={getCategoryName} className = {`box_card_category ${category === categoryName.toLowerCase() ? "boxActive" : null}`} key={index}>
                             <img className = "category_picture" src={getPicture(category)} alt ="category_picture" />
                             <div className = "category_title">
                                 {category.toUpperCase()}
                                 {
                                     arrayDataFirestore.includes(category) ? //on affiche la coupe seulement si un lvl existe déja dans la db
-                                        <GiTrophyCup className ="category_trophee" color = {getCupColor(dataFromFirestore[category])}  size = { 30 }/>
+                                        <GiTrophyCup className ="category_trophee" color = {getCupColor(dataFromFirestore[category])}  size = { isSmallScreen ? 23 : 30 }/>
                                     : null
                                 } 
                             </div>
@@ -137,7 +188,7 @@ const Category = ({userData}) => {
             rightLink = (
                 // <Link state = {{dataFromCategory: dataFromFirestore}} onClick ={restartQuiz} className = "category_link" to={`/game/${gameName.toLocaleLowerCase()}/${categoryName.toLowerCase()}`}>
                 <>
-                <div>Pour rejouer cette catégorie, tu dois supprimer ta progression actuelle...</div>
+                <p style={{textAlign: "center", width: "80%"}}>Pour rejouer cette catégorie, tu dois supprimer ta progression actuelle...</p>
                 <Link onClick ={restartQuiz} className = "category_link" to={`/home`}>
                 SUPPRIMER
                 </Link>
@@ -161,6 +212,16 @@ const Category = ({userData}) => {
         getDataFromFirestore()
     },[categoryName, gameName,levelCategory])
 
+    const mediaScreen = useMediaQuery({query : "(max-width: 440px)"})
+
+    useEffect(() => {
+        if (mediaScreen) {
+            setIsSmallScreen(true)
+        } else {
+            setIsSmallScreen(false)
+        }
+    },[mediaScreen])
+
     return (
         <main className="category">
             <p className= "welcome_title">Bienvenue {capitalizePseudo(pseudo)} ! <br /><br /></p>
@@ -172,12 +233,13 @@ const Category = ({userData}) => {
                 isSelected.game ? (
                 <>
                     <div className ="category_rules">
-                        <p>Le quiz comporte 3 niveaux de difficulté. Chaque niveau comporte 10 questions. <br />
+                        <p>
+                        Le quiz comporte 3 niveaux de difficulté. Chaque niveau comporte 10 questions. <br />
                         Si tu obtiens au moins 7 bonnes réponses par série, tu peux passer au niveau supérieur! <br/>
-                        Valide tous les niveaux d'une catégorie pour remporter la coupe en OR !<br/>
+                        Ton classement est représenté par une coupe bronze / argent / or, selon le niveau atteint dans chaque catégorie.<br/>
                         </p>
                     </div>
-                    <p className= "game_title">Choisis une catégorie !</p>
+                    <p className= "game_title">À toi de jouer !</p>
                     <div className = "category_box">
                         {categorySelection(gameName)}
                     </div> 

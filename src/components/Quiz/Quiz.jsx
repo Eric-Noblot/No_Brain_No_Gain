@@ -27,7 +27,7 @@ const Quiz = () => {
     let levelFromDataFromCategory = dataFromCategory[categoryNameUrl]
 
     const [level, setLevel] = useState({
-        levelNames: ["debutant", "confirme", "expert"],
+        levelNames: ["apprenti", "expert", "maître"],
         userAnswer: null,
         idQuestion: 0,
         quizLevel: 0,
