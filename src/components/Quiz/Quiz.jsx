@@ -70,7 +70,6 @@ const Quiz = () => {
         } else {
             setHasAlreadyPlayed(false) 
         }
-        // console.log("QUIZ LEVEL", quizLevel, "levelFromDataFromCategory", levelFromDataFromCategory)
 
         if (questions) {
             let arrayQuestions = []
@@ -130,7 +129,8 @@ const Quiz = () => {
     }
 
     return (
-        <div>
+        <div className = "backgroundQuiz">
+
             <Navbar />
             <Level levelNames={levelNames} quizLevel = {hasAlreadyPlayed ? levelFromCategory : quizLevel}/>
             <ProgressBar maxQuestions={maxQuestions} idQuestion={idQuestion} quizEnd={quizEnd} nameCategory={categoryNameUrl} />

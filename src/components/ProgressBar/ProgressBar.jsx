@@ -20,6 +20,14 @@ import sciencePicture from "../../img/category/science.jpg"
 import simpsonsPicture from "../../img/category/simpsons.avif"
 import sportPicture from "../../img/category/sport.jpg"
 import voyagesPicture from "../../img/category/voyages.jpg"
+import artsPicture from "../../img/category/arts.jpg"
+import capitalesPicture from "../../img/category/capitales.webp"
+import insectesPicture from "../../img/category/insectes.jpg"
+import disneyPicture from "../../img/category/disney.jpg"
+import geographyPicture from "../../img/category/geography.jpg"
+import mortPicture from "../../img/category/mort.webp"
+import rockstarPicture from "../../img/category/rockstar.webp"
+import humanityPicture from "../../img/category/humanité.webp"
 
 
 const ProgressBar = ({maxQuestions, idQuestion, quizEnd, nameCategory}) => {
@@ -75,6 +83,22 @@ const ProgressBar = ({maxQuestions, idQuestion, quizEnd, nameCategory}) => {
             return sportPicture
             case "voyages" : 
             return voyagesPicture
+            case "arts" : 
+            return artsPicture
+            case "capitales" : 
+            return capitalesPicture
+            case "insectes" : 
+            return insectesPicture
+            case "disney" : 
+            return disneyPicture
+            case "geography" : 
+            return geographyPicture
+            case "mort" : 
+            return mortPicture
+            case "rockstar" : 
+            return rockstarPicture
+            case "humanité" : 
+            return humanityPicture
 
             default :
             return "Error"
