@@ -127,8 +127,8 @@ const Category = ({userData}) => {
         setCategoryName("")
     }
     const gameSelection = Object.keys(games).map((category, index) => {
-    return  <div className = {`box_card_game ${category === gameName.toLowerCase() ? "boxActive" : null}`} onClick={handleGameSelection} key={index}>   
-                <img className = "game_picture" src={getPicture(category)} alt ="game_picture" />
+    return  <div className = {`box_card_game ${category === gameName.toLowerCase() ? "boxActive_game" : null}`} onClick={handleGameSelection} key={index}>   
+                {/* <img className = "game_picture" src={getPicture(category)} alt ="game_picture" /> */}
                 {category.toUpperCase()}
             </div>
     })
@@ -140,7 +140,7 @@ const Category = ({userData}) => {
 
             const categoryDisplay = Object.keys(categoryObject).sort().map((category, index) => {
                 return  (
-                        <div onClick ={getCategoryName} className = {`box_card_category ${category === categoryName.toLowerCase() ? "boxActive" : null}`} key={index}>
+                        <div onClick ={getCategoryName} className = {`box_card_category ${category === categoryName.toLowerCase() ? "boxActive_category" : null}`} key={index}>
                             <img className = "category_picture" src={getPicture(category)} alt ="category_picture" />
                             <div className = "category_title">
                                 {category.toUpperCase()}

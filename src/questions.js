@@ -9502,243 +9502,243 @@ export const questions = [
             
             
         },
-        // jeux: {
-        //     category:  {
-        //         roulette: {
-        //             debutant: [
-        //                 {
-        //                     id: 0,
-        //                     question: "De quelle équipe fait partie Iceman?",
-        //                     options: [
-        //                         "The X-Men",
-        //                         "The Fantastic Four",
-        //                         "The Invaders",
-        //                         "The Liberators"
-        //                     ],
-        //                     answer: "The X-Men",
-        //                 },
-        //                 {
-        //                     id: 1,
-        //                     question: "Dans les X-Men, quelle substance constitue le squelette de Wolverine ?",
-        //                     options: [
-        //                         "Cavorite",
-        //                         "Vibranium",
-        //                         "Adamantium",
-        //                         "Neutronium"
-        //                     ],
-        //                     answer: "Adamantium",
-        //                 },
-        //                 {
-        //                     id: 2,
-        //                     question: "Quel est le nom de Spider-Man, apparu pour la première fois en 1962 ?",
-        //                     options: [
-        //                         "Tom Parker",
-        //                         "John Parker",
-        //                         "Peter Parker",
-        //                         "Alan Parker"
-        //                     ],
-        //                     answer: "Peter Parker",
-        //                 },
-        //                 {
-        //                     id: 3,
-        //                     question: "Comment s'appelait Wolverine quand il était cavalier d'Apocalypse?",
-        //                     options: [
-        //                         "Rage",
-        //                         "Death",
-        //                         "Destruction",
-        //                         "Oblivion"
-        //                     ],
-        //                     answer: "Death",
-        //                 },
-        //                 {
-        //                     id: 4,
-        //                     question: "Quel super-héros ne se sépare jamais de son marteau forgé par les nains ?",
-        //                     options: [
-        //                         "Bizarro",
-        //                         "Flash",
-        //                         "Venom",
-        //                         "Thor"
-        //                     ],
-        //                     answer: "Thor",
-        //                 },
-        //                 {
-        //                     id: 5,
-        //                     question: "Quelle couleur est associée à Hulk ?",
-        //                     options: [
-        //                         "Le jaune",
-        //                         "Le rouge",
-        //                         "Le vert",
-        //                         "Le bleu"
-        //                     ],
-        //                     answer: "Le vert",
-        //                 },
-        //                 {
-        //                     id: 6,
-        //                     question: "Quel super-héros ressemble à un être de pierre ?",
-        //                     options: [
-        //                         "Plastic Man",
-        //                         "The Thing",
-        //                         "Hawkman",
-        //                         "Superboy"
-        //                     ],
-        //                     answer: "The Thing",
-        //                 },
-        //                 {
-        //                     id: 7,
-        //                     question: "De qui Edwin Jarvis est-il le majordome?",
-        //                     options: [
-        //                         "Bruce Wayne",
-        //                         "Charles Xavier",
-        //                         "Tony Stark",
-        //                         "Henry Steven"
-        //                     ],
-        //                     answer: "Tony Stark",
-        //                 },
-        //                 {
-        //                     id: 8,
-        //                     question: "Quel super-héros porte un costume inspiré du drapeau américain ?",
-        //                     options: [
-        //                         "Tigra",
-        //                         "Blade",
-        //                         "Iron Man",
-        //                         "Captain America"
-        //                     ],
-        //                     answer: "Captain America",
-        //                 },
-        //                 {
-        //                     id: 9,
-        //                     question: "Y compris ses pouces, combien de doigts sur les deux mains possède The Thing?",
-        //                     options: [
-        //                         8,
-        //                         6,
-        //                         10,
-        //                         4
-        //                     ],
-        //                     answer: 8,
-        //                 }
-        //             ]
-        //         }
-        //     }
+        jeux: {
+            category:  {
+                roulette: {
+                    debutant: [
+                        {
+                            id: 0,
+                            question: "De quelle équipe fait partie Iceman?",
+                            options: [
+                                "The X-Men",
+                                "The Fantastic Four",
+                                "The Invaders",
+                                "The Liberators"
+                            ],
+                            answer: "The X-Men",
+                        },
+                        {
+                            id: 1,
+                            question: "Dans les X-Men, quelle substance constitue le squelette de Wolverine ?",
+                            options: [
+                                "Cavorite",
+                                "Vibranium",
+                                "Adamantium",
+                                "Neutronium"
+                            ],
+                            answer: "Adamantium",
+                        },
+                        {
+                            id: 2,
+                            question: "Quel est le nom de Spider-Man, apparu pour la première fois en 1962 ?",
+                            options: [
+                                "Tom Parker",
+                                "John Parker",
+                                "Peter Parker",
+                                "Alan Parker"
+                            ],
+                            answer: "Peter Parker",
+                        },
+                        {
+                            id: 3,
+                            question: "Comment s'appelait Wolverine quand il était cavalier d'Apocalypse?",
+                            options: [
+                                "Rage",
+                                "Death",
+                                "Destruction",
+                                "Oblivion"
+                            ],
+                            answer: "Death",
+                        },
+                        {
+                            id: 4,
+                            question: "Quel super-héros ne se sépare jamais de son marteau forgé par les nains ?",
+                            options: [
+                                "Bizarro",
+                                "Flash",
+                                "Venom",
+                                "Thor"
+                            ],
+                            answer: "Thor",
+                        },
+                        {
+                            id: 5,
+                            question: "Quelle couleur est associée à Hulk ?",
+                            options: [
+                                "Le jaune",
+                                "Le rouge",
+                                "Le vert",
+                                "Le bleu"
+                            ],
+                            answer: "Le vert",
+                        },
+                        {
+                            id: 6,
+                            question: "Quel super-héros ressemble à un être de pierre ?",
+                            options: [
+                                "Plastic Man",
+                                "The Thing",
+                                "Hawkman",
+                                "Superboy"
+                            ],
+                            answer: "The Thing",
+                        },
+                        {
+                            id: 7,
+                            question: "De qui Edwin Jarvis est-il le majordome?",
+                            options: [
+                                "Bruce Wayne",
+                                "Charles Xavier",
+                                "Tony Stark",
+                                "Henry Steven"
+                            ],
+                            answer: "Tony Stark",
+                        },
+                        {
+                            id: 8,
+                            question: "Quel super-héros porte un costume inspiré du drapeau américain ?",
+                            options: [
+                                "Tigra",
+                                "Blade",
+                                "Iron Man",
+                                "Captain America"
+                            ],
+                            answer: "Captain America",
+                        },
+                        {
+                            id: 9,
+                            question: "Y compris ses pouces, combien de doigts sur les deux mains possède The Thing?",
+                            options: [
+                                8,
+                                6,
+                                10,
+                                4
+                            ],
+                            answer: 8,
+                        }
+                    ]
+                }
+            }
 
-        // },
-        // test: {
-        //     category:  {
-        //         toto: {
-        //             debutant: [
-        //                 {
-        //                     id: 0,
-        //                     question: "De quelle équipe fait partie Iceman?",
-        //                     options: [
-        //                         "The X-Men",
-        //                         "The Fantastic Four",
-        //                         "The Invaders",
-        //                         "The Liberators"
-        //                     ],
-        //                     answer: "The X-Men",
-        //                 },
-        //                 {
-        //                     id: 1,
-        //                     question: "Dans les X-Men, quelle substance constitue le squelette de Wolverine ?",
-        //                     options: [
-        //                         "Cavorite",
-        //                         "Vibranium",
-        //                         "Adamantium",
-        //                         "Neutronium"
-        //                     ],
-        //                     answer: "Adamantium",
-        //                 },
-        //                 {
-        //                     id: 2,
-        //                     question: "Quel est le nom de Spider-Man, apparu pour la première fois en 1962 ?",
-        //                     options: [
-        //                         "Tom Parker",
-        //                         "John Parker",
-        //                         "Peter Parker",
-        //                         "Alan Parker"
-        //                     ],
-        //                     answer: "Peter Parker",
-        //                 },
-        //                 {
-        //                     id: 3,
-        //                     question: "Comment s'appelait Wolverine quand il était cavalier d'Apocalypse?",
-        //                     options: [
-        //                         "Rage",
-        //                         "Death",
-        //                         "Destruction",
-        //                         "Oblivion"
-        //                     ],
-        //                     answer: "Death",
-        //                 },
-        //                 {
-        //                     id: 4,
-        //                     question: "Quel super-héros ne se sépare jamais de son marteau forgé par les nains ?",
-        //                     options: [
-        //                         "Bizarro",
-        //                         "Flash",
-        //                         "Venom",
-        //                         "Thor"
-        //                     ],
-        //                     answer: "Thor",
-        //                 },
-        //                 {
-        //                     id: 5,
-        //                     question: "Quelle couleur est associée à Hulk ?",
-        //                     options: [
-        //                         "Le jaune",
-        //                         "Le rouge",
-        //                         "Le vert",
-        //                         "Le bleu"
-        //                     ],
-        //                     answer: "Le vert",
-        //                 },
-        //                 {
-        //                     id: 6,
-        //                     question: "Quel super-héros ressemble à un être de pierre ?",
-        //                     options: [
-        //                         "Plastic Man",
-        //                         "The Thing",
-        //                         "Hawkman",
-        //                         "Superboy"
-        //                     ],
-        //                     answer: "The Thing",
-        //                 },
-        //                 {
-        //                     id: 7,
-        //                     question: "De qui Edwin Jarvis est-il le majordome?",
-        //                     options: [
-        //                         "Bruce Wayne",
-        //                         "Charles Xavier",
-        //                         "Tony Stark",
-        //                         "Henry Steven"
-        //                     ],
-        //                     answer: "Tony Stark",
-        //                 },
-        //                 {
-        //                     id: 8,
-        //                     question: "Quel super-héros porte un costume inspiré du drapeau américain ?",
-        //                     options: [
-        //                         "Tigra",
-        //                         "Blade",
-        //                         "Iron Man",
-        //                         "Captain America"
-        //                     ],
-        //                     answer: "Captain America",
-        //                 },
-        //                 {
-        //                     id: 9,
-        //                     question: "Y compris ses pouces, combien de doigts sur les deux mains possède The Thing?",
-        //                     options: [
-        //                         8,
-        //                         6,
-        //                         10,
-        //                         4
-        //                     ],
-        //                     answer: 8,
-        //                 }
-        //             ]
-        //         }
-        //     }
+        },
+        test: {
+            category:  {
+                toto: {
+                    debutant: [
+                        {
+                            id: 0,
+                            question: "De quelle équipe fait partie Iceman?",
+                            options: [
+                                "The X-Men",
+                                "The Fantastic Four",
+                                "The Invaders",
+                                "The Liberators"
+                            ],
+                            answer: "The X-Men",
+                        },
+                        {
+                            id: 1,
+                            question: "Dans les X-Men, quelle substance constitue le squelette de Wolverine ?",
+                            options: [
+                                "Cavorite",
+                                "Vibranium",
+                                "Adamantium",
+                                "Neutronium"
+                            ],
+                            answer: "Adamantium",
+                        },
+                        {
+                            id: 2,
+                            question: "Quel est le nom de Spider-Man, apparu pour la première fois en 1962 ?",
+                            options: [
+                                "Tom Parker",
+                                "John Parker",
+                                "Peter Parker",
+                                "Alan Parker"
+                            ],
+                            answer: "Peter Parker",
+                        },
+                        {
+                            id: 3,
+                            question: "Comment s'appelait Wolverine quand il était cavalier d'Apocalypse?",
+                            options: [
+                                "Rage",
+                                "Death",
+                                "Destruction",
+                                "Oblivion"
+                            ],
+                            answer: "Death",
+                        },
+                        {
+                            id: 4,
+                            question: "Quel super-héros ne se sépare jamais de son marteau forgé par les nains ?",
+                            options: [
+                                "Bizarro",
+                                "Flash",
+                                "Venom",
+                                "Thor"
+                            ],
+                            answer: "Thor",
+                        },
+                        {
+                            id: 5,
+                            question: "Quelle couleur est associée à Hulk ?",
+                            options: [
+                                "Le jaune",
+                                "Le rouge",
+                                "Le vert",
+                                "Le bleu"
+                            ],
+                            answer: "Le vert",
+                        },
+                        {
+                            id: 6,
+                            question: "Quel super-héros ressemble à un être de pierre ?",
+                            options: [
+                                "Plastic Man",
+                                "The Thing",
+                                "Hawkman",
+                                "Superboy"
+                            ],
+                            answer: "The Thing",
+                        },
+                        {
+                            id: 7,
+                            question: "De qui Edwin Jarvis est-il le majordome?",
+                            options: [
+                                "Bruce Wayne",
+                                "Charles Xavier",
+                                "Tony Stark",
+                                "Henry Steven"
+                            ],
+                            answer: "Tony Stark",
+                        },
+                        {
+                            id: 8,
+                            question: "Quel super-héros porte un costume inspiré du drapeau américain ?",
+                            options: [
+                                "Tigra",
+                                "Blade",
+                                "Iron Man",
+                                "Captain America"
+                            ],
+                            answer: "Captain America",
+                        },
+                        {
+                            id: 9,
+                            question: "Y compris ses pouces, combien de doigts sur les deux mains possède The Thing?",
+                            options: [
+                                8,
+                                6,
+                                10,
+                                4
+                            ],
+                            answer: 8,
+                        }
+                    ]
+                }
+            }
             
-        // }
+        }
     }
 ];

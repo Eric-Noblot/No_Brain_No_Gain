@@ -11,7 +11,7 @@
     align-items: center;
     flex-direction: column;
     gap: 70px;
-    background-image: radial-gradient( circle at center, rgba(102, 40, 39, 0.951), rgba(26, 17, 150, 0.589)), url("../../img/rsz_pexels-bithinraj-mb-2763927.jpg");
+    /* background-image: radial-gradient( circle at center, rgba(102, 40, 39, 0.951), rgba(26, 17, 150, 0.589)), url("../../img/rsz_pexels-bithinraj-mb-2763927.jpg"); */
     z-index: -100;
     /* background-repeat: repeat-x;
     background-attachment:fixed;
@@ -21,8 +21,10 @@
 
 .home {
     width: 100%;
-    background:linear-gradient(to top, rgb(35, 34, 34) 1%,  rgb(125, 1, 1) );
-    height: 100%;
+    background-image: radial-gradient( circle at center, rgba(218, 12, 57, 0.144), rgba(39, 38, 38, 0.77)), url("../../img/bg3.jpg");
+    background-position: center;
+    min-height: 990px;
+    position: absolute;
   }
 
 

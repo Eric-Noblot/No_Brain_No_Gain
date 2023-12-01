@@ -1,3 +1,53 @@
+.box_card_game {
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    transition: all 0.1s ease-out;
+    border-radius: 50%;
+    border: 2px solid white;
+    position: relative;
+    margin: 20px;
+}
+.box_card_game:hover {
+    color: rgba(250, 230, 191, 0.932);
+    font-weight: bold;
+    background: rgba(37, 37, 37, 0.422);
+}
+
+.game_title {
+    text-align: center;
+    line-height: 22px;
+    font-size: 25px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    margin-top: 25px;
+}
+.game_picture {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    pointer-events: none;
+    position: absolute;
+}
+
+.game_p {
+    padding: 0 30px;
+    margin-top: 25px;
+    font-size: 15px;
+}
+
+.boxActive_game {
+    /* clip-path: circle(100%); */
+    color: rgba(250, 230, 191, 0.932);
+    font-weight: bold;
+    background: rgba(37, 37, 37, 0.422);
+    border: 4px solid rgba(248, 174, 144, 0.301);
+}
+
 .category {
     color: white;
     display: flex;
@@ -28,6 +78,8 @@
     align-items: center;
     padding: 0 5px;
     font-size: 22px;
+    background-color: rgba(18, 18, 18, 0.604);  
+    height: 40px;
 }
 
 
@@ -43,62 +95,25 @@
     font-size: 23px;
     margin: 10px 10px;
     /* clip-path: circle(90% at 60px 15%); */
-    transition: all 0.3s ease-out;
+    /* transition: all 0.2s ease-out; */
     border-radius: 35px 35px 0 0;
-    border: 2px solid white;
+    border: 3px solid rgba(255, 255, 255, 0.716);
 }
-.box_card:hover {
-    background: rgba(142, 39, 34, 0.299);
+.box_card_category:hover {
+    color: rgb(248, 185, 236);
     /* clip-path: circle(100%); */
 }
 
-.boxActive {
+.boxActive_category {
     /* clip-path: circle(100%); */
     color: gold;
-    text-shadow: 0 0 20px white;
     font-weight: bold;
     background: rgba(213, 106, 100, 0.299);
     box-shadow: 0 0 20px white;
 }
 
-.box_card_game {
-    width: 250px;
-    height: 150px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    flex-direction: column;
-    color: white;
-    font-size: 23px;
-    margin: 10px 10px;
-    /* clip-path: circle(90% at 60px 15%); */
-    transition: all 0.3s ease-out;
-    border-radius: 35px 35px 0 0;
-    border: 2px solid white;
-}
-.game_title {
-    text-align: center;
-    line-height: 22px;
-    font-size: 20px;
-    padding: 10px 30px;
-    border-radius: 10px;
-    margin-top: 25px;
-}
-.game_picture {
-    height: 100px;
-    width: 100%;
-    border-radius: 30px 30px 0 0;
-    object-fit: cover;
-    pointer-events: none;
-    margin-bottom: 4px;
-}
 
-.game_p {
-    padding: 0 30px;
-    margin-top: 25px;
-    font-size: 15px;
-}
+
 
 .welcome_title {
     font-size: 36px;
@@ -140,7 +155,6 @@
     border-radius: 32px 32px 0 0;
     object-fit: cover;
     pointer-events: none;
-    margin-bottom: 4px;
 }
 
 .category_trophee {

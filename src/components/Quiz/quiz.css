@@ -9,6 +9,7 @@
 .backgroundQuiz {
     background-image: url("../../img/bg5.png");
     background-position: center;
+    min-height: 990px;
 }
 
 .questionFrame {

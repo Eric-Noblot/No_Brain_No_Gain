@@ -63,9 +63,10 @@ to {
     width: 150px;
     text-align: center;
     transition-duration: all 4000ms ease; 
+    border-radius: 10px;
 }
 .btnConnexion:hover {
-    background-color: white;
+    background-color: rgba(253, 250, 250, 0.53);
     color: #922929;
     font-weight: bold;
 }
