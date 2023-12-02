@@ -252,6 +252,7 @@ const Category = ({userData}) => {
             <p className= "game_title">Commence par choisir le type de jeu :</p>
             <div className = "category_box">
                 {gameSelection}
+
             </div>
             {
                 isSelected.game ? (

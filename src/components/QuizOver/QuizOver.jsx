@@ -24,17 +24,21 @@ const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelName
     const decision = score >= 0  ? ( //le score doit être au moins de 7 pour passer au niveau suivant
         quizLevel >= levelNames.length - 1 ? 
             <div className = "quizOver_box">
-                <div className = "quizOver_title">
-                    <p>{`Bien joué ! Tu remportes la coupe pour la catégorie ${nameGameCap} !`}</p>
-                    <GiTrophyCup color = { "gold" } className = "trophee"/>
+                <div className = "quizOver_title_final">
+                    <h2>Félicitations !!!</h2>
+                    <p>{`Tu remportes le dernier niveau du quiz ${nameGameCap} ! Tu deviens Maître dans cette catégorie !`}</p>
+                    {/* <GiTrophyCup color = { "gold" } className = "trophee"/> */}
                 </div>
                 <button onClick = {clickBackHome}>Retour au menu</button>
             </div>
             : 
-            <div className = "quizOver_title">
+            <div className = "quizOver_title_win">
                 <p>{`Bravo ! Tu as atteint un minimum de 7 bonnes réponses ! `}</p>
-                <button onClick = {() => loadLevelQuestions(quizLevel + 1)}>Niveau Suivant</button>
-                <button onClick = {clickBackHome}>Retour au menu</button>
+                <p>{`Tu peux passer au niveau suivant ! `}</p>
+                <div className="quizOver_boxButtons_win">
+                    <button onClick = {() => loadLevelQuestions(quizLevel + 1)}>Niveau Suivant</button>
+                    <button onClick = {clickBackHome}>Retour au menu</button>
+                </div>
             </div>
             )
         : 
@@ -49,8 +53,8 @@ const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelName
         storageQuestions.map((question) => {
             return (
                 <tr key={question.id}>
-                    <td>{question.question}</td>
-                    <td style={{color: arrayRightAnswers[question.id] === "1" ? "green" : "red"}}>{question.answer}</td>
+                    <td>{question.id + 1}. {question.question}</td>
+                    <td style={{backgroundColor: arrayRightAnswers[question.id] === "1" ? "rgba(44, 231, 47, 0.403)" : "rgba(241, 43, 43, 0.403)"}}>{question.answer}</td>
                 </tr>
             )
         })

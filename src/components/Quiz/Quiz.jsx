@@ -151,7 +151,7 @@ const Quiz = () => {
                 <div className = "questionCont">
                     <div className = "questionFrame">
                         <div className = "questionBox">
-                            <p className="question">{actualQuestion}</p>
+                            <p className="question">{idQuestion +1}. {actualQuestion}</p>
                             <ul>
                                 {
                                 actualAnswers.map((answer, index) => {
