@@ -1,0 +1,54 @@
+.memory_container {
+    width: 765px;
+    height: 765px;
+    border : 2px solid gold;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 5px;
+    margin: auto;
+}
+
+.memory_box {
+    width: 250px;
+    height: 250px;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+
+
+.memory_red {
+    background-color: red;
+}
+.memory_orange {
+    background-color: orange;
+}
+.memory_green {
+    background-color: green;
+}
+/* .memory_box4 {
+    background-color: green;
+}
+.memory_box5 {
+    background-color: red;
+}
+.memory_box6 {
+    background-color: orange;
+}
+.memory_box7 {
+    background-color: red;
+}
+.memory_box8 {
+    background-color: orange;
+}
+.memory_box9 {
+    background-color: green;
+} */
+
+.memory_active_box {
+    background-color: blueviolet;
+}

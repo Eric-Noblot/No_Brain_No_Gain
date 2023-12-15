@@ -66,7 +66,7 @@
 }
 .validBtn:hover {
     background: linear-gradient( 145deg, rgba(233, 216, 148, 0.526), rgba(177, 177, 21, 0.323));
-    color: gold;
+    color: rgb(246, 230, 142);
     font-size: 26px;
 
 }

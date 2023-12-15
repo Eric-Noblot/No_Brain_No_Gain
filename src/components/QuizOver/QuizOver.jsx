@@ -33,8 +33,8 @@ const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelName
             </div>
             : 
             <div className = "quizOver_title_win">
-                <p>{`Bravo ! Tu as atteint un minimum de 7 bonnes réponses ! `}</p>
-                <p>{`Tu peux passer au niveau suivant ! `}</p>
+                <p>Bravo ! Tu as réussi ce quiz !</p>
+                <p>Tu peux passer au niveau suivant !</p>
                 <div className="quizOver_boxButtons_win">
                     <button onClick = {() => loadLevelQuestions(quizLevel + 1)}>Niveau Suivant</button>
                     <button onClick = {clickBackHome}>Retour au menu</button>
@@ -42,10 +42,12 @@ const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelName
             </div>
             )
         : 
-        <div className = "quizOver_title">
-            <p>{`C'est foiré :`}</p>
-            <button onClick = {() => loadLevelQuestions(quizLevel, "failed")}>On retente ?</button>
-            <button className = "backToMenu_failed" onClick = {clickBackHome}>Retour au menu</button>
+        <div className = "quizOver_title_failed">
+            <p>Malheureusement, tu n'as pas atteint un minimum de 7 bonnes réponses...</p>
+            <div className="quizOver_boxButtons_win">
+                <button onClick = {() => loadLevelQuestions(quizLevel, "failed")}>Recommencer</button>
+                <button className = "backToMenu_failed" onClick = {clickBackHome}>Retour au menu</button>
+            </div>
         </div>
 
 
@@ -60,8 +62,8 @@ const QuizOver = ({score, maxQuestions, quizLevel, loadLevelQuestions, levelName
         })
     )   : (
             <tr>
-                <td colSpan="3" style={{textAlign: "center"}}> {/* comme on a 3 colones normalement, on veut ce notre td remplisse tout le tableau */}
-                    Le quizz doit être validé pour avoir accès aux réponses !
+                <td colSpan="1" style={{textAlign: "center"}}> 
+                    Le quiz doit être validé pour avoir accès aux réponses !
                 </td>
             </tr>
         )

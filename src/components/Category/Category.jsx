@@ -248,8 +248,8 @@ const Category = ({userData}) => {
 
     return (
         <main className="category">
-            <p className= "welcome_title">Bienvenue {capitalizePseudo(pseudo)} ! <br /><br /></p>
-            <p className= "game_title">Commence par choisir le type de jeu :</p>
+            <p className= "welcome_title">Bienvenue au salon, {capitalizePseudo(pseudo)} ! <br /><br /></p>
+            <p className= "game_title">Choisis ton type de jeu :</p>
             <div className = "category_box">
                 {gameSelection}
 

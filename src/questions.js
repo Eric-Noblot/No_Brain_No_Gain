@@ -9504,7 +9504,7 @@ export const questions = [
         },
         jeux: {
             category:  {
-                roulette: {
+                memory: {
                     debutant: [
                         {
                             id: 0,

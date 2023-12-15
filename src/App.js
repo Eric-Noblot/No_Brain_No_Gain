@@ -6,7 +6,7 @@ import Login from "./components/Login/Login"
 import Signup from "./components/Signup/Signup"
 import Quiz from "./components/Quiz/Quiz"
 import Game from "./components/Game/Game"
-import Jeux from "./components/jeux"
+import Jeux from "./components/Jeux/Jeux"
 import Test from "./components/test"
 import "bootstrap/dist/css/bootstrap.min.css"; //à ajouter pour faire apparaitre les élements de react-bootstrap
 

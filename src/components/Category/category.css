@@ -13,7 +13,7 @@
     margin: 20px;
 }
 .box_card_game:hover {
-    color: rgba(250, 230, 191, 0.932);
+    color: rgb(246, 230, 142);
     font-weight: bold;
     background: rgba(37, 37, 37, 0.422);
 }
@@ -42,7 +42,7 @@
 
 .boxActive_game {
     /* clip-path: circle(100%); */
-    color: rgba(250, 230, 191, 0.932);
+    color: rgb(246, 230, 142);
     font-weight: bold;
     background: rgba(37, 37, 37, 0.422);
     border: 4px solid rgba(248, 174, 144, 0.301);
@@ -106,17 +106,17 @@
 
 .boxActive_category {
     /* clip-path: circle(100%); */
-    color: gold;
+    color: rgb(246, 230, 142);
     font-weight: bold;
     background: rgba(213, 106, 100, 0.299);
     box-shadow: 0 0 20px white;
 }
 
-
-
-
 .welcome_title {
-    font-size: 36px;
+    font-size: 34px;
+    text-align: center;
+    color: rgb(246, 230, 142);
+    padding: 10px;
 }
 
 .categoryBtn {
@@ -127,26 +127,27 @@
 }
 
 .category_link{
-    /* clip-path: circle(100%); */
     color: rgb(255, 255, 255);
     background: rgba(3, 33, 33, 0.322);
-    width: 250px;
-    height: 70px;
-    margin-top: 30px;
+    width: 220px;
+    height: 60px;
     border: 2px solid white;
-    border-radius: 10px;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 23px;
+    margin-top: 10px;
+    margin-bottom: 50px;
 }
 
 .category_link:hover {
-    /* clip-path: circle(100%); */
-    color: gold;
-    border: 2px solid gold;
-    font-size: 32px;
+    color: rgb(246, 230, 142);
+    border: 2px solid rgb(246, 230, 142);
+    font-size: 25px;
+    background: linear-gradient( 145deg, rgba(242, 229, 176, 0.416), rgba(177, 177, 21, 0.323));
+
 }
 
 .category_picture {
@@ -183,12 +184,7 @@
         font-size: 18px;
     }
     .game_title {
-        text-align: center;
-        line-height: 22px;
         font-size: 18px;
-        padding: 10px 30px;
-        border-radius: 10px;
-        margin-top: 25px;
     }
 
     .game_p {
@@ -209,6 +205,12 @@
     .category_title {
         font-size: 15px;
     }
+    .welcome_title {
+        font-size: 30px;
+    }
+    .game_title {
+        font-size: 18px;
+    }
 }
 
 
@@ -223,6 +225,10 @@
     .category_title {
         font-size: 14px;
     }
+    .welcome_title {
+        font-size: 26px;
+    }
+
 }
 
 @media (max-width: 370px) {

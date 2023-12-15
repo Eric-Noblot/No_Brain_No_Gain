@@ -14,7 +14,8 @@
 }
 
 .quizOver_title_win {
-
+    background-color: rgba(199, 196, 193, 0.079);
+    padding: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -22,12 +23,12 @@
     border-radius: 30px;
     position: relative;
 }
-.quizOver_title_win p {
+.quizOver_title_win > p {
     font-size: 20px;
     text-align: center;
     margin-top: 0;
     margin-bottom: 5px;
-    color: white;
+    color: rgb(246, 230, 142);
 }
 .quizOver_boxButtons_win {
     display: flex;
@@ -56,9 +57,27 @@
 }
 .quizOver_title_final p {
     font-size: 18px;
-    color: rgb(243, 205, 123);
-
+    color: rgb(246, 230, 142);
 }
+
+.quizOver_title_failed {
+    background-color: rgba(199, 196, 193, 0.079);
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top :10px;
+    border-radius: 30px;
+    position: relative;
+}
+.quizOver_title_failed > p {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: white;
+}
+
 .quizOver button {
     width: 180px;
     height: 55px;
@@ -66,13 +85,13 @@
     cursor: pointer;
     font-size: 16px;
     color: white;
-    border-radius: 15px;
     border-radius: 20px;
     border: 2px solid rgba(155, 154, 154, 0.652);
+    padding: 2px;
 }
 .quizOver button:hover {
     background: linear-gradient( 145deg, rgba(233, 216, 148, 0.526), rgba(177, 177, 21, 0.323));
-    color: gold;
+    color: rgb(246, 230, 142);
     font-size: 18px;
 
 }
@@ -86,7 +105,7 @@
     background-color: rgba(199, 196, 193, 0.144);
     margin-top: 20px;
     border-radius: 20px;
-    color: rgb(235, 247, 122);
+    color: rgb(246, 230, 142);
 }
 
 .quizOver_progress_box {
@@ -99,7 +118,6 @@
     font-size: 20px;
     border-radius: 20px;
     background-color: rgba(33, 33, 33, 0.701);
-
 }
 
 .trophee {
@@ -109,9 +127,9 @@
 }
 
 .quizOver_answers {
-    border: 1px solid rgb(62, 59, 59);
+    border: 1px solid rgb(86, 86, 86);
     padding: 20px;
-    background-color: rgba(35, 14, 0, 0.473);
+    background-color: rgba(199, 196, 193, 0.144);
     margin-top: 20px;
     border-radius: 5px;
 }
@@ -142,11 +160,16 @@
     width: 100%;
 }
 
+@media (max-width: 980px) {
+    .quizOver {
+        width: 70%;
+    }
+}
 
 @media (max-width: 820px) {
 
     .quizOver_answers {
-        padding: 0px;
+        padding: 10px;
     }
     .quizOver_title {
         flex-direction: column;
@@ -166,11 +189,47 @@
 
 }
 
+@media (max-width: 700px) {
+    .quizOver_title_final h2 {
+        font-size: 40px;
+    }
+    .quizOver_title_win > p {
+        font-size:  18px;
+    }
+    .quizOver_title_failed > p {
+        font-size: 18px;
+    }
+}
+
+
+
 @media (max-width: 570px) {
     .quizOver {
         width: 85%;
     }
     .quizOver_progress_box {
-        font-size: 12px;
+        font-size: 14px;
+    }
+    .quizOver_title_win > p {
+        font-size:  16px;
+    }
+    .quizOver_title_failed > p {
+        font-size: 16px;
+    }
+}
+
+
+@media (max-width: 400px) {
+    .quizOver {
+        width: 85%;
+    }
+    .quizOver_progress_box {
+        font-size: 13px;
+    }
+    .quizOver_title_win > p {
+        font-size:  15px;
+    }
+    .quizOver_title_failed > p {
+        font-size: 15px;
     }
 }
