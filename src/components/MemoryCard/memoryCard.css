@@ -1,0 +1,28 @@
+.memory_box {
+    width: 180px;
+    height: 180px;
+    font-size: 50px;
+    cursor: pointer;
+    position: relative;
+}
+
+.memory_img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.memory_background_img {
+    top: 0;
+    left: 0;
+    /* position: absolute; */
+    height: 100%;
+    width: 100%;
+    background-color: red;
+    transform: rotateY(0deg);
+    transition: all ease-in 0.2s;
+}
+
+.flipped {
+    transform: rotateY(90deg);
+}
