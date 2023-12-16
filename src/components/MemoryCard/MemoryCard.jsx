@@ -1,12 +1,20 @@
 import React from 'react';
 import "./memoryCard.css"
 
-const MemoryCard = ( { card, handleChoice }) => {
+const MemoryCard = ( { card, handleChoice, flipped, disabled }) => {
+
+    const handleClick = () => {
+        if (!disabled) {
+            handleChoice(card)
+        }
+    }
 
     return (
-        <div onClick = {() => handleChoice(card)} className = "memory_box">
-            <img src={card.src} className = "memory_img"></img>
-            <img src ="/img/bg6.jpg" className ="memory_img"></img> 
+        <div>
+            <div className = {flipped ? " memory_box flipped" : "memory_box"}  >
+                <img src={card.src} alt="front_img" className = "memory_front_img"></img>
+                <img onClick = {handleClick} src ="/img/bg6.jpg" alt ="back_img" className ="memory_back_img"></img> 
+            </div>
         </div>
     );
 };

@@ -1,17 +1,21 @@
+.memory {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .memory_container {
-    width: 765px;
-    height: 765px;
-    border : 2px solid gold;
+
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 5px;
+    gap: 15px;
     margin: auto;
 
 }
 
 .memory_title {
-    width: 765px;
-    margin: auto;
     text-align: center;
     margin-bottom : 15px;
 }
@@ -19,38 +23,4 @@
 .memory_title button {
     width: 100px;
     height: 30px;
-}
-
-
-
-.memory_red {
-    background-color: red;
-}
-.memory_orange {
-    background-color: orange;
-}
-.memory_green {
-    background-color: green;
-}
-/* .memory_box4 {
-    background-color: green;
-}
-.memory_box5 {
-    background-color: red;
-}
-.memory_box6 {
-    background-color: orange;
-}
-.memory_box7 {
-    background-color: red;
-}
-.memory_box8 {
-    background-color: orange;
-}
-.memory_box9 {
-    background-color: green;
-} */
-
-.memory_active_box {
-    background-color: blueviolet;
 }
