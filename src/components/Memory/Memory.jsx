@@ -11,7 +11,8 @@ const Memory = () => {
     const [firstChoice, setFirstChoice] = useState(null)
     const [secondChoice, setSecondChoice] = useState(null)
     const [disabled, setDisabled] = useState(false)
-    const [level, setLevel] = useState(0)
+    const [level, setLevel] = useState(9)
+    const [winGame, setWinGame] = useState(false)
 
     const cardsFromDatabase = questions[0].jeux.category.memory[level]
 
@@ -27,6 +28,7 @@ const Memory = () => {
         
         setFirstChoice(null)
         setSecondChoice(null)
+        setWinGame(false)
         setCards(shuffledCard)
         setTurns(0) 
     }
@@ -34,6 +36,7 @@ const Memory = () => {
     const resetChoice = () => {
         setFirstChoice(null)
         setSecondChoice(null)
+        setWinGame(false)
         setTurns((prevState) => {
             return prevState + 1
         })
@@ -45,13 +48,14 @@ const Memory = () => {
         shuffleCard()
     }
 
-    const displayGame = turns < 5 ? (
+    const displayGame = turns < 15 ? (
         
         <>
         <div className ="memory_title">
-            <p>Finis tous les niveaux avant 20 tours !</p>
-            <button onClick ={shuffleCard}>Recommencer</button>
-            <button onClick ={nextLevel}>Next</button>
+            <p>Termine en moins de 20 tours chaque puzzle !</p>
+            <p>{`Niveau ${level +1}`}</p>
+            {/* <button onClick ={shuffleCard}>Recommencer</button>
+            <button onClick ={nextLevel}>Next</button> */}
         </div>
         <div className = "memory_container">
             {cards.map((card) => (
@@ -64,7 +68,7 @@ const Memory = () => {
                 />
             ))}
         </div>
-        <p>{`Nombre de tours : ${turns}`}</p>
+        <p style={{marginTop : "15px"}}>{`Nombre de tours : ${turns}`}</p>
         </>
     ) :
     (
@@ -74,7 +78,14 @@ const Memory = () => {
             <button onClick ={nextLevel}>Next</button>
         </div>
     )
-
+    
+    const winBox = winGame ? (
+        <div className = "memory_winBox">
+            <div>FÉLICITATIONS</div>
+            <button onClick ={shuffleCard}>Recommencer</button>
+            <button onClick ={nextLevel}>Next</button>
+        </div>
+    ) : null
 
     useEffect(() => {
         if (firstChoice && secondChoice) {
@@ -97,7 +108,18 @@ const Memory = () => {
                     resetChoice()
                 }, "1500")
             }
+        }
 
+        //on vérifie que tous les matched sont à true pour afficher le résultat
+        if (cards.length > 0 ) {
+            const check = cards.map((card) => card.matched)
+            if (check.includes(false)) {
+                setWinGame(false)
+            }
+            else {
+                setWinGame(true)
+            }
+    
         }
 
     },[firstChoice, secondChoice])
@@ -106,11 +128,13 @@ const Memory = () => {
         shuffleCard()
     },[level])
 
+    console.log(winGame)
     return (
 
-        <div className="memory">
-            {displayGame}
+        <div className="memory"> 
 
+            {displayGame}
+            {winBox}
         </div>
 
     )
