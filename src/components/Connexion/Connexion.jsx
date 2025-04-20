@@ -25,7 +25,7 @@ const Connexion = () => {
                         displayBtn ? (
                             <>
                                 <div className="boxConnexion leftBoxConnexion">
-                                <Link to="/login" className ="btnConnexion">CONNEXION</Link>
+                                    <Link to="/login" className ="btnConnexion">CONNEXION</Link>
                                 </div>
                                 <div className="boxConnexion rightBoxConnexion">
                                     <Link to="/signup" className ="btnConnexion">INSCRIPTION</Link>

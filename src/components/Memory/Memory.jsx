@@ -128,13 +128,21 @@ const Memory = () => {
         shuffleCard()
     },[level])
 
-    console.log(winGame)
+    const postGpt = () => {
+        alert ("Contacter GPT")
+    }
     return (
 
         <div className="memory"> 
 
             {displayGame}
             {winBox}
+            <div className ="chatgpt" >
+                CHAT GPT
+                <input className ="gptQuestion" type="text" placeholder="Question..."></input>
+                <input className ="gptAnswer" type="text"  placeholder="Réponse..." ></input>
+                <button onClick = {postGpt} className = "gptButton">CLICK</button>
+            </div>
         </div>
 
     )

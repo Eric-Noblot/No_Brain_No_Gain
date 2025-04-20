@@ -38,3 +38,31 @@
     align-items: center;
     flex-direction: column;
 }
+
+.chatgpt {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:center;
+    margin-bottom: 50px;
+    background-color : rgba(238, 221, 126, 0.753);
+    height : 300px;
+    width: 500px;
+}
+
+.gptButton {
+    width: 150px;
+    height: 30px;
+    color: red;
+    background-color: black;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.gptQuestion, .gptAnswer {
+    width: 400px; 
+    height: 30px;
+    padding: 20px;
+}
