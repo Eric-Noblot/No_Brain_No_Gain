@@ -11,7 +11,7 @@ const Memory = () => {
     const [firstChoice, setFirstChoice] = useState(null)
     const [secondChoice, setSecondChoice] = useState(null)
     const [disabled, setDisabled] = useState(false)
-    const [level, setLevel] = useState(9)
+    const [level, setLevel] = useState(0)
     const [winGame, setWinGame] = useState(false)
 
     const cardsFromDatabase = questions[0].jeux.category.memory[level]
@@ -52,7 +52,7 @@ const Memory = () => {
         
         <>
         <div className ="memory_title">
-            <p>Termine en moins de 20 tours chaque puzzle !</p>
+            <p>Termine en moins de 15 tours chaque puzzle !</p>
             <p>{`Niveau ${level +1}`}</p>
             {/* <button onClick ={shuffleCard}>Recommencer</button>
             <button onClick ={nextLevel}>Next</button> */}
