@@ -9516,132 +9516,132 @@ export const questions = [
                         {"src" : "/img/animaux.jpg", matched: false},
                         {"src" : "/img/arts.jpg", matched: false},
                         {"src" : "/img/book.avif", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false}
+                        {"src" : "/img/dbz.jpg", matched: false},
+                        {"src" : "/img/cartoon.jpg", matched: false}
                     ],
                     2: [
                         {"src" : "/img/anglais.jpg", matched: false},
                         {"src" : "/img/animaux.jpg", matched: false},
                         {"src" : "/img/arts.jpg", matched: false},
                         {"src" : "/img/book.avif", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false}
+                        {"src" : "/img/dbz.jpg", matched: false},
+                        {"src" : "/img/cartoon.jpg", matched: false}
                     ],
                     3: [
                         {"src" : "/img/anglais.jpg", matched: false},
                         {"src" : "/img/animaux.jpg", matched: false},
                         {"src" : "/img/arts.jpg", matched: false},
                         {"src" : "/img/book.avif", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false}
+                        {"src" : "/img/dbz.jpg", matched: false},
+                        {"src" : "/img/cartoon.jpg", matched: false}
                     ],
                     4: [
                         {"src" : "/img/anglais.jpg", matched: false},
                         {"src" : "/img/animaux.jpg", matched: false},
                         {"src" : "/img/arts.jpg", matched: false},
                         {"src" : "/img/book.avif", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false}
+                        {"src" : "/img/dbz.jpg", matched: false},
+                        {"src" : "/img/cartoon.jpg", matched: false},
+                        {"src" : "/img/insectes.jpg", matched: false},
+                        {"src" : "/img/mort.webp", matched: false}
                     ],
                     5: [
                         {"src" : "/img/anglais.jpg", matched: false},
                         {"src" : "/img/animaux.jpg", matched: false},
                         {"src" : "/img/arts.jpg", matched: false},
                         {"src" : "/img/book.avif", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false}
+                        {"src" : "/img/dbz.jpg", matched: false},
+                        {"src" : "/img/cartoon.jpg", matched: false},
+                        {"src" : "/img/insectes.jpg", matched: false},
+                        {"src" : "/img/mort.webp", matched: false}
                     ],
                     6: [
                         {"src" : "/img/anglais.jpg", matched: false},
                         {"src" : "/img/animaux.jpg", matched: false},
                         {"src" : "/img/arts.jpg", matched: false},
                         {"src" : "/img/book.avif", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false}
+                        {"src" : "/img/dbz.jpg", matched: false},
+                        {"src" : "/img/cartoon.jpg", matched: false},
+                        {"src" : "/img/insectes.jpg", matched: false},
+                        {"src" : "/img/mort.webp", matched: false}
                     ],
                     7: [
                         {"src" : "/img/anglais.jpg", matched: false},
                         {"src" : "/img/animaux.jpg", matched: false},
                         {"src" : "/img/arts.jpg", matched: false},
                         {"src" : "/img/book.avif", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/book.avif", matched: false}
+                        {"src" : "/img/dbz.jpg", matched: false},
+                        {"src" : "/img/cartoon.jpg", matched: false},
+                        {"src" : "/img/insectes.jpg", matched: false},
+                        {"src" : "/img/mort.webp", matched: false},
+                        {"src" : "/img/voyages.jpg", matched: false},
+                        {"src" : "/img/rockstar.webp", matched: false}
                     ],
                     8: [
                         {"src" : "/img/anglais.jpg", matched: false},
                         {"src" : "/img/animaux.jpg", matched: false},
                         {"src" : "/img/arts.jpg", matched: false},
                         {"src" : "/img/book.avif", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/book.avif", matched: false}
+                        {"src" : "/img/dbz.jpg", matched: false},
+                        {"src" : "/img/cartoon.jpg", matched: false},
+                        {"src" : "/img/insectes.jpg", matched: false},
+                        {"src" : "/img/mort.webp", matched: false},
+                        {"src" : "/img/voyages.jpg", matched: false},
+                        {"src" : "/img/rockstar.webp", matched: false}
                     ],
                     9: [
                         {"src" : "/img/anglais.jpg", matched: false},
                         {"src" : "/img/animaux.jpg", matched: false},
                         {"src" : "/img/arts.jpg", matched: false},
                         {"src" : "/img/book.avif", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/book.avif", matched: false}
+                        {"src" : "/img/dbz.jpg", matched: false},
+                        {"src" : "/img/cartoon.jpg", matched: false},
+                        {"src" : "/img/insectes.jpg", matched: false},
+                        {"src" : "/img/mort.webp", matched: false},
+                        {"src" : "/img/voyages.jpg", matched: false},
+                        {"src" : "/img/rockstar.webp", matched: false}
                     ],
                     10: [
                         {"src" : "/img/anglais.jpg", matched: false},
                         {"src" : "/img/animaux.jpg", matched: false},
                         {"src" : "/img/arts.jpg", matched: false},
                         {"src" : "/img/book.avif", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/book.avif", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/book.avif", matched: false}
+                        {"src" : "/img/francais.jpg", matched: false},
+                        {"src" : "/img/planete.jpg", matched: false},
+                        {"src" : "/img/dbz.jpg", matched: false},
+                        {"src" : "/img/cartoon.jpg", matched: false},
+                        {"src" : "/img/insectes.jpg", matched: false},
+                        {"src" : "/img/mort.webp", matched: false},
+                        {"src" : "/img/voyages.jpg", matched: false},
+                        {"src" : "/img/rockstar.webp", matched: false}
                     ],
                     11: [
                         {"src" : "/img/anglais.jpg", matched: false},
                         {"src" : "/img/animaux.jpg", matched: false},
                         {"src" : "/img/arts.jpg", matched: false},
                         {"src" : "/img/book.avif", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/book.avif", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/book.avif", matched: false}
+                        {"src" : "/img/francais.jpg", matched: false},
+                        {"src" : "/img/planete.jpg", matched: false},
+                        {"src" : "/img/dbz.jpg", matched: false},
+                        {"src" : "/img/cartoon.jpg", matched: false},
+                        {"src" : "/img/insectes.jpg", matched: false},
+                        {"src" : "/img/mort.webp", matched: false},
+                        {"src" : "/img/voyages.jpg", matched: false},
+                        {"src" : "/img/rockstar.webp", matched: false}
                     ],
                     12: [
                         {"src" : "/img/anglais.jpg", matched: false},
                         {"src" : "/img/animaux.jpg", matched: false},
                         {"src" : "/img/arts.jpg", matched: false},
                         {"src" : "/img/book.avif", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/animaux.jpg", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/book.avif", matched: false},
-                        {"src" : "/img/anglais.jpg", matched: false},
-                        {"src" : "/img/book.avif", matched: false}
+                        {"src" : "/img/francais.jpg", matched: false},
+                        {"src" : "/img/planete.jpg", matched: false},
+                        {"src" : "/img/dbz.jpg", matched: false},
+                        {"src" : "/img/cartoon.jpg", matched: false},
+                        {"src" : "/img/insectes.jpg", matched: false},
+                        {"src" : "/img/mort.webp", matched: false},
+                        {"src" : "/img/voyages.jpg", matched: false},
+                        {"src" : "/img/rockstar.webp", matched: false}
                     ],
                 }
             }

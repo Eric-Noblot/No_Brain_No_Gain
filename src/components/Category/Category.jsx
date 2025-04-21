@@ -10,6 +10,7 @@ import { useMediaQuery } from "react-responsive"
 import quizPicture from "../../img/game/quiz.avif"
 import jeuxPicture from "../../img/game/jeux.png" 
 import testPicture from "../../img/game/test.png"
+import logiquePicture from "../../img/game/logique.jpg"
 
 import anglaisPicture from "../../img/category/anglais.jpg"
 import animauxPicture from "../../img/category/animaux.jpg"
@@ -115,6 +116,9 @@ const Category = ({userData}) => {
             return rockstarPicture
             case "humanité" : 
             return humanityPicture
+
+            case "memory" : 
+            return logiquePicture
             
             default :
             return "Error"

@@ -11,7 +11,7 @@ const Memory = () => {
     const [firstChoice, setFirstChoice] = useState(null)
     const [secondChoice, setSecondChoice] = useState(null)
     const [disabled, setDisabled] = useState(false)
-    const [level, setLevel] = useState(0)
+    const [level, setLevel] = useState(2)
     const [winGame, setWinGame] = useState(false)
 
     const cardsFromDatabase = questions[0].jeux.category.memory[level]
@@ -137,12 +137,7 @@ const Memory = () => {
 
             {displayGame}
             {winBox}
-            <div className ="chatgpt" >
-                CHAT GPT
-                <input className ="gptQuestion" type="text" placeholder="Question..."></input>
-                <input className ="gptAnswer" type="text"  placeholder="Réponse..." ></input>
-                <button onClick = {postGpt} className = "gptButton">CLICK</button>
-            </div>
+
         </div>
 
     )
