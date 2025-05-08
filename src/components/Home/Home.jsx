@@ -18,7 +18,7 @@ const Home = () => {
 
     const navigate = useNavigate()
     const [userSession, setUserSession] = useState(null)
-    const [userData, setUserData] = useState({}) //on crée un objet car c'est comme ca qu'est stockée la data dans la base de données
+    const [userData, setUserData] = useState({}) 
 
     useEffect(() => {
         const listener = onAuthStateChanged(auth, (user) => {
