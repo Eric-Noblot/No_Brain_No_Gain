@@ -29,6 +29,9 @@
     -webkit-transition: .4s;
     transition: .4s;
   }
+.slider:hover {
+  background-color: rgba(236, 248, 99, 0.4);
+}
 
   .slider:before {
     position: absolute;

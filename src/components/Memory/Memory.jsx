@@ -3,6 +3,8 @@ import "./memory.css"
 import {useState, useEffect} from "react"
 import MemoryCard from "../MemoryCard/MemoryCard"
 import { questions } from "../../questions"
+import { db, auth } from "../Firebase/firebase.js"
+import { doc, updateDoc } from "firebase/firestore"; 
 
 const Memory = () => {
 
@@ -11,15 +13,28 @@ const Memory = () => {
     const [firstChoice, setFirstChoice] = useState(null)
     const [secondChoice, setSecondChoice] = useState(null)
     const [disabled, setDisabled] = useState(false)
-    const [level, setLevel] = useState(2)
+    const [level, setLevel] = useState(0)
     const [winGame, setWinGame] = useState(false)
+    const [hasAlreadyPlayed, setHasAlreadyPlayed] = useState(false)
 
     const cardsFromDatabase = questions[0].jeux.category.memory[level]
 
+    const updateFirestore = async () => {
+
+        const userId = auth.lastNotifiedUid
+        const tropheeRef = doc(db, `users/${userId}/`)  //on update les données sur la clé existante déjà créée par firestore lors du sign up
+        console.log("userID: ", userId)
+        console.log("tropheeRef: ", tropheeRef)
+        
+        await updateDoc(tropheeRef, 
+            {"memory":  level + 1})
+            // {[categoryNameUrl]: hasAlreadyPlayed ? levelFromCategory + 1 : quizLevel + 1})
+    }
 
     const handleChoice = (card) => {
         firstChoice ? setSecondChoice(card) : setFirstChoice(card)
     }
+    
 
     const shuffleCard = () => {
         const shuffledCard = [...cardsFromDatabase, ...cardsFromDatabase] //ici j'ajoute 2 fois les images, je trie avec sort et -0.5 pour que le resultat soit positif ou négatif (il oscillera entre 0.5 et 1.5), si le resultat est positif ca trie à l'envers, ca permet de créer un shuffle random, ensuite on .map pour créer un nouveau tableau et ainsi ajouter un id 
@@ -46,9 +61,10 @@ const Memory = () => {
     const nextLevel = () => {
         setLevel((prevState) => prevState +1)
         shuffleCard()
+        updateFirestore()
     }
 
-    const displayGame = turns < 15 ? (
+    const displayGame = turns < 2 ? (
         
         <>
         <div className ="memory_title">
@@ -128,9 +144,6 @@ const Memory = () => {
         shuffleCard()
     },[level])
 
-    const postGpt = () => {
-        alert ("Contacter GPT")
-    }
     return (
 
         <div className="memory"> 
