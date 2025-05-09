@@ -210,21 +210,13 @@ const Category = ({userData}) => {
 
         switch (categoryName.toUpperCase()) { // Permet de séparer la logique du jeu memory du quiz et ne pas déclencher le fait de recommencer le jeu si le level dépasse 3
             case "MEMORY" :
-                if (levelCategory < 3 || levelCategory === undefined) { //undefined est déclenché lorsque le level est inexistant dans la base db, ca veut donc dire que l'utilisateur clique pour la 1ere fois sur une catégorie
-                    rightLink = (
-                        <Link state = {{dataFromCategory: dataFromFirestore}} onClick ={getCategoryName} className = "category_link" to={`/game/${gameName.toLocaleLowerCase()}/${categoryName.toLowerCase()}`}>
-                        {levelCategory === undefined ? "COMMENCER" : "CONTINUER"}
-                        </Link>)
-                } else {
-                    rightLink = (
-                        // <Link state = {{dataFromCategory: dataFromFirestore}} onClick ={restartQuiz} className = "category_link" to={`/game/${gameName.toLocaleLowerCase()}/${categoryName.toLowerCase()}`}>
-                        <>
-                        <p style={{textAlign: "center", width: "80%"}}>Pour rejouer cette catégorie, tu dois supprimer ta progression actuelle...</p>
-                        <Link onClick ={restartQuiz} className = "category_link" to={`/home`}>
-                        SUPPRIMER
-                        </Link>
-                        </>)
-                }
+                rightLink = (
+                <>
+                    <p style={{textAlign: "center", width: "80%"}}>Pour rejouer cette catégorie, tu dois supprimer ta progression actuelle...</p>
+                    <Link state = {{dataFromCategory: dataFromFirestore}} onClick ={restartQuiz} className = "category_link" to={`/game/${gameName.toLocaleLowerCase()}/${categoryName.toLowerCase()}`}>
+                        COMMENCER
+                    </Link>
+                </>)
             break
 
             default :
@@ -235,13 +227,12 @@ const Category = ({userData}) => {
                     </Link>)
             } else {
                 rightLink = (
-                    // <Link state = {{dataFromCategory: dataFromFirestore}} onClick ={restartQuiz} className = "category_link" to={`/game/${gameName.toLocaleLowerCase()}/${categoryName.toLowerCase()}`}>
-                    <>
+               <>
                     <p style={{textAlign: "center", width: "80%"}}>Pour rejouer cette catégorie, tu dois supprimer ta progression actuelle...</p>
                     <Link onClick ={restartQuiz} className = "category_link" to={`/home`}>
                     SUPPRIMER
                     </Link>
-                    </>)
+                </>)
             }
             break
         }
@@ -249,7 +240,7 @@ const Category = ({userData}) => {
         return rightLink
     }
 
-    const getCupColor = (levelTrophee) => {
+    const getCupColor = (levelTrophee) => { //permet de séparer la logique de MEMORY et du QUIZ en attribuant une coupe ou un numéro selon le level de catégorie atteint
 
         switch(levelTrophee) {
             case 1:return "rgb(201, 114, 60)"

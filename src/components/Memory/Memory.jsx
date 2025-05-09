@@ -23,12 +23,8 @@ const Memory = () => {
 
         const userId = auth.lastNotifiedUid
         const tropheeRef = doc(db, `users/${userId}/`)  //on update les données sur la clé existante déjà créée par firestore lors du sign up
-        console.log("userID: ", userId)
-        console.log("tropheeRef: ", tropheeRef)
-        
         await updateDoc(tropheeRef, 
             {"memory":  level + 1})
-            // {[categoryNameUrl]: hasAlreadyPlayed ? levelFromCategory + 1 : quizLevel + 1})
     }
 
     const handleChoice = (card) => {
